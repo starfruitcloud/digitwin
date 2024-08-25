@@ -1,6 +1,6 @@
 {
   "name": "firethorn",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "晓智科技数字孪生组件库",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/starfruitcloud/firethorn.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "author": "zhangdezhi",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/starfruitcloud/firethorn/issues"
   },
