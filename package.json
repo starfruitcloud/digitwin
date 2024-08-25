@@ -1,0 +1,19 @@
+{
+  "name": "firethorn",
+  "version": "1.0.0",
+  "description": "晓智科技数字孪生组件库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/starfruitcloud/firethorn.git"
+  },
+  "author": "zhangdezhi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/starfruitcloud/firethorn/issues"
+  },
+  "homepage": "https://github.com/starfruitcloud/firethorn#readme"
+}
