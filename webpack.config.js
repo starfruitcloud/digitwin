@@ -1,55 +1,70 @@
+"use strict";
+
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const {
-  CleanWebpackPlugin
-} = require("clean-webpack-plugin");
+
+const cesiumSource = "node_modules/cesium/Build/Cesium";
+// this is the base url for static files that CesiumJS needs to load
+// Not required but if it's set remember to update CESIUM_BASE_URL as shown below
+const cesiumBaseUrl = "cesiumStatic";
 
 module.exports = {
-  // 指定入口文件
-  entry: "./src/index.ts",
-
-  // 开发模式使用，方便查错误
-  devtool: "inline-source-map",
-
-  // 指定打包文件所在目录
+  context: __dirname,
+  entry: {
+    app: "./src/index.js",
+  },
   output: {
+    filename: "app.js",
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    sourcePrefix: "",
   },
-
-  // 用来设置引用模块
   resolve: {
-    extensions: [".ts", ".js"],
+    mainFiles: ["index", "Cesium"],
   },
-
-  // 配置webpack的loader
   module: {
-    rules: [{
-        test: /.ts$/,
-        use: 'raw-loader',
-        exclude: /node_modules/,
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.js/,
-        use: ['babel-loader'],
-        exclude: /node_modules/,
+        test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
+        type: "asset/inline",
       },
-      {
-        test: /\.glsl$/,
-        use: ['webpack-glsl-loader']
-      },
-      {
-        test: /\.(jpg|png|svg)$/,
-        use: ['file-loader']
-      }
     ],
   },
-
-  // 配置webpack的插件
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "/public/index.html",
     }),
+    // Copy Cesium Assets, Widgets, and Workers to a static directory
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.join(cesiumSource, "Workers"),
+          to: `${cesiumBaseUrl}/Workers`,
+        },
+        {
+          from: path.join(cesiumSource, "ThirdParty"),
+          to: `${cesiumBaseUrl}/ThirdParty`,
+        },
+        {
+          from: path.join(cesiumSource, "Assets"),
+          to: `${cesiumBaseUrl}/Assets`,
+        },
+        {
+          from: path.join(cesiumSource, "Widgets"),
+          to: `${cesiumBaseUrl}/Widgets`,
+        },
+      ],
+    }),
+    new webpack.DefinePlugin({
+      // Define relative base path in cesium for loading assets
+      CESIUM_BASE_URL: JSON.stringify(cesiumBaseUrl),
+    }),
   ],
+  mode: "development",
+  devtool: "eval",
 };
