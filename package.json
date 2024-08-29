@@ -34,6 +34,7 @@
     "prettier": "^3.2.4",
     "typescript": "5.5.4",
     "vite": "^5.0.8",
+    "gsap": "^3.12.5",
     "vite-plugin-checker": "^0.7.2",
     "vite-plugin-static-copy": "^1.0.0"
   },

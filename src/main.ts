@@ -1,15 +1,16 @@
 /*
- * :file description: 
+ * :file description: 水波纹扩散特效
  * :name: /firethorn/src/main.ts
  * :author:张德志
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 14:14:48
  * :last editor: 张德志
- * :date last edited: 2024-08-29 18:39:47
+ * :date last edited: 2024-08-29 18:54:18
  */
 import * as Cesium from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
-import DotCircleDiffusionMaterProperty from '@/lib/circle/DotCircleDiffusion';
+import WaveCircleDiffusion from '@/lib/circle/WaveCircleDiffusion';
+import RadarCircleRotation from '@/lib/circle/RadarCircleRotation';
 import HandlerInputAction from '@/lib/utils/HandlerInputAction';
 import initViwer from '@/lib/utils/initViewer';
 import "./style.css";
@@ -39,6 +40,8 @@ viewer.camera.setView({
 
 new HandlerInputAction(viewer);
 
-new DotCircleDiffusionMaterProperty(viewer);
+new WaveCircleDiffusion(viewer);
+
+new RadarCircleRotation(viewer);
 
 
