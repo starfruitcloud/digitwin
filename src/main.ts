@@ -5,12 +5,13 @@
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 14:14:48
  * :last editor: 张德志
- * :date last edited: 2024-08-29 18:54:18
+ * :date last edited: 2024-08-29 19:12:54
  */
 import * as Cesium from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import WaveCircleDiffusion from '@/lib/circle/WaveCircleDiffusion';
 import RadarCircleRotation from '@/lib/circle/RadarCircleRotation';
+import HexagonDiffusion from '@/lib/wall/HexagonDiffusion';
 import HandlerInputAction from '@/lib/utils/HandlerInputAction';
 import initViwer from '@/lib/utils/initViewer';
 import "./style.css";
@@ -43,5 +44,18 @@ new HandlerInputAction(viewer);
 new WaveCircleDiffusion(viewer);
 
 new RadarCircleRotation(viewer);
+
+new HexagonDiffusion(viewer, {
+  minLot: 113.920873,
+  minLat: 22.511049,
+  maxLot: 113.926043,
+  maxLat: 22.51466,
+},
+{
+  minLot: 113.918873,
+  minLat: 22.510049,
+  maxLot: 113.929043,
+  maxLat: 113.929043,
+},);
 
 
