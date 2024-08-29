@@ -25,6 +25,7 @@
     "prettier-check": "prettier --check --no-config \"**/*\""
   },
   "devDependencies": {
+    "@types/node": "^22.5.1",
     "eslint": "^8.56.0",
     "eslint-config-cesium": "^10.0.2",
     "eslint-plugin-es": "^4.1.0",

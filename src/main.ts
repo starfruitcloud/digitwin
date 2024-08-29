@@ -5,13 +5,13 @@
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 14:14:48
  * :last editor: 张德志
- * :date last edited: 2024-08-29 16:20:20
+ * :date last edited: 2024-08-29 18:39:47
  */
 import * as Cesium from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
-import DotCircleDiffusionMaterProperty from './lib/circle/DotCircleDiffusion';
-import HandlerInputAction from './lib/utils/HandlerInputAction';
-import initViwer from './lib/utils/initViewer';
+import DotCircleDiffusionMaterProperty from '@/lib/circle/DotCircleDiffusion';
+import HandlerInputAction from '@/lib/utils/HandlerInputAction';
+import initViwer from '@/lib/utils/initViewer';
 import "./style.css";
 
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NWVlNTI2MC00YTViLTQzZjYtOGMxNy1lYTAxMDVkMTMwNTQiLCJpZCI6MTA3NjIxLCJpYXQiOjE2NjI3OTY2ODR9.9Amu-saGmeaPMMt9LE5MjF0FQcoC3toDrxCo_J4ItAg';

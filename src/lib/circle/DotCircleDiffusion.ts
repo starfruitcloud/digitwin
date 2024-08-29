@@ -1,14 +1,14 @@
 /*
- * :file description: 
+ * :file description: 圆形扩散特效
  * :name: /firethorn/src/lib/circle/DotCircleDiffusion.ts
  * :author:张德志
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 16:14:46
  * :last editor: 张德志
- * :date last edited: 2024-08-29 16:16:52
+ * :date last edited: 2024-08-29 18:37:54
  */
 import * as Cesium from 'cesium';
-import DotCircleDiffusionMaterProperty from '../../material/DotCircleDiffusionMaterProperty';
+import DotCircleDiffusionMaterProperty from '@/material/DotCircleDiffusionMaterProperty';
 
 
 export interface DotCircleDiffusionOptionsType {
