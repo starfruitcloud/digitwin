@@ -5,12 +5,11 @@
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 18:52:41
  * :last editor: 张德志
- * :date last edited: 2024-08-29 18:52:42
+ * :date last edited: 2024-08-29 22:57:16
  */
 import * as Cesium from "cesium";
 import gsap from "gsap";
 
-// 雷达材质
 class RadarMaterialProperty {
   options: { uTime: number };
   definitionChanged: Cesium.Event;

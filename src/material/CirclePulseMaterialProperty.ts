@@ -5,7 +5,7 @@
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 22:22:48
  * :last editor: 张德志
- * :date last edited: 2024-08-29 22:35:59
+ * :date last edited: 2024-08-29 23:02:58
  */
 import * as Cesium from 'cesium';
 
@@ -55,16 +55,16 @@ class CirclePulseMaterialProperty{
     }
     getType() {
         return this.name;
-      }
-      getValue(_: number, result: any) {
+    }
+    getValue(_: number, result: any) {
         return result;
-      }
-      equals(other: { name: string }) {
+    }
+    equals(other: { name: string }) {
         return (
           other instanceof CirclePulseMaterialProperty &&
           this.name === other.name
         );
-      }
+    }
 }
 
 
