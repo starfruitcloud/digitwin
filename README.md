@@ -1,16 +1,6 @@
-# cesium-vite-example
+# firethorn
 
-A minimal recommended setup for an applications using [Cesium](https://cesium.com) with [Vite](https://vitejs.dev/).
-
-If you are using Webpack instead of Vite, check out our [`cesium-webpack-example`](https://github.com/CesiumGS/cesium-webpack-example) repo.
-
-## UI framework support
-
-This example was created to be the lowest common denominator in the Vite ecosystem and targets Vanilla JS. The same configuration has been tested with other UI frameworks in Vite (like Vue) by adding the relevant plugin. If you run into framework specific problems please [open an issue](https://github.com/CesiumGS/cesium-vite-example/issues/new).
-
-If you create a new Vite project with [`create-vite`](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) you can combine the `plugins` that it adds in `vite.config.js` with the ones in this example configuration.
-
-## Running this application
+## 运行应用
 
 ```sh
 npm install
@@ -35,18 +25,15 @@ Navigate to `localhost:5173`. For the built version navigate to `localhost:4173`
 - `npm run build` - Runs the Vite production build
 - `npm run preview` - Starts a local preview of the production build using [`vite preview`](https://vitejs.dev/guide/cli.html#vite-preview)
 
-## Requiring Cesium in your application
 
-We recommend [importing named exports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) from the Cesium ES module, via the `import` keyword.
-
-### Import named modules from Cesium
+### 引入cesium
 
 ```js
 import { Color } from "cesium";
 var c = Color.fromRandom();
 ```
 
-### Import Cesium static asset files
+### 引入cesium静态文件
 
 ```js
 import "cesium/Build/Cesium/Widgets/widgets.css";
@@ -101,12 +88,4 @@ If you are using a version of CesiumJS before `1.114` you will need to modify th
   },
 ```
 
-See cesium PR [#11773](https://github.com/CesiumGS/cesium/pull/11773) for more information
 
-## Contributions
-
-Pull requests are appreciated. Please use the same [Contributor License Agreement (CLA)](https://github.com/CesiumGS/cesium/blob/master/CONTRIBUTING.md) used for [Cesium](https://cesium.com/).
-
----
-
-Developed by the Cesium team.
