@@ -1,12 +1,7 @@
-{
-  "name": "firethorn",
+{"name": "firethorn",
   "version": "0.0.1-beta1",
   "description": "晓智科技数字孪生组件库",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.config.js",
-    "start:built": "npx http-server -a localhost -p 8080 dist/"
-  },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/starfruitcloud/firethorn.git"
@@ -19,18 +14,33 @@
   "bugs": {
     "url": "https://github.com/starfruitcloud/firethorn/issues"
   },
-  "homepage": "https://github.com/starfruitcloud/firethorn#readme",
-  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky install",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "eslint": "eslint \"./**/*.js\" \"./**/*.html\" --cache --quiet",
+    "prettier": "prettier --write --no-config \"**/*\"",
+    "prettier-check": "prettier --check --no-config \"**/*\""
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-cesium": "^10.0.2",
+    "eslint-plugin-es": "^4.1.0",
+    "eslint-plugin-html": "^7.1.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.2.4",
+    "vite": "^5.0.8",
+    "vite-plugin-static-copy": "^1.0.0"
+  },
   "dependencies": {
     "cesium": "^1.114.0"
   },
-  "devDependencies": {
-    "copy-webpack-plugin": "^9.1.0",
-    "css-loader": "^6.8.1",
-    "html-webpack-plugin": "^5.6.0",
-    "style-loader": "^3.3.3",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.15.1"
+  "lint-staged": {
+    "*.{js,html}": [
+      "eslint --cache --quiet",
+      "prettier --write --no-config"
+    ]
   }
 }
