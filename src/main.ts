@@ -5,13 +5,14 @@
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 14:14:48
  * :last editor: 张德志
- * :date last edited: 2024-08-29 19:12:54
+ * :date last edited: 2024-08-29 22:19:45
  */
 import * as Cesium from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import WaveCircleDiffusion from '@/lib/circle/WaveCircleDiffusion';
 import RadarCircleRotation from '@/lib/circle/RadarCircleRotation';
 import HexagonDiffusion from '@/lib/wall/HexagonDiffusion';
+import PulseCircleDiffusion from '@/lib/circle/PulseCircleDiffusion';
 import HandlerInputAction from '@/lib/utils/HandlerInputAction';
 import initViwer from '@/lib/utils/initViewer';
 import "./style.css";
@@ -41,9 +42,11 @@ viewer.camera.setView({
 
 new HandlerInputAction(viewer);
 
-new WaveCircleDiffusion(viewer);
+// new WaveCircleDiffusion(viewer);
 
-new RadarCircleRotation(viewer);
+// new RadarCircleRotation(viewer);
+
+new PulseCircleDiffusion(viewer,{position:[113.32728, 23.12472, 0]})
 
 new HexagonDiffusion(viewer, {
   minLot: 113.920873,
