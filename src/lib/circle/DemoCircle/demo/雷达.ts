@@ -1,16 +1,15 @@
 /*
  * :file description: 水波纹扩散特效
- * :name: /firethorn/src/main.ts
+ * :name: /firethorn/src/lib/circle/DemoCircle/demo/1.ts
  * :author:张德志
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 14:14:48
  * :last editor: 张德志
- * :date last edited: 2024-08-29 19:12:54
+ * :date last edited: 2024-08-30 09:10:36
  */
 import * as Cesium from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import RadarCircleRotation from '@/lib/circle/RadarCircleRotation';
-import HexagonDiffusion from '@/lib/wall/HexagonDiffusion';
 import HandlerInputAction from '@/lib/utils/HandlerInputAction';
 import initViwer from '@/lib/utils/initViewer';
 
@@ -42,18 +41,5 @@ export default () => {
     new HandlerInputAction(viewer);
 
     new RadarCircleRotation(viewer);
-
-    new HexagonDiffusion(viewer, {
-        minLot: 113.920873,
-        minLat: 22.511049,
-        maxLot: 113.926043,
-        maxLat: 22.51466,
-    },
-        {
-            minLot: 113.918873,
-            minLat: 22.510049,
-            maxLot: 113.929043,
-            maxLat: 113.929043,
-        },);
 
 }

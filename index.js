@@ -1,3 +1,12 @@
+/*
+ * :file description: 
+ * :name: /firethorn/index.js
+ * :author:张德志
+ * :copyright: (c) 2024, Xiaozhi
+ * :date created: 2024-08-30 08:53:28
+ * :last editor: 张德志
+ * :date last edited: 2024-08-30 09:29:17
+ */
 /* eslint-disable */
 const menus = import.meta.glob("@/lib/*/*/index.ts");
 const demos = import.meta.glob("@/lib/*/*/demo/*.ts");
@@ -104,7 +113,7 @@ function pushInMenu(menuGroup, demoGroup) {
     }
     div.onclick = onclick;
     div.style =
-      "display:inline-block;width:100px;height:48px;line-height:48px;border:1px solid #000;font-size:20px;text-align:center;cursor:pointer;";
+      "display:inline-block;min-width:100px;height:48px;line-height:48px;border:1px solid #000;font-size:14px;text-align:center;cursor:pointer;";
     document.getElementById("demos").appendChild(div);
 
     const lastRun = getLastRun();
