@@ -1,15 +1,15 @@
 /*
- * :file description: 水波纹扩散特效
- * :name: /firethorn/src/lib/circle/DemoCircle/demo/雷达旋转.ts
+ * :file description: 波纹雷达旋转
+ * :name: /firethorn/src/lib/circle/DemoCircle/demo/波纹雷达旋转.ts
  * :author:张德志
  * :copyright: (c) 2024, Xiaozhi
- * :date created: 2024-08-29 14:14:48
+ * :date created: 2024-08-30 10:13:18
  * :last editor: 张德志
- * :date last edited: 2024-08-30 10:15:06
+ * :date last edited: 2024-08-30 10:16:33
  */
 import * as Cesium from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
-import RadarCircleRotation from '@/lib/circle/RadarCircleRotation';
+import RadarWaveRotate from '@/lib/circle/RadarWaveRotate';
 import HandlerInputAction from '@/lib/utils/HandlerInputAction';
 import initViwer from '@/lib/utils/initViewer';
 
@@ -40,6 +40,9 @@ export default () => {
 
     new HandlerInputAction(viewer);
 
-    new RadarCircleRotation(viewer);
+    new RadarWaveRotate(viewer,{
+        position:[113.315301,23.117566],
+    });
+  
 
 }
