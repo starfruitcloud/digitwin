@@ -1,16 +1,25 @@
 /*
+ * :file description: 
+ * :name: /firethorn/src/lib/wall/DemoWall/demo/多边形扩散.ts
+ * :author:张德志
+ * :copyright: (c) 2024, Xiaozhi
+ * :date created: 2024-08-30 16:41:23
+ * :last editor: 张德志
+ * :date last edited: 2024-08-30 17:23:12
+ */
+/*
  * :file description: 六边形扩散
  * :name: /firethorn/src/lib/wall/DemoWall/demo/六边形扩散.ts
  * :author:张德志
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-30 15:35:40
  * :last editor: 张德志
- * :date last edited: 2024-08-30 17:26:13
+ * :date last edited: 2024-08-30 17:21:11
  */
 
 import * as Cesium from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
-import HexagonWallDiffusion from '@/lib/wall/HexagonWallDiffusion';
+import DynamicPolygonalDiffusion from '@/lib/wall/DynamicPolygonalDiffusion';
 import HandlerInputAction from '@/lib/utils/HandlerInputAction';
 import initViwer from '@/lib/utils/initViewer';
 
@@ -21,35 +30,28 @@ export default () => {
 
     const viewer = initViwer('cesiumContainer', token);
 
+
     const position = Cesium.Cartesian3.fromDegrees(
-        120.236174, 
-        30.221671, 2000
+        // 经度
+        113.307569,
+        // 纬度
+        23.055172,
+        // 高度
+        1000,
     );
 
     viewer.camera.setView({
-      destination: position,
-      orientation: {
-        heading: Cesium.Math.toRadians(0),
-        pitch: Cesium.Math.toRadians(-35),
-        roll: 0,
-      },
+        destination: position,
+        orientation: {
+            heading: Cesium.Math.toRadians(-10),
+            pitch: Cesium.Math.toRadians(-35),
+            roll: 0,
+        },
     });
 
     new HandlerInputAction(viewer);
-   // 六边形扩散
-   new HexagonWallDiffusion(
-    viewer,
-    {
-      minLot: 113.920873,
-      minLat: 22.511049,
-      maxLot: 113.926043,
-      maxLat: 22.51466,
-    },
-    {
-      minLot: 113.918873,
-      minLat: 22.510049,
-      maxLot: 113.929043,
-      maxLat: 113.929043,
-    },
-  );
+    new DynamicPolygonalDiffusion(viewer,{
+        center: [113.305176, 23.068425],
+        edge:5,
+    })
 }
