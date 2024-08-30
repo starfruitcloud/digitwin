@@ -1,11 +1,11 @@
 /*
  * :file description: 
- * :name: /firethorn/src/lib/wall/HexagonDiffusion.ts
+ * :name: /firethorn/src/lib/wall/HexagonWallDiffusion.ts
  * :author:张德志
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 19:06:37
  * :last editor: 张德志
- * :date last edited: 2024-08-29 19:11:02
+ * :date last edited: 2024-08-30 15:00:12
  */
 import WaveDiffusionMaterialProperty from '@/material/WaveDiffusionMaterialProperty';
 import * as Cesium from 'cesium';
@@ -26,7 +26,7 @@ export interface CoordinatesType {
 }
 
 // 六边形扩散
-class HexagonDiffusion {
+class HexagonWallDiffusion {
   coordinates: CoordinatesType;
   toCoordinates: CoordinatesType;
 
@@ -73,4 +73,4 @@ class HexagonDiffusion {
   }
 }
 
-export default HexagonDiffusion;
+export default HexagonWallDiffusion;
