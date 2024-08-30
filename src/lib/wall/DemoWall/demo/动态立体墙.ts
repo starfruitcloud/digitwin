@@ -1,16 +1,16 @@
 /*
- * :file description: 渐变泛光墙
- * :name: /firethorn/src/lib/wall/DemoWall/demo/渐变泛光墙.ts
+ * :file description: 动态立体墙
+ * :name: /firethorn/src/lib/wall/DemoWall/demo/动态立体墙.ts
  * :author:张德志
  * :copyright: (c) 2024, Xiaozhi
- * :date created: 2024-08-30 15:02:28
+ * :date created: 2024-08-30 16:05:38
  * :last editor: 张德志
- * :date last edited: 2024-08-30 16:06:22
+ * :date last edited: 2024-08-30 16:28:04
  */
 
 import * as Cesium from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
-import GradientWallDiffusion from '@/lib/wall/GradientWallDiffusion';
+import DynamicWallDiffusion from '@/lib/wall/DynamicWallDiffusion';
 import HandlerInputAction from '@/lib/utils/HandlerInputAction';
 import initViwer from '@/lib/utils/initViewer';
 
@@ -41,7 +41,8 @@ export default () => {
 
     new HandlerInputAction(viewer);
 
-    new GradientWallDiffusion(viewer,{
+
+    new DynamicWallDiffusion(viewer,{
         positions:Cesium.Cartesian3.fromDegreesArrayHeights([
             113.3051, 23.099, 200.0,
             113.3101, 23.099, 200.0,
