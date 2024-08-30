@@ -5,17 +5,17 @@
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-29 19:37:45
  * :last editor: 张德志
- * :date last edited: 2024-08-29 22:33:36
+ * :date last edited: 2024-08-30 10:49:32
  */
 import * as Cesium from 'cesium';
 import CirclePulseMaterialProperty from '@/material/CirclePulseMaterialProperty';
 
 class PulseCircleDiffusion {
-    constructor(viewer: Cesium.Viewer, options: { position: number[] }) {
+    constructor(viewer: Cesium.Viewer, options: { position: number[],color?:Cesium.Color,speed?:number }) {
         const { position } = options || {};
         viewer.entities.add({
             position: Cesium.Cartesian3.fromDegrees(position[0], position[1]),
-            name: '脉冲圆扩散特效',
+            name: '脉冲圆',
             ellipse: {
                 semiMinorAxis: 1000.0,
                 semiMajorAxis: 1000.0,
