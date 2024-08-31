@@ -1,2 +1,5 @@
-dist/**
-*.html
+/libs/
+/web/
+/pack/
+dist/*
+/**/*.ts

@@ -1,91 +1,202 @@
-# firethorn
+# DC-SDK
 
-## 运行应用
+<p>
+<img src="https://img.shields.io/github/actions/workflow/status/dvgis/dc-sdk/build.yml"/>
+<img src="https://img.shields.io/badge/license-Apache%202-blue"/>
+<a href="https://www.npmjs.com/package/@dvgis/dc-sdk" target="_blank">
+ <img src="https://img.shields.io/npm/v/@dvgis/dc-sdk?color=orange&logo=npm" />
+</a>
+<a href="https://www.npmjs.com/package/@dvgis/dc-sdk" target="_blank">
+ <img src="https://img.shields.io/npm/dt/@dvgis/dc-sdk?logo=npm"/>
+</a>
+<a href="https://resource.dvgis.cn/dc-docs/zh/" target="_blank">
+ <img src="https://img.shields.io/badge/docs-online-yellow.svg"/>
+</a>
+<a href="http://dc.dvgis.cn" target="_blank">
+ <img src="https://img.shields.io/badge/demo-online-red.svg"/>
+</a>
+</p>
 
-```sh
-npm install
-npm run dev
+
+[**🇨🇳 中文**](./README_zh.md) | [**🇬🇧English**](./README.md)
+
+`DC-SDK` is based on the open source project `Cesium` for the second development of two three-dimensional `WebGis` application framework , the framework optimizes the use of `Cesium` and adds some additional features , designed for developers to quickly build `WebGis` application.
+
+```warning
+Tips：This SDK is JS+GIS framework package. Developers need to have some front-end technology and GIS related technology
 ```
 
-For the built, production version
 
-```sh
-npm run build
-npm run preview
+## Run examples
+
+```shell
+  yarn run build
+  yarn run server
 ```
 
-Navigate to `localhost:5173`. For the built version navigate to `localhost:4173`
+## Installation
 
-## Available scripts
+`NPM / YARN` **_`(Recommend)`_**
 
-- `npm run eslint` - Lint this project
-- `npm run prettier` - Format all the code to a consistant style
-- `npm run prettier-check` - Check the format of code but do not change it
-- `npm run dev` - Starts the Vite development server server at `localhost:5173`
-- `npm run build` - Runs the Vite production build
-- `npm run preview` - Starts a local preview of the production build using [`vite preview`](https://vitejs.dev/guide/cli.html#vite-preview)
+Installing with NPM or YARN is recommended and it works seamlessly with webpack.
 
-
-### 引入cesium
+```shell
+yarn add @dvgis/dc-sdk
+-------------------------
+npm install @dvgis/dc-sdk
+```
 
 ```js
-import { Color } from "cesium";
-var c = Color.fromRandom();
+import * as DC from '@dvgis/dc-sdk'
+import '@dvgis/dc-sdk/dist/dc.min.css'
 ```
 
-### 引入cesium静态文件
+`CDN`
 
-```js
-import "cesium/Build/Cesium/Widgets/widgets.css";
+[Resources](https://github.com/dvgis/dc-sdk/releases)
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@dvgis/dc-sdk/dist/dc.min.js"></script>
+<link
+  href="https://cdn.jsdelivr.net/npm/@dvgis/dc-sdk/dist/dc.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
 ```
 
-## Cesium sub-packages
+```
+Please put the resources in the project root directory libs/dc-sdk, if you put it in other directory, the framework will not run properly.
+```
 
-CesiumJS requires a few static files to be hosted on your server, like web workers and SVG icons. This example is already set up to copy these directories if you install the whole `cesium` package.
+## Configuration
+
+> The configuration is mainly used in the `NPM / YARN` way
+
+Since the `DC` framework sets `CESIUM_BASE_URL` to `./libs/dc-sdk/resources/` , you need to copy `Cesium` related static resources files: `Assets` , `Workers` , `ThirdParty `to `libs/dc-sdk/resources` directory of the project to ensure that the 3D scene can be rendered properly. You can also use `DC.config.baseUrl` to set the static resource base related to `Cesium` .
+
+`Webpack`
+
+[Project Template](https://github.com/cavencj/dc-vue-app)
 
 ```js
-viteStaticCopy({
-  targets: [
-    { src: `${cesiumSource}/ThirdParty`, dest: cesiumBaseUrl },
-    { src: `${cesiumSource}/Workers`, dest: cesiumBaseUrl },
-    { src: `${cesiumSource}/Assets`, dest: cesiumBaseUrl },
-    { src: `${cesiumSource}/Widgets`, dest: cesiumBaseUrl },
+// webpack.config.js
+const path = require('path')
+const CopywebpackPlugin = require('copy-webpack-plugin')
+const dvgisDist = './node_modules/@dvgis'
+
+module.exports = {
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: path.join(dvgisDist, 'dc-sdk/dist/resources'),
+        to: 'libs/dc-sdk/resources',
+      },
+    ]),
   ],
-}),
+}
 ```
 
-However if you only install `@cesium/engine` then you should change the paths in [`vite.config.js`](./vite.config.js) to the ones below:
+`Vue2.x`
+
+[Project Template](https://github.com/dvgis/dc-vue)
 
 ```js
-viteStaticCopy({
-  targets: [
-    { src: 'node_modules/@cesium/engine/Build/Workers', dest: cesiumBaseUrl },
-    { src: 'node_modules/@cesium/engine/Build/ThirdParty', dest: cesiumBaseUrl },
-    { src: 'node_modules/@cesium/engine/Source/Assets', dest: cesiumBaseUrl },
-  ],
-}),
-```
-
-Additionally you will have to import a different widgets css file in `src/main.js`.
-
-```js
-// Change this import
-import "cesium/Build/Cesium/Widgets/widgets.css";
-
-// To this one from the cesium/engine package
-import "@cesium/engine/Source/Widget/CesiumWidget.css";
-```
-
-## CesiumJS before version `1.114`
-
-If you are using a version of CesiumJS before `1.114` you will need to modify the config to tell it to ignore some external node dependencies. Add the `build` section below:
-
-```js
-  build: {
-    rollupOptions: {
-      external: ["http", "https", "url", "zlib"],
-    },
+// vue.config.js
+const path = require('path')
+const CopywebpackPlugin = require('copy-webpack-plugin')
+const dvgisDist = './node_modules/@dvgis'
+module.exports = {
+  chainWebpack: (config) => {
+    config.plugin('copy').use(CopywebpackPlugin, [
+      [
+        {
+          from: path.join(dvgisDist, 'dc-sdk/dist/resources'),
+          to: 'libs/dc-sdk/resources',
+        },
+      ],
+    ])
   },
+}
+```
+
+`Vue3.x`
+
+[Project Template](https://github.com/dvgis/dc-vue-next)
+
+```js
+// vue.config.js
+const path = require('path')
+const CopywebpackPlugin = require('copy-webpack-plugin')
+const dvgisDist = './node_modules/@dvgis'
+module.exports = {
+  chainWebpack: (config) => {
+    config.plugin('copy').use(CopywebpackPlugin, [
+      {
+        patterns: [
+          {
+            from: path.join(dvgisDist, 'dc-sdk/dist/resources'),
+            to: path.join(__dirname, 'dist', 'libs/dc-sdk/resources'),
+          },
+        ],
+      },
+    ])
+  },
+}
+```
+
+`vite`
+
+[Project Template](https://github.com/dvgis/dc-vite)
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite'
+import DC from '@dvgis/vite-plugin-dc'
+
+export default defineConfig({
+  plugins: [DC()],
+})
 ```
 
 
+## Start
+
+```js
+global.DC = DC
+DC.ready({}).then(()=>{
+    let viewer = new DC.Viewer()
+})
+```
+
+## Demo
+
+|           ![picture](https://dc.dvgis.cn/examples/previews/baselayer/online/baidu.png)           |     ![picture](http://dc.dvgis.cn/examples/previews/baselayer/online/tdt.png)      |     ![picture](http://dc.dvgis.cn/examples/previews/baselayer/online/arcgis.png?v=3)     |        ![picture](http://dc.dvgis.cn/examples/previews/mini-scene/china.gif)         |
+|:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
+|               ![picture](http://dc.dvgis.cn/examples/previews/mini-scene/dfmz.gif)               |    ![picture](http://dc.dvgis.cn/examples/previews/mini-scene/factory.gif)     |        ![picture](http://dc.dvgis.cn/examples/previews/layer/cluster_circle.gif)         | ![picture](http://dc.dvgis.cn/examples/previews/model/3dtiles/shp_custom_shader.gif) |
+|        ![picture](http://dc.dvgis.cn/examples/previews/overlay/polyline/image_trail.gif)         | ![picture](http://dc.dvgis.cn/examples/previews/overlay/others/wall_trail.gif) |       ![picture](http://dc.dvgis.cn/examples/previews/overlay/primitive/water.gif)       |      ![picture](http://dc.dvgis.cn/examples/previews/scene-ext/tools/plot.png)       |
+
+[More>>](http://dc.dvgis.cn/#/examples)
+
+## Copyright
+
+```warning
+1. The framework is a basic platform, completely open source, which can be modified and reconstructed by any individual or institution without our authorization.
+2. We are not responsible for any problems arising from the modification of the framework by individuals and organizations.
+3. Some industrial plug-ins and tools will be added in the later stage, and the code will be open source appropriately.
+4. The package released by us may be used permanently and free of charge by any person or organization subject to:
+  1) complete package reference;
+  2) reserve this copyright information in the console output
+We reserve the right of final interpretation of this copyright information.
+```
+
+## Support
+
+> if dc-sdk can bring benefits to you, please support it ~
+
+<p>
+<a href="https://www.paypal.com/paypalme/cavencj" target="_blank">
+<img src="https://www.paypalobjects.com/images/shared/paypal-logo-129x32.svg" style="margin-top:10px" />
+</a>
+</p>
+
+## Thanks

@@ -1,7 +1,10 @@
 {
-  "name": "firethorn",
-  "version": "0.0.1-beta1",
-  "description": "晓智科技数字孪生组件库",
+  "name": "@dvgis/dc-sdk",
+  "version": "0.0.1",
+
+  "license": "MIT",
+  "description": "The SDK is based on Cesium for secondary development of 2, 3D all-in-one WebGis application framework, the framework optimizes the use of Cesium and add some additional features, designed for developers to quickly build WebGis applications.",
+  "homepage": "https://firethorn.cn",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/starfruitcloud/firethorn.git"
@@ -9,43 +12,70 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "author": "zhangdezhi",
-  "license": "MIT",
+  "keywords": [
+    "3D",
+    "webGL",
+    "map",
+    "globe",
+    "cesium",
+    "heatmap",
+    "turf"
+  ],
   "bugs": {
     "url": "https://github.com/starfruitcloud/firethorn/issues"
   },
+  "author": "zhangdezhi",
   "type": "module",
+  "main": "dist/index.js",
   "scripts": {
-    "prepare": "husky install",
-    "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "eslint": "eslint \"./**/*.js\" \"./**/*.html\" --cache --quiet",
-    "prettier": "prettier --write --no-config \"**/*\"",
-    "prettier-check": "prettier --check --no-config \"**/*\""
+    "dev": "rimraf dist && gulp dev",
+    "build": "rimraf dist && gulp build",
+    "build:node": "rimraf dist && gulp buildNode",
+    "build:iife": "rimraf dist && gulp buildIIFE",
+    "build:release": "rimraf dist && gulp buildRelease",
+    "prepublishOnly": "yarn run build:release",
+    "server": "gulp server",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "lint": "eslint --fix src"
   },
   "devDependencies": {
-    "@types/node": "^22.5.1",
-    "eslint": "^8.56.0",
-    "eslint-config-cesium": "^10.0.2",
-    "eslint-plugin-es": "^4.1.0",
-    "eslint-plugin-html": "^7.1.0",
-    "gsap": "^3.12.5",
-    "husky": "^8.0.3",
-    "prettier": "^3.3.3",
-    "prettierrc": "0.0.0-5",
-    "typescript": "5.5.4",
-    "vite": "^5.0.8",
-    "vite-plugin-checker": "^0.7.2",
-    "vite-plugin-static-copy": "^1.0.0"
+    "@babel/core": "^7.21.4",
+    "@babel/eslint-parser": "^7.21.8",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.5",
+    "chalk": "^5.2.0",
+    "esbuild": "^0.20.1",
+    "esbuild-plugin-glsl": "^1.2.1",
+    "esbuild-plugin-inline-image": "^0.0.9",
+    "esbuild-sass-plugin": "^3.1.0",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "javascript-obfuscator": "^4.0.2",
+    "portfinder": "^1.0.32",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.0",
+    "sass": "^1.62.1",
+    "shelljs": "^0.8.5",
+    "supercluster": "^8.0.1",
+    "vinyl-sourcemaps-apply": "^0.2.1",
+    "vitepress": "^1.0.0-rc.44"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "cesium": "^1.114.0"
-  },
-  "lint-staged": {
-    "*.{js,html}": [
-      "eslint --cache --quiet",
-      "prettier --write --no-config"
-    ]
+    "@dvgis/dc-common": "^3.0.0"
   }
 }
