@@ -5,23 +5,23 @@
  * :copyright: (c) 2024, Xiaozhi
  * :date created: 2024-08-31 08:43:38
  * :last editor: 张德志
- * :date last edited: 2024-08-31 08:48:39
+ * :date last edited: 2024-08-31 08:54:50
  */
 import * as Cesium from 'cesium';
 import LineFlickerMaterialProperty from '@/material/LineFlickerMaterialProperty';
 
 class FlickerLineLight {
-  constructor(view: Cesium.Viewer, options: { url: string }) {
+  constructor(viewer: Cesium.Viewer, options: { url: string }) {
     const { url } = options || {};
     const geojsonPromise = Cesium.GeoJsonDataSource.load(
       url,
     );
 
     geojsonPromise.then((datasource) => {
-      view.dataSources.add(datasource);
+      viewer.dataSources.add(datasource);
 
       const entities = datasource.entities.values;
-      view.zoomTo(entities);
+      viewer.zoomTo(entities);
       const material = new LineFlickerMaterialProperty({
         color: Cesium.Color.YELLOW,
             // 设置随机变化速度
