@@ -2,21 +2,18 @@ import { defineConfig } from 'vitepress'
 import zhConfig from './locales/zh.config.js'
 import enConfig from './locales/en.config.js'
 export default defineConfig({
-  base: '/dc-docs/',
+  base: '/docs/',
   cleanUrls: 'without-subfolders',
-  head: [['link', { rel: 'icon', href: '/dc-docs/assets/favicon.png' }]],
+  head: [['link', { rel: 'icon', href: '/docs/assets/favicon.ico' }]],
   locales: {
     root: zhConfig,
     // en: enConfig,
   },
+  appearance: false,
   themeConfig: {
-    logo: '/assets/logo.svg',
+    logo: '/docs/assets/favicon.ico',
     search: {
       provider: 'local',
-    },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/dvgis/dc-sdk' }],
-    footer: {
-      copyright: '版权所有 © 2019 - 2023 数字视觉(Digital Visual)',
     },
   },
 })
