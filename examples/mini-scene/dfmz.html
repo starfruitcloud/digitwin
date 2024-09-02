@@ -1,56 +1,56 @@
-<div id="viewer-container" ></div>
+<div id="viewer-container"></div>
 <script>
   let viewer = undefined
 
-  function generatePosition(num,isAdd) {
+  function generatePosition(num, isAdd) {
     let list = []
     for (let i = 0; i < num; i++) {
-      let lng = 121.49536592256028 + Math.random() * 0.04 * (isAdd ? 1 :-1)
-      let lat = 31.241616722278213 + Math.random() * 0.04 * (isAdd ? 1 :-1)
-      list.push({lng,lat})
+      let lng = 121.49536592256028 + Math.random() * 0.04 * (isAdd ? 1 : -1)
+      let lat = 31.241616722278213 + Math.random() * 0.04 * (isAdd ? 1 : -1)
+      list.push({ lng, lat })
     }
     return list
   }
 
-  function loadCircle(){
-    let layer_circle = new DC.PrimitiveLayer('layer-circle').addTo(viewer)
+  function loadCircle() {
+    let layer_circle = new DT.PrimitiveLayer('layer-circle').addTo(viewer)
     let positions = generatePosition(5)
-    positions = positions.concat(generatePosition(5,true))
-    positions.forEach(item=>{
-      let circle= new DC.ScanCirclePrimitive(item,200)
+    positions = positions.concat(generatePosition(5, true))
+    positions.forEach(item => {
+      let circle = new DT.ScanCirclePrimitive(item, 200)
       circle.setStyle({
-        speed: 8 * Math.random() ,
-        color:DC.Color.GREEN
+        speed: 8 * Math.random(),
+        color: DT.Color.GREEN
       })
       layer_circle.addOverlay(circle)
     })
   }
 
-  function loadVLine (){
-    let layer = new DC.PrimitiveLayer('vLine_layer')
+  function loadVLine() {
+    let layer = new DT.PrimitiveLayer('vLine_layer')
     viewer.addLayer(layer)
-    let positions = generatePosition(50,true)
+    let positions = generatePosition(50, true)
     positions = positions.concat(generatePosition(50,))
-    positions.forEach(item=>{
-      let position = DC.Position.fromObject(item)
+    positions.forEach(item => {
+      let position = DT.Position.fromObject(item)
       let end = position.copy()
       end.alt = 5000 * Math.random()
-      let line = new DC.FlowLinePrimitive([position,end],0.5)
+      let line = new DT.FlowLinePrimitive([position, end], 0.5)
       line.setStyle({
         speed: 6 * Math.random(),
-        color: DC.Color.fromCssColorString("rgb(141,172,172)"),
-        percent:0.1,
-        gradient:0.01
+        color: DT.Color.fromCssColorString("rgb(141,172,172)"),
+        percent: 0.1,
+        gradient: 0.01
       })
       layer.addOverlay(line)
     })
   }
 
-  function loadBuild(){
-    let layer = new DC.TilesetLayer('layer_build').addTo(viewer)
-    let build = new DC.Tileset(
+  function loadBuild() {
+    let layer = new DT.TilesetLayer('layer_build').addTo(viewer)
+    let build = new DT.Tileset(
       '//resource.dvgis.cn/data/3dtiles/ljz/tileset.json',
-      {skipLevels:true}
+      { skipLevels: true }
     )
     let fs = `
        varying vec3 v_positionEC;
@@ -69,38 +69,38 @@
     layer.addOverlay(build)
   }
 
-  function loadRiver(){
-    let layer_river = new DC.GeoJsonLayer('layer_river','examples/data/hpj.geojson').addTo(viewer)
+  function loadRiver() {
+    let layer_river = new DT.GeoJsonLayer('layer_river', 'examples/data/hpj.geojson').addTo(viewer)
     layer_river.eachOverlay(item => {
-      DC.Util.merge(item.polygon,{
-        outline:false,
-        material: new DC.WaterMaterialProperty({
-          normalMap:'../assets/icon/waterNormalsSmall.jpg',
+      DT.Util.merge(item.polygon, {
+        outline: false,
+        material: new DT.WaterMaterialProperty({
+          normalMap: '../assets/icon/waterNormalsSmall.jpg',
           frequency: 1000.0,
-          animationSpeed:  0.01,
+          animationSpeed: 0.01,
           amplitude: 100,
-          specularIntensity:  1
+          specularIntensity: 1
         })
       })
     })
   }
 
-  function loadRoad(){
-    let layer_road = new DC.GeoJsonLayer('layer_road','examples/data/road_ljz.geojson')
-    let colors=[
-      DC.Color.fromCssColorString("rgb(34,80,186)"),
-      DC.Color.fromCssColorString("rgb(247,155,251)"),
-      DC.Color.fromCssColorString("rgb(97,234,181)"),
-      DC.Color.fromCssColorString("rgb(203,77,46)")
+  function loadRoad() {
+    let layer_road = new DT.GeoJsonLayer('layer_road', 'examples/data/road_ljz.geojson')
+    let colors = [
+      DT.Color.fromCssColorString("rgb(34,80,186)"),
+      DT.Color.fromCssColorString("rgb(247,155,251)"),
+      DT.Color.fromCssColorString("rgb(97,234,181)"),
+      DT.Color.fromCssColorString("rgb(203,77,46)")
     ]
-    layer_road.eachOverlay(item =>{
-      if(item.polyline){
-        DC.Util.merge(item.polyline,{
-          material: new  DC.PolylineTrailMaterialProperty({
+    layer_road.eachOverlay(item => {
+      if (item.polyline) {
+        DT.Util.merge(item.polyline, {
+          material: new DT.PolylineTrailMaterialProperty({
             speed: 10,
-            color: colors[Math.floor(4*Math.random())]
+            color: colors[Math.floor(4 * Math.random())]
           }),
-          width:2
+          width: 2
         })
       }
     })
@@ -108,19 +108,19 @@
   }
 
   function initViewer() {
-    viewer = new DC.Viewer('viewer-container')
-    let  baseLayer = DC.ImageryLayerFactory.createBaiduImageryLayer({
+    viewer = new DT.Viewer('viewer-container')
+    let baseLayer = DT.ImageryLayerFactory.createBaiduImageryLayer({
       style: 'dark',
-      crs:'WGS84'
+      crs: 'WGS84'
     })
-     baseLayer.defaultBrightness = 0.05
-    viewer.addBaseLayer( baseLayer)
+    baseLayer.defaultBrightness = 0.05
+    viewer.addBaseLayer(baseLayer)
     viewer.setOptions({
-      enableFxaa:true
+      enableFxaa: true
     })
-    viewer.use(new DC.Effect())
+    viewer.use(new DT.Effect())
     viewer.effect.bloom.enable = true
-    viewer.flyToPosition("121.49437363,31.2070558,2705.19,0.6,-43.06",()=>{
+    viewer.flyToPosition("121.49437363,31.2070558,2705.19,0.6,-43.06", () => {
       loadRiver()
       loadCircle()
       loadVLine()
@@ -129,7 +129,7 @@
     })
   }
 
-    DC.ready({
-    baseUrl:'../libs/dc-sdk/resources/'
+  DT.ready({
+    baseUrl: '../libs/dt-sdk/resources/'
   }).then(initViewer)
 </script>

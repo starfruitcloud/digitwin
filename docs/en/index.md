@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: DC-SDK
+  name: DT-SDK
   text: Make <code>WebGis</code> development easier
   image:
     src: /assets/doc.gif

@@ -1,6 +1,6 @@
 # 矢量要素 🌎
 
-## DC.Overlay
+## DT.Overlay
 
 > 覆盖物基类
 
@@ -41,7 +41,7 @@
 
   - 参数
     - `{String} text`：文本
-    - `{String} textStyle`：文本样式，详情参考：[DC.Label](#dc-label)
+    - `{String} textStyle`：文本样式，详情参考：[DT.Label](#dt-label)
   - 返回值 `this`
 
 :::warning
@@ -94,15 +94,15 @@
     - `{String} type`：覆盖物类型
   - 返回值 `string`
 
-## DC.Point
+## DT.Point
 
 > 点位要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let point = new DC.Point(position)
+let position = new DT.Position(120, 20)
+let point = new DT.Point(position)
 point.setStyle({
   pixelSize: 10,
 })
@@ -137,8 +137,8 @@ point.setStyle({
 {
   "pixelSize": 1, //像素大小
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
-  "color": DC.Color.WHITE, //颜色
-  "outlineColor": DC.Color.WHITE, //边框颜色
+  "color": DT.Color.WHITE, //颜色
+  "outlineColor": DT.Color.WHITE, //边框颜色
   "outlineWidth": 0, //边框大小，
   "scaleByDistance": {
     "near": 0, //最近距离
@@ -168,14 +168,14 @@ point.setStyle({
     - `{Object} entity`：Cesium 覆盖物
   - 返回值 `point`
 
-## DC.Polyline
+## DT.Polyline
 
 > 线要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let polyline = new DC.Polyline('120,20;120,30')
+let polyline = new DT.Polyline('120,20;120,30')
 polyline.setStyle({
   width: 10,
 })
@@ -194,7 +194,7 @@ polyline.setStyle({
 ### properties
 
 - `{String|Array<Position|Number|String|Object>} positions`：坐标串
-- `{DC.Position} center`：中心点 **_`readonly`_**
+- `{DT.Position} center`：中心点 **_`readonly`_**
 - `{Number} distance`：距离,单位：米 **_`readonly`_**
 
 ### methods
@@ -211,7 +211,7 @@ polyline.setStyle({
 // 样式参数(可选)
 {
   "width": 1, //线宽
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "clampToGround": false, //是否贴地
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -231,14 +231,14 @@ polyline.setStyle({
     - `{Object} entity`：Cesium 覆盖物
   - 返回值 `polyline`
 
-## DC.Polygon
+## DT.Polygon
 
 > 面要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let polygon = new DC.Polygon('120,20;120,30;122,30')
+let polygon = new DT.Polygon('120,20;120,30;122,30')
 polygon.setStyle({
   height: 10,
 })
@@ -258,7 +258,7 @@ polygon.setStyle({
 
 - `{String|Array<Position|Number|String|Object>} positions`：坐标串
 - `{String|Array<Position|Number|String|Object>} holes`：洞坐标串
-- `{DC.Position} center`：中心点 **_`readonly`_**
+- `{DT.Position} center`：中心点 **_`readonly`_**
 - `{Number} area`：距离，单位：平方米 **_`readonly`_**
 
 ### methods
@@ -279,9 +279,9 @@ polygon.setStyle({
   "extrudedHeight": 0, //拉升高度
   "stRotation": 0, //旋转角度
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "closeTop": true, //顶面是否闭合
   "closeBottom": true, //底面是否闭合
@@ -303,15 +303,15 @@ polygon.setStyle({
     - `{Object} entity`：Cesium 覆盖物
   - 返回值 `polygon`
 
-## DC.Billboard
+## DT.Billboard
 
 > 图标要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let billboard = new DC.Billboard(position, '***/**.png')
+let position = new DT.Position(120, 20)
+let billboard = new DT.Billboard(position, '***/**.png')
 billboard.size = [20, 20]
 ```
 
@@ -377,15 +377,15 @@ billboard.size = [20, 20]
     - `{Object} entity`：Cesium 覆盖物
   - 返回值 `billboard`
 
-## DC.Label
+## DT.Label
 
 > 标签要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let Label = new DC.Label(position, 'test')
+let position = new DT.Position(120, 20)
+let Label = new DT.Label(position, 'test')
 ```
 
 ### creation
@@ -422,10 +422,10 @@ let Label = new DC.Label(position, 'test')
   "pixelOffset": { "x": 0, "y": 0 }, //偏移像素
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
   "showBackground": false, //是否显示背景
-  "backgroundColor": DC.Color.BLACK, //背景颜色
+  "backgroundColor": DT.Color.BLACK, //背景颜色
   "backgroundPadding": { "x": 0, "y": 0 }, //背景间隙
-  "fillColor": DC.Color.BLACK, //文字颜色
-  "outlineColor": DC.Color.WHITE, //边框颜色
+  "fillColor": DT.Color.BLACK, //文字颜色
+  "outlineColor": DT.Color.WHITE, //边框颜色
   "outlineWidth": 0, //边框大小，
   "scaleByDistance": {
     "near": 0, //最近距离
@@ -456,15 +456,15 @@ let Label = new DC.Label(position, 'test')
     - `{String} text`：文本
   - 返回值 `label`
 
-## DC.Circle
+## DT.Circle
 
 > 圆要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let circle = new DC.Circle(position, 200)
+let position = new DT.Position(120, 20)
+let circle = new DT.Circle(position, 200)
 ```
 
 ### creation
@@ -502,9 +502,9 @@ let circle = new DC.Circle(position, 200)
   "rotation": 0, //顺时针旋转角度
   "stRotation": 0, //逆时针旋转角度
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -516,14 +516,14 @@ let circle = new DC.Circle(position, 200)
 }
 ```
 
-## DC.Rect
+## DT.Rect
 
 > 矩形要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let rectangle = new DC.Rect('-90.0,32.0;-94.0,36.0;')
+let rectangle = new DT.Rect('-90.0,32.0;-94.0,36.0;')
 ```
 
 ### creation
@@ -559,9 +559,9 @@ let rectangle = new DC.Rect('-90.0,32.0;-94.0,36.0;')
   "rotation": 0, //顺时针旋转角度
   "stRotation": 0, //逆时针旋转角度
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -573,14 +573,14 @@ let rectangle = new DC.Rect('-90.0,32.0;-94.0,36.0;')
 }
 ```
 
-## DC.Wall
+## DT.Wall
 
 > 墙体要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let wall = new DC.Wall('-90.0,32.0,1000;-94.0,36.0,1000;')
+let wall = new DT.Wall('-90.0,32.0,1000;-94.0,36.0,1000;')
 ```
 
 ### creation
@@ -611,9 +611,9 @@ let wall = new DC.Wall('-90.0,32.0,1000;-94.0,36.0,1000;')
 // 样式参数(可选)
 {
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -632,15 +632,15 @@ let wall = new DC.Wall('-90.0,32.0,1000;-94.0,36.0,1000;')
     - `{Object} entity`：Cesium 覆盖物
   - 返回值 `wall`
 
-## DC.Model
+## DT.Model
 
 > 模型要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let model = new DC.Model(position, '**/**.glb')
+let position = new DT.Position(120, 20)
+let model = new DT.Model(position, '**/**.glb')
 ```
 
 ### creation
@@ -677,9 +677,9 @@ let model = new DC.Model(position, '**/**.glb')
   "maximumScale": 0, //指定模型的最大比例
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
-  "silhouetteColor": DC.Color.RED, //轮廓颜色
+  "silhouetteColor": DT.Color.RED, //轮廓颜色
   "silhouetteSize": 0, //轮廓宽度
-  "lightColor": DC.Color.RED, //模型着色时指定灯光颜色
+  "lightColor": DT.Color.RED, //模型着色时指定灯光颜色
   "distanceDisplayCondition": {
     "near": 0, //最近距离
     "far": Number.MAX_VALUE //最远距离
@@ -696,15 +696,15 @@ let model = new DC.Model(position, '**/**.glb')
     - `{String} modelUrl`：模型地址
   - 返回值 `model`
 
-## DC.Tileset
+## DT.Tileset
 
 > 3Dtiles 模型要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let tileset = new DC.Tileset('**/tileset.json')
+let position = new DT.Position(120, 20)
+let tileset = new DT.Tileset('**/tileset.json')
 tileset.setPosition(position)
 ```
 
@@ -734,7 +734,7 @@ tileset.setPosition(position)
   - 返回值 `this`
 
   ```js
-  let style = new DC.TilesetStyle({
+  let style = new DT.TilesetStyle({
     color: {
       conditions: [
         ['${Height} >= 100', 'color("purple", 0.5)'], //Height 为模型设置的属性
@@ -807,15 +807,15 @@ tileset.setPosition(position)
 }
 ```
 
-## DC.DivIcon
+## DT.DivIcon
 
 > DivIcon 要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let divIcon = new DC.DivIcon(position, '<div></div>')
+let position = new DT.Position(120, 20)
+let divIcon = new DT.DivIcon(position, '<div></div>')
 ```
 
 ### creation
@@ -869,15 +869,15 @@ let divIcon = new DC.DivIcon(position, '<div></div>')
     - `{String|Element} content`：内容
   - 返回值 `divIcon`
 
-## DC.Box
+## DT.Box
 
 > 盒要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let box = new DC.Box(position, 20, 30, 40)
+let position = new DT.Position(120, 20)
+let box = new DT.Box(position, 20, 30, 40)
 ```
 
 ### creation
@@ -914,9 +914,9 @@ let box = new DC.Box(position, 20, 30, 40)
 {
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -926,14 +926,14 @@ let box = new DC.Box(position, 20, 30, 40)
 }
 ```
 
-## DC.Corridor
+## DT.Corridor
 
 > 走廊要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let corridor = new DC.Corridor('120,20;120,30')
+let corridor = new DT.Corridor('120,20;120,30')
 corridor.setStyle({
   width: 10,
 })
@@ -971,9 +971,9 @@ corridor.setStyle({
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
   "cornerType": 0, //转角类别，0：圆角、1：直角、2：斜角
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -993,15 +993,15 @@ corridor.setStyle({
     - `{Object} entity`：Cesium 覆盖物
   - 返回值 `corridor`
 
-## DC.Cylinder
+## DT.Cylinder
 
 > 圆柱要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let cylinder = new DC.Cylinder(position, 20, 30, 40)
+let position = new DT.Position(120, 20)
+let cylinder = new DT.Cylinder(position, 20, 30, 40)
 ```
 
 ### creation
@@ -1039,9 +1039,9 @@ let cylinder = new DC.Cylinder(position, 20, 30, 40)
 {
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -1051,15 +1051,15 @@ let cylinder = new DC.Cylinder(position, 20, 30, 40)
 }
 ```
 
-## DC.Ellipse
+## DT.Ellipse
 
 > 椭圆要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let ellipse = new DC.Ellipse(position, 20, 30)
+let position = new DT.Position(120, 20)
+let ellipse = new DT.Ellipse(position, 20, 30)
 ```
 
 ### creation
@@ -1099,9 +1099,9 @@ let ellipse = new DC.Ellipse(position, 20, 30)
   "rotation": 0, //顺时针旋转角度
   "stRotation": 0, //逆时针旋转角度
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -1113,15 +1113,15 @@ let ellipse = new DC.Ellipse(position, 20, 30)
 }
 ```
 
-## DC.Sphere
+## DT.Sphere
 
 > 球体要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let ellipsoid = new DC.Sphere(position, { x: 30, y: 30, z: 30 })
+let position = new DT.Position(120, 20)
+let ellipsoid = new DT.Sphere(position, { x: 30, y: 30, z: 30 })
 ```
 
 ### creation
@@ -1155,9 +1155,9 @@ let ellipsoid = new DC.Sphere(position, { x: 30, y: 30, z: 30 })
   {
     "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
     "fill": true, //是否用提供的材料填充多边形。
-    "material": DC.Color.WHITE, //材质
+    "material": DT.Color.WHITE, //材质
     "outline": false, //是否显示边框
-    "outlineColor": DC.Color.BLACK, //边框颜色
+    "outlineColor": DT.Color.BLACK, //边框颜色
     "outlineWidth": 0, //边框宽度
     "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
     "distanceDisplayCondition": {
@@ -1167,15 +1167,15 @@ let ellipsoid = new DC.Sphere(position, { x: 30, y: 30, z: 30 })
   }
   ```
 
-## DC.Plane
+## DT.Plane
 
 > 平面要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let plane = new DC.Plane(position, 20, 30, { normal: 'x' })
+let position = new DT.Position(120, 20)
+let plane = new DT.Plane(position, 20, 30, { normal: 'x' })
 ```
 
 ### creation
@@ -1220,9 +1220,9 @@ let plane = new DC.Plane(position, 20, 30, { normal: 'x' })
 // 样式参数(可选)
 {
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -1232,7 +1232,7 @@ let plane = new DC.Plane(position, 20, 30, { normal: 'x' })
 }
 ```
 
-## DC.PolylineVolume
+## DT.PolylineVolume
 
 > 管道要素，继承于[Overlay](#overlay)
 
@@ -1242,7 +1242,7 @@ let plane = new DC.Plane(position, 20, 30, { normal: 'x' })
 function computeCircle(radius) {
   var positions = []
   for (var i = 0; i < 360; i++) {
-    var radians = DC.Math.toRadians(i)
+    var radians = DT.Math.toRadians(i)
     positions.push({
       x: radius * Math.cos(radians),
       y: radius * Math.sin(radians),
@@ -1251,7 +1251,7 @@ function computeCircle(radius) {
   return positions
 }
 
-let polylineVolume = new DC.PolylineVolume(
+let polylineVolume = new DT.PolylineVolume(
   '-90.0,32.0,0.0;-90.0,36.0,100000.0;-94.0,36.0,0.0;',
   computeCircle(60000)
 )
@@ -1288,9 +1288,9 @@ let polylineVolume = new DC.PolylineVolume(
 {
   "cornerType": 0, //转角类别，0：圆角、1：直角、2：斜角
   "fill": true, //是否用提供的材料填充多边形。
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "outline": false, //是否显示边框
-  "outlineColor": DC.Color.BLACK, //边框颜色
+  "outlineColor": DT.Color.BLACK, //边框颜色
   "outlineWidth": 0, //边框宽度
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -1308,15 +1308,15 @@ let polylineVolume = new DC.PolylineVolume(
     - `{Object} entity`：Cesium 覆盖物
   - 返回值 `polylineVolume`
 
-## DC.DynamicBillboard
+## DT.DynamicBillboard
 
 > 动态图标，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let billboard = new DC.DynamicBillboard(position, '***/**.png')
+let position = new DT.Position(120, 20)
+let billboard = new DT.DynamicBillboard(position, '***/**.png')
 billboard.size = [20, 20]
 ```
 
@@ -1383,15 +1383,15 @@ billboard.size = [20, 20]
 }
 ```
 
-## DC.DynamicModel
+## DT.DynamicModel
 
 > 动态模型要素，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let model = new DC.DynamicModel(position, '**/**.glb')
+let position = new DT.Position(120, 20)
+let model = new DT.DynamicModel(position, '**/**.glb')
 ```
 
 ### creation
@@ -1437,9 +1437,9 @@ let model = new DC.DynamicModel(position, '**/**.glb')
   "maximumScale": 0, //指定模型的最大比例
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
-  "silhouetteColor": DC.Color.RED, //轮廓颜色
+  "silhouetteColor": DT.Color.RED, //轮廓颜色
   "silhouetteSize": 0, //轮廓宽度
-  "lightColor": DC.Color.RED, //模型着色时指定灯光颜色
+  "lightColor": DT.Color.RED, //模型着色时指定灯光颜色
   "distanceDisplayCondition": {
     "near": 0, //最近距离
     "far": Number.MAX_VALUE //最远距离
@@ -1447,15 +1447,15 @@ let model = new DC.DynamicModel(position, '**/**.glb')
 }
 ```
 
-## DC.CustomBillboard
+## DT.CustomBillboard
 
 > 自定义图标，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let billboard = new DC.CustomBillboard(position, '***/**.png')
+let position = new DT.Position(120, 20)
+let billboard = new DT.CustomBillboard(position, '***/**.png')
 billboard.size = [20, 20]
 ```
 
@@ -1531,15 +1531,15 @@ billboard.size = [20, 20]
 }
 ```
 
-## DC.CustomLabel
+## DT.CustomLabel
 
 > 自定义文本，继承于[Overlay](#overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let label = new DC.CustomLabel(position, 'test')
+let position = new DT.Position(120, 20)
+let label = new DT.CustomLabel(position, 'test')
 ```
 
 ### creation

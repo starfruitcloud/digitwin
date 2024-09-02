@@ -5,49 +5,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>dc-example</title>
-  <script src='/libs/dc-sdk/dc.min.js'></script>
+  <title>dt-example</title>
+  <script src='/libs/dt-sdk/dt.min.js'></script>
   <script src="../dat.gui.min.js"></script>
-  <link href='/libs/dc-sdk/dc.min.css' type='text/css' rel='stylesheet'>
+  <link href='/libs/dt-sdk/dt.min.css' type='text/css' rel='stylesheet'>
   <link href='../index.css' type='text/css' rel='stylesheet'>
 </head>
 
 <body>
 
-<div id="viewer-container" class="viewer-container" style=""></div>
-<script>
-  let viewer = undefined
-  let effect = undefined
+  <div id="viewer-container" class="viewer-container" style=""></div>
+  <script>
+    let viewer = undefined
+    let effect = undefined
 
-  function initViewer() {
-    viewer = new DC.Viewer('viewer-container',{
-      orderIndependentTranslucency:false,
-      contextOptions:{
-        webgl:{
-          alpha:true
+    function initViewer() {
+      viewer = new DT.Viewer('viewer-container', {
+        orderIndependentTranslucency: false,
+        contextOptions: {
+          webgl: {
+            alpha: true
+          }
         }
-       }
-    }).setOptions({
-      showMoon: false,
-      showSun: false,
-      skyBox: {
-        show:false
-      },
-      showAtmosphere:false,
-      globe: {
-        showGroundAtmosphere:false,
-        depthTestAgainstTerrain: true // 当前示例中的Shader渲染需要开启深度检测，并在无地形时效果好些。
-      }
-    })
-    let baseLayer = DC.ImageryLayerFactory.createImageryLayer(DC.ImageryType.AMAP,{
-      style:'img',
-      crs:'WGS84'
-    })
-    viewer.addBaseLayer(baseLayer)
+      }).setOptions({
+        showMoon: false,
+        showSun: false,
+        skyBox: {
+          show: false
+        },
+        showAtmosphere: false,
+        globe: {
+          showGroundAtmosphere: false,
+          depthTestAgainstTerrain: true // 当前示例中的Shader渲染需要开启深度检测，并在无地形时效果好些。
+        }
+      })
+      let baseLayer = DT.ImageryLayerFactory.createImageryLayer(DT.ImageryType.AMAP, {
+        style: 'img',
+        crs: 'WGS84'
+      })
+      viewer.addBaseLayer(baseLayer)
 
-    let Cesium = DC.getLib('Cesium')
+      let Cesium = DT.getLib('Cesium')
 
-    const fs =`
+      const fs = `
     uniform sampler2D colorTexture;
     uniform sampler2D depthTexture;
     uniform vec3 centerWC;
@@ -88,35 +88,36 @@
       }
     }`;
 
-    let center = Cesium.Cartesian3.fromDegrees(120,31)
-    let up = Cesium.Ellipsoid.WGS84.geodeticSurfaceNormal(
-      center,
-      new Cesium.Cartesian3()
-    )
+      let center = Cesium.Cartesian3.fromDegrees(120, 31)
+      let up = Cesium.Ellipsoid.WGS84.geodeticSurfaceNormal(
+        center,
+        new Cesium.Cartesian3()
+      )
 
-    viewer.scene.postProcessStages.add(new Cesium.PostProcessStage({
-      fragmentShader : fs,
-      uniforms : {
-        centerWC: function () {
-          return center
-        },
-        normalWC:function () {
-          return up
-        },
-        radius : function () {
-          return 10000
-        },
-      }
-    }));
+      viewer.scene.postProcessStages.add(new Cesium.PostProcessStage({
+        fragmentShader: fs,
+        uniforms: {
+          centerWC: function () {
+            return center
+          },
+          normalWC: function () {
+            return up
+          },
+          radius: function () {
+            return 10000
+          },
+        }
+      }));
 
-    addGuiController() // add controller
-  }
+      addGuiController() // add controller
+    }
 
-  function addGuiController(){
-  }
-  DC.ready({
-    baseUrl:'../libs/dc-sdk/resources/'
-  }).then(initViewer)
-</script>
+    function addGuiController() {
+    }
+    DT.ready({
+      baseUrl: '../libs/dt-sdk/resources/'
+    }).then(initViewer)
+  </script>
 </body>
+
 </html>

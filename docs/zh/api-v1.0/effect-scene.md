@@ -1,13 +1,13 @@
 # 场景效果 🌎
 
-## DC.Weather
+## DT.Weather
 
 > 天气效果
 
 ### example
 
 ```js
-let weather = new DC.Weather(viewer)
+let weather = new DT.Weather(viewer)
 ```
 
 ### creation
@@ -67,7 +67,7 @@ weather.snow.speed = 2
 
 ```js
 weather.fog.enable = true
-weather.fog.fogColor = DC.Color.BLACK
+weather.fog.fogColor = DT.Color.BLACK
 ```
 
 ### properties
@@ -92,14 +92,14 @@ weather.cloud.rotateAmount = 0.02
 - `{Boolean} enable`：是否启用
 - `{Number} rotateAmount`：移动增量，可为负数
 
-## DC.Effect
+## DT.Effect
 
 > 效果类
 
 ### example
 
 ```js
-let effect = new DC.Effect(viewer)
+let effect = new DT.Effect(viewer)
 ```
 
 ### creation
@@ -245,14 +245,14 @@ effect.silhouette.enable = true
 - `{Number} length`：长度
 - `{Array} selected`：设置后期作用的覆盖物
 
-## DC.CircleScan
+## DT.CircleScan
 
 > 扫描圈，继承于[Animation](#animation)
 
 ### example
 
 ```js
-let circleScan = new DC.CircleScan(viewer, '120, 20', 200)
+let circleScan = new DT.CircleScan(viewer, '120, 20', 200)
 circleScan.start()
 ```
 
@@ -264,7 +264,7 @@ circleScan.start()
 
   - 参数
     - `{Viewer} viewer`：场景
-    - `{DC.Position} position`：位置
+    - `{DT.Position} position`：位置
     - `{Number} radius`：半径
     - `{Object} options`：属性
   - 返回值 `circleScan`
@@ -272,19 +272,19 @@ circleScan.start()
 ```json
 // 属性参数（optional）
 {
-  "color": DC.Color.BLUE, // 颜色
+  "color": DT.Color.BLUE, // 颜色
   "speed": 5 // 速度
 }
 ```
 
-## DC.RadarScan
+## DT.RadarScan
 
 > 雷达扫描，继承于[Animation](#animation)
 
 ### example
 
 ```js
-let radarScan = new DC.RadarScan(viewer, '120, 20', 200)
+let radarScan = new DT.RadarScan(viewer, '120, 20', 200)
 radarScan.start()
 ```
 
@@ -296,7 +296,7 @@ radarScan.start()
 
   - 参数
     - `{Viewer} viewer`：场景
-    - `{DC.Position} position`：位置
+    - `{DT.Position} position`：位置
     - `{Number} radius`：半径
     - `{Object} options`：属性
   - 返回值 `radarScan`
@@ -304,7 +304,7 @@ radarScan.start()
 ```json
 // 属性参数（optional）
 {
-  "color": DC.Color.BLUE, // 颜色
+  "color": DT.Color.BLUE, // 颜色
   "speed": 5 // 速度
 }
 ```

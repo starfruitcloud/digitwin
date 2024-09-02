@@ -2,11 +2,11 @@
 <script>
   let viewer = undefined
 
-  function loadBuild(){
-    let layer = new DC.TilesetLayer('layer_build').addTo(viewer)
-    let build = new DC.Tileset(
+  function loadBuild() {
+    let layer = new DT.TilesetLayer('layer_build').addTo(viewer)
+    let build = new DT.Tileset(
       '//resource.dvgis.cn/data/3dtiles/sz/tileset.json',
-      {skipLevels:true}
+      { skipLevels: true }
     )
     let fs = `
        varying vec3 v_positionEC;
@@ -27,21 +27,21 @@
     viewer.flyTo(build)
   }
   function initViewer() {
-    viewer = new DC.Viewer('viewer-container')
-    let  baseLayer = DC.ImageryLayerFactory.createAMapImageryLayer({
+    viewer = new DT.Viewer('viewer-container')
+    let baseLayer = DT.ImageryLayerFactory.createAMapImageryLayer({
       style: 'img',
-      crs:'WGS84'
+      crs: 'WGS84'
     })
-     baseLayer.defaultBrightness = 0.05
-    viewer.addBaseLayer([ baseLayer])
-    let terrain = DC.TerrainFactory.createUrlTerrain({
+    baseLayer.defaultBrightness = 0.05
+    viewer.addBaseLayer([baseLayer])
+    let terrain = DT.TerrainFactory.createUrlTerrain({
       url: 'http://data.marsgis.cn/terrain'
     })
     viewer.addTerrain(terrain)
     loadBuild()
   }
 
-    DC.ready({
-    baseUrl:'../libs/dc-sdk/resources/'
+  DT.ready({
+    baseUrl: '../libs/dt-sdk/resources/'
   }).then(initViewer)
 </script>

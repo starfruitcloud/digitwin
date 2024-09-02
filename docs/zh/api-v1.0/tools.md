@@ -3,15 +3,15 @@
 
 三维场景中的辅助工具，方便在场景中进行各种标绘、测量、位置编辑
 
-## DC.Plot
+## DT.Plot
 
 > 标绘类
 
 ### example
 
 ```js
-let plot = new DC.Plot(viewer, {})
-plot.draw(DC.OverlayType.POINT, (overlay) => {}, {})
+let plot = new DT.Plot(viewer, {})
+plot.draw(DT.OverlayType.POINT, (overlay) => {}, {})
 ```
 
 ### creation
@@ -65,14 +65,14 @@ plot.draw(DC.OverlayType.POINT, (overlay) => {}, {})
 
 - 返回值 `this`
 
-## DC.Measure
+## DT.Measure
 
 > 三维空间分析
 
 ### example
 
 ```js
-let measure = new DC.Measure(viewer)
+let measure = new DT.Measure(viewer)
 ```
 
 ### creation
@@ -156,7 +156,7 @@ let measure = new DC.Measure(viewer)
   根据类型分析
 
   - 参数
-    - `{String} type`：分析类型，参考 `DC.MeasureType`,
+    - `{String} type`：分析类型，参考 `DT.MeasureType`,
     - `{Object} options`：配置
   - 返回值 `this`
 

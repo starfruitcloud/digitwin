@@ -2,19 +2,19 @@
 <script>
   let viewer = undefined
 
-  function loadChinaLine(){
-    let layer_china  = new DC.VectorLayer('layer-china')
-    let chainData = new DC.GeoJsonLayer('china','examples/data/china.geojson')
-    let now = DC.JulianDate.now()
+  function loadChinaLine() {
+    let layer_china = new DT.VectorLayer('layer-china')
+    let chainData = new DT.GeoJsonLayer('china', 'examples/data/china.geojson')
+    let now = DT.JulianDate.now()
     chainData.eachOverlay(entity => {
-      if(entity.polygon){
-        let positions = DC.Transform.transformCartesianArrayToWGS84Array(
+      if (entity.polygon) {
+        let positions = DT.Transform.transformCartesianArrayToWGS84Array(
           entity.polygon.hierarchy.getValue(now).positions
         )
-        let polyline = new DC.Polyline(positions)
+        let polyline = new DT.Polyline(positions)
         polyline.setStyle({
-          material:new DC.PolylineFlickerMaterialProperty({
-            speed:10 * Math.random()
+          material: new DT.PolylineFlickerMaterialProperty({
+            speed: 10 * Math.random()
           })
         })
         layer_china.addOverlay(polyline)
@@ -24,18 +24,18 @@
   }
 
   function initViewer() {
-    viewer = new DC.Viewer('viewer-container')
-    let  baseLayer = DC.ImageryLayerFactory.createAMapImageryLayer({
+    viewer = new DT.Viewer('viewer-container')
+    let baseLayer = DT.ImageryLayerFactory.createAMapImageryLayer({
       style: 'img'
     })
-     baseLayer.defaultBrightness = 0.05
-    viewer.addBaseLayer( baseLayer)
-    viewer.flyToPosition("112.25902819,29.43306223,8813200.25,355,-89.5",()=>{
+    baseLayer.defaultBrightness = 0.05
+    viewer.addBaseLayer(baseLayer)
+    viewer.flyToPosition("112.25902819,29.43306223,8813200.25,355,-89.5", () => {
       loadChinaLine()
     })
   }
 
-    DC.ready({
-    baseUrl:'../libs/dc-sdk/resources/'
+  DT.ready({
+    baseUrl: '../libs/dt-sdk/resources/'
   }).then(initViewer)
 </script>

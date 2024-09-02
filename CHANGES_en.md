@@ -129,7 +129,7 @@
 #### Fixes 🔧
 
 - Improve the scene export 
-- Improve terrain loading [#126](https://github.com/dvgis/dc-sdk/issues/126)
+- Improve terrain loading [#126](https://github.com/dvgis/dt-sdk/issues/126)
 
 ### 2.16.1 - 2022-08-21
 
@@ -171,9 +171,9 @@
 
 #### Fixes 🔧
 
-- Optimize position bar elevation value [#109](https://github.com/dvgis/dc-sdk/issues/109)
+- Optimize position bar elevation value [#109](https://github.com/dvgis/dt-sdk/issues/109)
 - Fix the problem of incorrect recovery time of history track several times
-- Fix the problem of wrong display of the end of history track[#107](https://github.com/dvgis/dc-sdk/issues/107)  
+- Fix the problem of wrong display of the end of history track[#107](https://github.com/dvgis/dt-sdk/issues/107)  
 - Fix the problem that the number of anchor points is wrong and the size cannot be set when editing the marker.
 
 ### 2.14.0 - 2022-06-04
@@ -189,9 +189,9 @@
 #### Fixes 🔧
 
 - Optimize overlay add and remove function
-- Fix a bug that the history track clear function is not working [#102](https://github.com/dvgis/dc-sdk/issues/102)
-- Fix the problem that editing circle doesn't work [#104](https://github.com/dvgis/dc-sdk/issues/104)
-- Fix the problem that some analysis functions can't be used because of removing Cesium.when [#105](https://github.com/dvgis/dc-sdk/issues/105)
+- Fix a bug that the history track clear function is not working [#102](https://github.com/dvgis/dt-sdk/issues/102)
+- Fix the problem that editing circle doesn't work [#104](https://github.com/dvgis/dt-sdk/issues/104)
+- Fix the problem that some analysis functions can't be used because of removing Cesium.when [#105](https://github.com/dvgis/dt-sdk/issues/105)
 
 ### 2.13.0 - 2022-05-08
 
@@ -202,13 +202,13 @@
 #### Additions 🎉
 
 - Added scene split
-- Added s3m height offset setting [#98](https://github.com/dvgis/dc-sdk/issues/98)
-- Add marker line add max anchor points [#99](https://github.com/dvgis/dc-sdk/issues/99)
-- Add history track add model orientation setting (heading offset) [#100](https://github.com/dvgis/dc-sdk/issues/100)
+- Added s3m height offset setting [#98](https://github.com/dvgis/dt-sdk/issues/98)
+- Add marker line add max anchor points [#99](https://github.com/dvgis/dt-sdk/issues/99)
+- Add history track add model orientation setting (heading offset) [#100](https://github.com/dvgis/dt-sdk/issues/100)
 
 #### Fixes 🔧
 
-- Fix the problem that plot plot coordinates are empty [#95](https://github.com/dvgis/dc-sdk/issues/95)
+- Fix the problem that plot plot coordinates are empty [#95](https://github.com/dvgis/dt-sdk/issues/95)
 
 ### 2.12.0 - 2022-04-10
 
@@ -333,7 +333,7 @@
 
 - Improve the DivIcon style
 - Improve the Popup config
-- Improve the terrian name option  [#74](https://github.com/dvgis/dc-sdk/pull/74)
+- Improve the terrian name option  [#74](https://github.com/dvgis/dt-sdk/pull/74)
 
 ### 2.6.0 - 2021-10-10
 
@@ -343,8 +343,8 @@
 
 #### Fixes 🔧
 
-- Improve the MapSwitch [#70](https://github.com/dvgis/dc-sdk/issues/70)
-- Improve the AroundView [#72](https://github.com/dvgis/dc-sdk/issues/72)
+- Improve the MapSwitch [#70](https://github.com/dvgis/dt-sdk/issues/70)
+- Improve the AroundView [#72](https://github.com/dvgis/dt-sdk/issues/72)
 
 ### 2.5.0 - 2021-09-04
 
@@ -354,25 +354,25 @@
 
 #### Fixes 🔧
 
-- Fix the problem that roaming cannot set parameters and the failed camera cannot move [#65](https://github.com/dvgis/dc-sdk/issues/65)
-- Fix the problem that the gradient setting of heat layer [#66](https://github.com/dvgis/dc-sdk/issues/66)
+- Fix the problem that roaming cannot set parameters and the failed camera cannot move [#65](https://github.com/dvgis/dt-sdk/issues/65)
+- Fix the problem that the gradient setting of heat layer [#66](https://github.com/dvgis/dt-sdk/issues/66)
 - Improve the DivIcon style
 
 ### 2.4.2 - 2021-08-28
 
 #### Fixes 🔧
 
-- Hide the chart layer at the back [#55](https://github.com/dvgis/dc-sdk/issues/55)
-- Hide the div icon at the back [#56](https://github.com/dvgis/dc-sdk/issues/56)
-- Improve the position editor [#57](https://github.com/dvgis/dc-sdk/issues/57)
-- Improve the terrain clipping [#58](https://github.com/dvgis/dc-sdk/issues/58)
+- Hide the chart layer at the back [#55](https://github.com/dvgis/dt-sdk/issues/55)
+- Hide the div icon at the back [#56](https://github.com/dvgis/dt-sdk/issues/56)
+- Improve the position editor [#57](https://github.com/dvgis/dt-sdk/issues/57)
+- Improve the terrain clipping [#58](https://github.com/dvgis/dt-sdk/issues/58)
 
 ### 2.4.1 - 2021-08-21
 
 #### Additions 🎉
 
-- Add support for layer mouse events [#53](https://github.com/dvgis/dc-sdk/issues/54)
-- Add partial mouse default events [#54](https://github.com/dvgis/dc-sdk/issues/54)
+- Add support for layer mouse events [#53](https://github.com/dvgis/dt-sdk/issues/54)
+- Add partial mouse default events [#54](https://github.com/dvgis/dt-sdk/issues/54)
 - Add function to get tile information
 
 #### Fixes 🔧
@@ -400,11 +400,11 @@
 
 #### Additions 🎉
 
-- Add model primitive to get node-related functions [#51](https://github.com/dvgis/dc-sdk/issues/51)
+- Add model primitive to get node-related functions [#51](https://github.com/dvgis/dt-sdk/issues/51)
 
 #### Fixes 🔧
 
-- Improve the history track restore function [#50](https://github.com/dvgis/dc-sdk/issues/50)
+- Improve the history track restore function [#50](https://github.com/dvgis/dt-sdk/issues/50)
 
 ### 2.3.1 - 2021-07-19
 
@@ -453,27 +453,27 @@
 
 - Improve the interpolation of history track
 - Improve the function of plot for above the overlay
-- Fix the problem of flickering when analyzing transformation parameters in the viewable field [#37](https://github.com/dvgis/dc-sdk/issues/37)
-- Fix the problem that DivIcon cannot get the current coordinates set to (0,0,0) by default [#38](https://github.com/dvgis/dc-sdk/issues/38)
+- Fix the problem of flickering when analyzing transformation parameters in the viewable field [#37](https://github.com/dvgis/dt-sdk/issues/37)
+- Fix the problem that DivIcon cannot get the current coordinates set to (0,0,0) by default [#38](https://github.com/dvgis/dt-sdk/issues/38)
 
 ### 2.2.4 - 2021-06-12
 
 #### Breaking Changes 📣
 
-- Refactored the roaming function into first-person roaming and keyboard roaming [#34](https://github.com/dvgis/dc-sdk/issues/34)
-- Original roaming function becomes history track, refine its pause and play [#35](https://github.com/dvgis/dc-sdk/issues/35)
+- Refactored the roaming function into first-person roaming and keyboard roaming [#34](https://github.com/dvgis/dt-sdk/issues/34)
+- Original roaming function becomes history track, refine its pause and play [#35](https://github.com/dvgis/dt-sdk/issues/35)
 
 #### Fixes 🔧
 
 - Improve heading function
 - Improve diffuse wall primitive
-- Fixes RadarScan missing Cesium issue [#33](https://github.com/dvgis/dc-sdk/issues/33)
+- Fixes RadarScan missing Cesium issue [#33](https://github.com/dvgis/dt-sdk/issues/33)
 
 ### 2.2.3 - 2021-06-05
 
 #### Breaking Changes 📣
 
-- Modify the `CESIUM_BASE_URL` setting, which can be set via the global property `baseUrl`, which defaults to `. /libs/dc-sdk/resources/`
+- Modify the `CESIUM_BASE_URL` setting, which can be set via the global property `baseUrl`, which defaults to `. /libs/dt-sdk/resources/`
 
 #### Additions 🎉
 
@@ -508,10 +508,10 @@
 
 #### Fixes 🔧
 
-- Improve the wind layer add fix the issue[#28](https://github.com/dvgis/dc-sdk/issues/28)
-- Repair the problem that the auxiliary view cone of video fusion function cannot be displayed[#29](https://github.com/dvgis/dc-sdk/issues/29)
+- Improve the wind layer add fix the issue[#28](https://github.com/dvgis/dt-sdk/issues/28)
+- Repair the problem that the auxiliary view cone of video fusion function cannot be displayed[#29](https://github.com/dvgis/dt-sdk/issues/29)
 - Improve the video primitive 
-- Repair the problem that the animation function cannot be used after the scene time is stoped[#31](https://github.com/dvgis/dc-sdk/issues/31)
+- Repair the problem that the animation function cannot be used after the scene time is stoped[#31](https://github.com/dvgis/dt-sdk/issues/31)
 
 ### 2.2.0 - 2021-05-09
 
@@ -537,7 +537,7 @@
 
 #### Fixes 🔧
 
-- Improve the plot module and fix the issue[#26](https://github.com/dvgis/dc-sdk/issues/26)
+- Improve the plot module and fix the issue[#26](https://github.com/dvgis/dt-sdk/issues/26)
 - Improve the position editor module
 - Fix the FeatureGridLayer show and hide issue
 
@@ -550,7 +550,7 @@
 
 #### Fixes 🔧
 
-- Fix the plot bugs[#24](https://github.com/dvgis/dc-sdk/issues/24)
+- Fix the plot bugs[#24](https://github.com/dvgis/dt-sdk/issues/24)
 - Rewritten logo
 
 ### 2.1.2 - 2021-04-10
@@ -562,8 +562,8 @@
 
 #### Fixes 🔧
 
-- Fix the problem that AroundPoint and AroundView will be accelerated by multiple starts[#22](https://github.com/dvgis/dc-sdk/issues/22)
-- Fix the problem that mouse events do not work when the overlay is OSGB[#23](https://github.com/dvgis/dc-sdk/issues/23)
+- Fix the problem that AroundPoint and AroundView will be accelerated by multiple starts[#22](https://github.com/dvgis/dt-sdk/issues/22)
+- Fix the problem that mouse events do not work when the overlay is OSGB[#23](https://github.com/dvgis/dt-sdk/issues/23)
 
 ### 2.1.1 - 2021-04-06
 
@@ -592,14 +592,14 @@
 
 - Refactor the entire framework code and modularize the code
 - Consolidated previously scattered modules
-- Refactored the dependencies on DC in each module package
+- Refactored the dependencies on DT in each module package
 - Redeveloped the user manual
-- Support for custom installation and full installation of DC
+- Support for custom installation and full installation of DT
 
 #### Additions 🎉
 
 - Added token authentication function. Authentication can use some analysis and point editor functions
-- Add support for turf module, you can get turf by `const { turf } = DC.Namespace`.
+- Add support for turf module, you can get turf by `const { turf } = DT.Namespace`.
 
 #### Fixes 🔧
 

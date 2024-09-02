@@ -1,13 +1,13 @@
 # 标绘要素 🌎
 
-## DC.AttackArrow
+## DT.AttackArrow
 
-> 攻击箭头要素，继承于[Overlay](./overlay-vector#dc-overlay)
+> 攻击箭头要素，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let attackArrow = new DC.AttackArrow('-90.0,32.0;-94.0,36.0;-94.0,38.0')
+let attackArrow = new DT.AttackArrow('-90.0,32.0;-94.0,36.0;-94.0,38.0')
 ```
 
 ### creation
@@ -31,17 +31,17 @@ let attackArrow = new DC.AttackArrow('-90.0,32.0;-94.0,36.0;-94.0,38.0')
   设置样式
 
   - 参数
-    - `{Object} style`：样式，详情参考：[Polygon](#dc-polygon)
+    - `{Object} style`：样式，详情参考：[Polygon](#dt-polygon)
   - 返回值 `this`
 
-## DC.DoubleArrow
+## DT.DoubleArrow
 
-> 双箭头要素，继承于[Overlay](./overlay-vector#dc-overlay)
+> 双箭头要素，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let doubleArrow = new DC.DoubleArrow('-90.0,32.0;-94.0,36.0;-94.0,38.0')
+let doubleArrow = new DT.DoubleArrow('-90.0,32.0;-94.0,36.0;-94.0,38.0')
 ```
 
 ### creation
@@ -65,17 +65,17 @@ let doubleArrow = new DC.DoubleArrow('-90.0,32.0;-94.0,36.0;-94.0,38.0')
   设置样式
 
   - 参数
-    - `{Object} style`：样式，详情参考：[Polygon](#dc-polygon)
+    - `{Object} style`：样式，详情参考：[Polygon](#dt-polygon)
   - 返回值 `this`
 
-## DC.FineArrow
+## DT.FineArrow
 
-> 直箭头要素，继承于[Overlay](./overlay-vector#dc-overlay)
+> 直箭头要素，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let fineArrow = new DC.FineArrow('-90.0,32.0;-94.0,36.0')
+let fineArrow = new DT.FineArrow('-90.0,32.0;-94.0,36.0')
 ```
 
 ### creation
@@ -99,17 +99,17 @@ let fineArrow = new DC.FineArrow('-90.0,32.0;-94.0,36.0')
   设置样式
 
   - 参数
-    - `{Object} style`：样式，详情参考：[Polygon](#dc-polygon)
+    - `{Object} style`：样式，详情参考：[Polygon](#dt-polygon)
   - 返回值 `this`
 
-## DC.GatheringPlace
+## DT.GatheringPlace
 
-> 聚集地要素，继承于[Overlay](./overlay-vector#dc-overlay)
+> 聚集地要素，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let gatheringPlace = new DC.GatheringPlace('-90.0,32.0;-94.0,36.0')
+let gatheringPlace = new DT.GatheringPlace('-90.0,32.0;-94.0,36.0')
 ```
 
 ### creation
@@ -133,17 +133,17 @@ let gatheringPlace = new DC.GatheringPlace('-90.0,32.0;-94.0,36.0')
   设置样式
 
   - 参数
-    - `{Object} style`：样式，详情参考：[Polygon](#dc-polygon)
+    - `{Object} style`：样式，详情参考：[Polygon](#dt-polygon)
   - 返回值 `this`
 
-## DC.TailedAttackArrow
+## DT.TailedAttackArrow
 
-> 聚集地，继承于[Overlay](./overlay-vector#dc-overlay)
+> 聚集地，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let tailedAttackArrow = new DC.TailedAttackArrow('-90.0,32.0;-94.0,36.0')
+let tailedAttackArrow = new DT.TailedAttackArrow('-90.0,32.0;-94.0,36.0')
 ```
 
 ### creation
@@ -167,5 +167,5 @@ let tailedAttackArrow = new DC.TailedAttackArrow('-90.0,32.0;-94.0,36.0')
   设置样式
 
   - 参数
-    - `{Object} style`：样式，详情参考：[Polygon](#dc-polygon)
+    - `{Object} style`：样式，详情参考：[Polygon](#dt-polygon)
   - 返回值 `this`

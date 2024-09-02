@@ -19,7 +19,7 @@ export default function start() {
         shell.echo('\nExamples running at: ')
         shell.echo('- Local:  ' + chalk.yellow(`http://localhost:${port}`))
         shell.echo('\n')
-        server.use('/libs/dc-sdk/', express.static(dist))
+        server.use('/libs/dt-sdk/', express.static(dist))
         server.use(express.static('examples'))
       })
     } else {

@@ -1,6 +1,6 @@
 # 基础 API 🌎
 
-## DC.Viewer
+## DT.Viewer
 
 > 3D 场景主要接口，在给定的 DivId 中构建三维场景
 
@@ -11,7 +11,7 @@
 ```
 
 ```js
-let viewer = DC.Viewer('viewer-container')
+let viewer = DT.Viewer('viewer-container')
 global.viewer = viewer // 添加到全局变量
 ```
 
@@ -117,8 +117,8 @@ global.viewer = viewer // 添加到全局变量
     "preloadSiblings": false, //是否应预加载渲染同级图块
     "terrainExaggeration": 1, //地形夸张系数
     "terrainExaggerationRelativeHeight": 1, //地形相对高度夸张系数
-    "baseColor": new DC.Color(0, 0, 0.5, 1), //地球默认底色
-    "filterColor": new DC.Color(0, 0, 0, 0), //瓦片过滤色,设置后不可逆
+    "baseColor": new DT.Color(0, 0, 0.5, 1), //地球默认底色
+    "filterColor": new DT.Color(0, 0, 0, 0), //瓦片过滤色,设置后不可逆
     "translucency": {
       //地表透明
       "enabled": false, // 是否开启地表透明
@@ -159,7 +159,7 @@ global.viewer = viewer // 添加到全局变量
   改变鼠标使用模式
 
   - 参数
-    - `{Number} mouseMode`：鼠标模式，详情参考：`DC.MouseMode`
+    - `{Number} mouseMode`：鼠标模式，详情参考：`DT.MouseMode`
   - 返回值 `this`
 
 - **_addBaseLayer(baseLayers,options)_**
@@ -310,7 +310,7 @@ global.viewer = viewer // 添加到全局变量
   缩放到具体位置
 
   - 参数
-    - `{DC.Position} position`：位置
+    - `{DT.Position} position`：位置
     - `{Function} completeCallback`：缩放完成后触发的回调
   - 返回值 `this`
 
@@ -504,7 +504,7 @@ tooltip.showAt({ x: 100, y: 100 }, '测试')
 ### examples
 
 ```js
-let baseLayer_elc = DC.ImageryLayerFactory.createGoogleImageryLayer()
+let baseLayer_elc = DT.ImageryLayerFactory.createGoogleImageryLayer()
 viewer.mapSplit.enable = true
 viewer.mapSplit.addBaseLayer(baseLayer_elc, -1)
 ```
@@ -532,7 +532,7 @@ viewer.mapSplit.addBaseLayer(baseLayer_elc, -1)
 ### examples
 
 ```js
-let tileset = new DC.Tileset('**/tileset.json')
+let tileset = new DT.Tileset('**/tileset.json')
 tileset.setSplitDirection(1)
 viewer.tilesetSplit.enable = true
 viewer.tilesetSplit.addTileset(tileset)
@@ -560,7 +560,7 @@ viewer.tilesetSplit.addTileset(tileset)
 ### examples
 
 ```js
-let tileset = new DC.Tileset('**/tileset.json')
+let tileset = new DT.Tileset('**/tileset.json')
 tileset.setSplitDirection(1)
 viewer.sceneSplit.enable = true
 viewer.sceneSplit.addTileset(tileset)
@@ -664,14 +664,14 @@ viewer.loadingMask.enable = true
 - `{Boolean} enable`：是否启用
 - `{String} state`：状态 **_`readonly`_**
 
-## DC.SkyBox
+## DT.SkyBox
 
 > 天空盒，[详情参考](http://resource.dvgis.cn/cesium-docs/SkyBox.html)
 
 ### example
 
 ```js
-scene.skyBox = new DC.SkyBox({
+scene.skyBox = new DT.SkyBox({
   sources: {
     positiveX: 'skybox_px.png',
     negativeX: 'skybox_nx.png',
@@ -706,14 +706,14 @@ scene.skyBox = new DC.SkyBox({
 - `{Object} sources`：六个面的贴图
 - `{Boolean} show`：显示
 
-## DC.GroundSkyBox
+## DT.GroundSkyBox
 
 > 近地天空盒，[详情参考](http://resource.dvgis.cn/cesium-docs/SkyBox.html)
 
 ### example
 
 ```js
-scene.skyBox = new DC.GroundSkyBox({
+scene.skyBox = new DT.GroundSkyBox({
   sources: {
     positiveX: 'skybox_px.png',
     negativeX: 'skybox_nx.png',
@@ -750,20 +750,20 @@ scene.skyBox = new DC.GroundSkyBox({
 - `{Boolean} show`：显示
 - `{Number} offsetAngle`：旋转角度
 
-## DC.Position
+## DT.Position
 
 > 坐标类，用于描述物体在场景中的具体位置，采用右手标准
 
 ### example
 
 ```js
-let position = new DC.Position(120, 22, 102)
+let position = new DT.Position(120, 22, 102)
 
-let position1 = DC.Position.fromString('120,22,102')
+let position1 = DT.Position.fromString('120,22,102')
 
-let position2 = DC.Position.fromArray([120, 22, 102])
+let position2 = DT.Position.fromArray([120, 22, 102])
 
-let position3 = DC.Position.fromObject({ lng: 120, lat: 22, height: 102 })
+let position3 = DT.Position.fromObject({ lng: 120, lat: 22, height: 102 })
 ```
 
 ### creation
@@ -872,14 +872,14 @@ let position3 = DC.Position.fromObject({ lng: 120, lat: 22, height: 102 })
     - `{String} valStr`：序列化的对象
   - 返回值 `position`
 
-## DC.Color
+## DT.Color
 
 > 颜色类
 
 ### example
 
 ```js
-let red = DC.Color.RED
+let red = DT.Color.RED
 ```
 
 ### properties
@@ -891,14 +891,14 @@ let red = DC.Color.RED
 
 [其他颜色](http://resource.dvgis.cn/cesium-docs/Color.html)
 
-## DC.TilesetStyle
+## DT.TilesetStyle
 
 > tileset 样式，用于设置 3dtiles 的颜色设置
 
 ### example
 
 ```js
-let style = new DC.TilesetStyle()
+let style = new DT.TilesetStyle()
 style.color = {
   conditions: [
     ['${floor} >= 5', 'rgb(198, 106, 11)'],
@@ -909,12 +909,12 @@ style.color = {
 
 [详情参考](http://resource.dvgis.cn/cesium-docs/Cesium3DTileStyle.html)
 
-## DC.JulianDate
+## DT.JulianDate
 
 > 朱莉安日历
 
 ```js
-let date = DC.JulianDate.now()
+let date = DT.JulianDate.now()
 ```
 
 ### static methods
@@ -935,28 +935,28 @@ let date = DC.JulianDate.now()
 
 [JulianDate](http://resource.dvgis.cn/cesium-docs/JulianDate.html)
 
-## DC.Rectangle
+## DT.Rectangle
 
 > 矩形相关函数
 
 ### example
 
 ```js
-let r = DC.Rectangle.fromDegrees(10, 20, 12, 31)
+let r = DT.Rectangle.fromDegrees(10, 20, 12, 31)
 ```
 
 [详情参考](http://resource.dvgis.cn/cesium-docs/Rectangle.html)
 
-## DC.CallbackProperty
+## DT.CallbackProperty
 
 > 回调属性，用户通过自定义回调函数来返回需要的值。回调函数中，用户可以使用 time 给定 value，也可以自定设置。
 
 ```js
-let position = new DC.Position(120, 20)
-let point = new DC.Point(position)
+let position = new DT.Position(120, 20)
+let point = new DT.Point(position)
 let size = 0
 point.setStyle({
-  pixelSize: new DC.CallbackProperty((time) => {
+  pixelSize: new DT.CallbackProperty((time) => {
     size += 1
     if (size == 10) {
       size = 0
@@ -966,19 +966,19 @@ point.setStyle({
 })
 ```
 
-## DC.Parse
+## DT.Parse
 
-> 坐标解析工具类,可简写为 DC.P
+> 坐标解析工具类,可简写为 DT.P
 
 ```js
-let position = DC.P.parsePosition('123,32,0')
+let position = DT.P.parsePosition('123,32,0')
 ```
 
 ### static methods
 
 - **_parsePosition(position)_**
 
-  解析坐标为 DC.Position
+  解析坐标为 DT.Position
 
   - 参数
     - `{String|Array|Position} position`：坐标
@@ -986,7 +986,7 @@ let position = DC.P.parsePosition('123,32,0')
 
 - **_parsePositions(positions)_**
 
-  解析坐标为 Array<DC.Position>
+  解析坐标为 Array<DT.Position>
 
   - 参数
     - `{String|Array} positions`： 坐标
@@ -1017,12 +1017,12 @@ let position = DC.P.parsePosition('123,32,0')
     - `{Boolean} loop`：闭合
   - 返回值 `array`
 
-## DC.Transform
+## DT.Transform
 
-> 坐标转换工具类 ,可简写为 DC.T
+> 坐标转换工具类 ,可简写为 DT.T
 
 ```js
-let cartesian3 = DC.T.transformWGS84ToCartesian(new DC.Position(120, 20))
+let cartesian3 = DT.T.transformWGS84ToCartesian(new DT.Position(120, 20))
 ```
 
 ### static methods
@@ -1101,12 +1101,12 @@ let cartesian3 = DC.T.transformWGS84ToCartesian(new DC.Position(120, 20))
     - `{Viewer} viewer`：3D 场景
   - 返回值 `Object`
 
-## DC.CoordTransform
+## DT.CoordTransform
 
 > 国内坐标转换工具
 
 ```js
-let point = DC.CoordTransform.BD09ToGCJ02(120, 20)
+let point = DT.CoordTransform.BD09ToGCJ02(120, 20)
 ```
 
 ### static methods
@@ -1147,7 +1147,7 @@ let point = DC.CoordTransform.BD09ToGCJ02(120, 20)
     - `{Number} lat`：纬度
   - 返回值 `[]`
 
-## DC.Math
+## DT.Math
 
 > 基本函数类
 
@@ -1217,7 +1217,7 @@ let point = DC.CoordTransform.BD09ToGCJ02(120, 20)
 
 > [more](http://resource.dvgis.cn/cesium-docs/Math.html)
 
-## DC.Util
+## DT.Util
 
 > 工具类
 
@@ -1252,7 +1252,7 @@ let point = DC.CoordTransform.BD09ToGCJ02(120, 20)
 
   节流
 
-## DC.DomUtil
+## DT.DomUtil
 
 > Dom 工具类
 

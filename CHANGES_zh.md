@@ -132,7 +132,7 @@
 #### Fixes 🔧
 
 - 优化场景导出功能
-- 优化地形加载功能[#126](https://github.com/dvgis/dc-sdk/issues/126)
+- 优化地形加载功能[#126](https://github.com/dvgis/dt-sdk/issues/126)
 
 ### 2.16.1 - 2022-08-21
 
@@ -174,9 +174,9 @@
 
 #### Fixes 🔧
 
-- 优化定位栏海拔数值[#109](https://github.com/dvgis/dc-sdk/issues/109)
+- 优化定位栏海拔数值[#109](https://github.com/dvgis/dt-sdk/issues/109)
 - 修复历史轨迹多次恢复时间错误的问题
-- 修复历史轨迹播放结束显示错误的问题[#107](https://github.com/dvgis/dc-sdk/issues/107)
+- 修复历史轨迹播放结束显示错误的问题[#107](https://github.com/dvgis/dt-sdk/issues/107)
 - 修复标绘编辑时锚点数量错误和无法设置大小的问题
 
 ### 2.14.0 - 2022-06-04
@@ -192,9 +192,9 @@
 #### Fixes 🔧
 
 - 优化覆盖物添加和移除功能
-- 修复历史轨迹清除功能无效问题 [#102](https://github.com/dvgis/dc-sdk/issues/102)
-- 修复编辑圆无法使用问题 [#104](https://github.com/dvgis/dc-sdk/issues/104)
-- 修复移除 Cesium.when 导致部分分析功能无法使用问题 [#105](https://github.com/dvgis/dc-sdk/issues/105)
+- 修复历史轨迹清除功能无效问题 [#102](https://github.com/dvgis/dt-sdk/issues/102)
+- 修复编辑圆无法使用问题 [#104](https://github.com/dvgis/dt-sdk/issues/104)
+- 修复移除 Cesium.when 导致部分分析功能无法使用问题 [#105](https://github.com/dvgis/dt-sdk/issues/105)
 
 ### 2.13.0 - 2022-05-08
 
@@ -205,13 +205,13 @@
 #### Additions 🎉
 
 - 添加场景卷帘效果
-- 添加 s3m 高度偏移设置 [#98](https://github.com/dvgis/dc-sdk/issues/98)
-- 添加标绘线添加最大锚点数 [#99](https://github.com/dvgis/dc-sdk/issues/99)
-- 添加历史轨迹添加模型朝向设置(heading 偏移) [#100](https://github.com/dvgis/dc-sdk/issues/100)
+- 添加 s3m 高度偏移设置 [#98](https://github.com/dvgis/dt-sdk/issues/98)
+- 添加标绘线添加最大锚点数 [#99](https://github.com/dvgis/dt-sdk/issues/99)
+- 添加历史轨迹添加模型朝向设置(heading 偏移) [#100](https://github.com/dvgis/dt-sdk/issues/100)
 
 #### Fixes 🔧
 
-- 修复 plot 标绘坐标为空的问题 [#95](https://github.com/dvgis/dc-sdk/issues/95)
+- 修复 plot 标绘坐标为空的问题 [#95](https://github.com/dvgis/dt-sdk/issues/95)
 
 ### 2.12.0 - 2022-04-10
 
@@ -321,7 +321,7 @@
 
 - 完善 DivIcon 的样式位置的设置
 - 完善 Popup 的样式位置的设置
-- 完善添加地形名称的设置 [#74](https://github.com/dvgis/dc-sdk/pull/74)
+- 完善添加地形名称的设置 [#74](https://github.com/dvgis/dt-sdk/pull/74)
 
 ### 2.6.0 - 2021-10-10
 
@@ -331,8 +331,8 @@
 
 #### Fixes 🔧
 
-- 完善地图切换组件样式 [#70](https://github.com/dvgis/dc-sdk/pull/70)
-- 完善相机环绕功能 [#72](https://github.com/dvgis/dc-sdk/issues/72)
+- 完善地图切换组件样式 [#70](https://github.com/dvgis/dt-sdk/pull/70)
+- 完善相机环绕功能 [#72](https://github.com/dvgis/dt-sdk/issues/72)
 
 ### 2.5.0 - 2021-09-04
 
@@ -342,25 +342,25 @@
 
 #### Fixes 🔧
 
-- 修复漫游无法设置参数以及失效相机无法移动的问题 [#65](https://github.com/dvgis/dc-sdk/issues/65)
-- 修复热区图层渐变设置失效的问题 [#66](https://github.com/dvgis/dc-sdk/issues/66)
+- 修复漫游无法设置参数以及失效相机无法移动的问题 [#65](https://github.com/dvgis/dt-sdk/issues/65)
+- 修复热区图层渐变设置失效的问题 [#66](https://github.com/dvgis/dt-sdk/issues/66)
 - 完善 DivIcon 的样式设定
 
 ### 2.4.2 - 2021-08-28
 
 #### Fixes 🔧
 
-- 隐藏图表图层当在地球背面 [#55](https://github.com/dvgis/dc-sdk/issues/55)
-- 隐藏 DivIcon 当在地球背面时 [#56](https://github.com/dvgis/dc-sdk/issues/56)
-- 完善模型位置编辑工具 [#57](https://github.com/dvgis/dc-sdk/issues/57)
-- 完善地形裁剪分析 [#58](https://github.com/dvgis/dc-sdk/issues/58)
+- 隐藏图表图层当在地球背面 [#55](https://github.com/dvgis/dt-sdk/issues/55)
+- 隐藏 DivIcon 当在地球背面时 [#56](https://github.com/dvgis/dt-sdk/issues/56)
+- 完善模型位置编辑工具 [#57](https://github.com/dvgis/dt-sdk/issues/57)
+- 完善地形裁剪分析 [#58](https://github.com/dvgis/dt-sdk/issues/58)
 
 ### 2.4.1 - 2021-08-21
 
 #### Additions 🎉
 
-- 添加图层鼠标事件的支持 [#53](https://github.com/dvgis/dc-sdk/issues/54)
-- 添加部分鼠标默认事件 [#54](https://github.com/dvgis/dc-sdk/issues/54)
+- 添加图层鼠标事件的支持 [#53](https://github.com/dvgis/dt-sdk/issues/54)
+- 添加部分鼠标默认事件 [#54](https://github.com/dvgis/dt-sdk/issues/54)
 - 添加获取瓦片信息的函数
 
 #### Fixes 🔧
@@ -388,11 +388,11 @@
 
 #### Additions 🎉
 
-- 添加模型图元获取节点相关函数 [#51](https://github.com/dvgis/dc-sdk/issues/51)
+- 添加模型图元获取节点相关函数 [#51](https://github.com/dvgis/dt-sdk/issues/51)
 
 #### Fixes 🔧
 
-- 完善历史轨迹恢复功能 [#50](https://github.com/dvgis/dc-sdk/issues/50)
+- 完善历史轨迹恢复功能 [#50](https://github.com/dvgis/dt-sdk/issues/50)
 
 ### 2.3.1 - 2021-07-19
 
@@ -440,27 +440,27 @@
 
 - 完善历史轨迹的插值方式
 - 完善标绘模块在模型上标绘的功能
-- 修复可视域分析变换参数时闪烁的问题[#37](https://github.com/dvgis/dc-sdk/issues/37)
-- 修复 DivIcon 无法获取当前坐标默认设置为 (0,0,0) 的问题[#38](https://github.com/dvgis/dc-sdk/issues/38)
+- 修复可视域分析变换参数时闪烁的问题[#37](https://github.com/dvgis/dt-sdk/issues/37)
+- 修复 DivIcon 无法获取当前坐标默认设置为 (0,0,0) 的问题[#38](https://github.com/dvgis/dt-sdk/issues/38)
 
 ### 2.2.4 - 2021-06-12
 
 #### Breaking Changes 📣
 
-- 重构漫游功能，漫游功能分为第一人称漫游和键盘漫游[#34](https://github.com/dvgis/dc-sdk/issues/34)
-- 原有的漫游功能变为历史轨迹，完善其暂停和播放[#35](https://github.com/dvgis/dc-sdk/issues/35)
+- 重构漫游功能，漫游功能分为第一人称漫游和键盘漫游[#34](https://github.com/dvgis/dt-sdk/issues/34)
+- 原有的漫游功能变为历史轨迹，完善其暂停和播放[#35](https://github.com/dvgis/dt-sdk/issues/35)
 
 #### Fixes 🔧
 
 - 完善 heading 函数
 - 完善扩散墙功能
-- 修复 RadarScan 缺少 Cesium 的问题[#33](https://github.com/dvgis/dc-sdk/issues/33)
+- 修复 RadarScan 缺少 Cesium 的问题[#33](https://github.com/dvgis/dt-sdk/issues/33)
 
 ### 2.2.3 - 2021-06-05
 
 #### Breaking Changes 📣
 
-- 修改`CESIUM_BASE_URL`设置，可通过全局属性`baseUrl`进行赋值设置，默认为`./libs/dc-sdk/resources/`
+- 修改`CESIUM_BASE_URL`设置，可通过全局属性`baseUrl`进行赋值设置，默认为`./libs/dt-sdk/resources/`
 
 #### Additions 🎉
 
@@ -495,10 +495,10 @@
 
 #### Fixes 🔧
 
-- 修改风向图层在 2 维中显示不正确的问题[#28](https://github.com/dvgis/dc-sdk/issues/28)
-- 修复视频融合功能辅助视锥无法显示的问题[#29](https://github.com/dvgis/dc-sdk/issues/29)
+- 修改风向图层在 2 维中显示不正确的问题[#28](https://github.com/dvgis/dt-sdk/issues/28)
+- 修复视频融合功能辅助视锥无法显示的问题[#29](https://github.com/dvgis/dt-sdk/issues/29)
 - 完善视频图元功能
-- 修复场景时间暂停后无法使用动画功能的问题[#31](https://github.com/dvgis/dc-sdk/issues/31)
+- 修复场景时间暂停后无法使用动画功能的问题[#31](https://github.com/dvgis/dt-sdk/issues/31)
 
 ### 2.2.0 - 2021-05-09
 
@@ -524,7 +524,7 @@
 
 #### Fixes 🔧
 
-- 完善标绘功能和解决 issue[#26](https://github.com/dvgis/dc-sdk/issues/26)
+- 完善标绘功能和解决 issue[#26](https://github.com/dvgis/dt-sdk/issues/26)
 - 完善模型位置编辑工具
 - 解决 FeatureGridLayer 显示和隐藏问题
 
@@ -537,7 +537,7 @@
 
 #### Fixes 🔧
 
-- 修复部分军标无法使用的问题[#24](https://github.com/dvgis/dc-sdk/issues/24)
+- 修复部分军标无法使用的问题[#24](https://github.com/dvgis/dt-sdk/issues/24)
 - 重写 logo 的实现方式
 
 ### 2.1.2 - 2021-04-10
@@ -549,8 +549,8 @@
 
 #### Fixes 🔧
 
-- 修复绕点环绕和绕地环绕会多次点击会加速的问题[#22](https://github.com/dvgis/dc-sdk/issues/22)
-- 修复覆盖物为倾斜摄影时，鼠标事件无法使用的问题[#23](https://github.com/dvgis/dc-sdk/issues/23)
+- 修复绕点环绕和绕地环绕会多次点击会加速的问题[#22](https://github.com/dvgis/dt-sdk/issues/22)
+- 修复覆盖物为倾斜摄影时，鼠标事件无法使用的问题[#23](https://github.com/dvgis/dt-sdk/issues/23)
 
 ### 2.1.1 - 2021-04-06
 
@@ -579,14 +579,14 @@
 
 - 重构整个框架代码，将代码模块化处理
 - 整合之前分散的模块
-- 重构了各个模块包中对 DC 的依赖
+- 重构了各个模块包中对 DT 的依赖
 - 重新开发了用户手册
-- 支持自定安装和整体安装的方式引入 DC
+- 支持自定安装和整体安装的方式引入 DT
 
 #### Additions 🎉
 
 - 添加 token 认证功能。认证通过可以使用一些分析、点位编辑功能
-- 添加 turf 模块的支持，可以通过 `const {turf} = DC.Namespace` 获取 turf
+- 添加 turf 模块的支持，可以通过 `const {turf} = DT.Namespace` 获取 turf
 
 #### Fixes 🔧
 

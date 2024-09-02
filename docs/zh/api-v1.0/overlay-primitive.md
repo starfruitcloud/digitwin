@@ -1,14 +1,14 @@
 # 图元要素 🌎
 
-## DC.PointPrimitive
+## DT.PointPrimitive
 
-> 点位图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 点位图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let point = new DC.PointPrimitive(position)
+let position = new DT.Position(120, 20)
+let point = new DT.PointPrimitive(position)
 point.setStyle({
   pixelSize: 10,
 })
@@ -43,8 +43,8 @@ point.setStyle({
 {
   "pixelSize": 1, //像素大小
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
-  "color": DC.Color.WHITE, //颜色
-  "outlineColor": DC.Color.WHITE, //边框颜色
+  "color": DT.Color.WHITE, //颜色
+  "outlineColor": DT.Color.WHITE, //边框颜色
   "outlineWidth": 0, //边框大小，
   "scaleByDistance": {
     "near": 0, //最近距离
@@ -66,15 +66,15 @@ point.setStyle({
 }
 ```
 
-## DC.BillboardPrimitive
+## DT.BillboardPrimitive
 
-> 图标图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 图标图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let billboard = new DC.BillboardPrimitive(position, '***/**.png')
+let position = new DT.Position(120, 20)
+let billboard = new DT.BillboardPrimitive(position, '***/**.png')
 billboard.size = [20, 20]
 ```
 
@@ -132,15 +132,15 @@ billboard.size = [20, 20]
 }
 ```
 
-## DC.BounceBillboardPrimitive
+## DT.BounceBillboardPrimitive
 
-> 跳动图标图元，继承于[BillboardPrimitive](#dc-billboardprimitive)
+> 跳动图标图元，继承于[BillboardPrimitive](#dt-billboardprimitive)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let billboard = new DC.BounceBillboardPrimitive(position, '***/**.png')
+let position = new DT.Position(120, 20)
+let billboard = new DT.BounceBillboardPrimitive(position, '***/**.png')
 billboard.size = [20, 20]
 ```
 
@@ -174,15 +174,15 @@ billboard.size = [20, 20]
 }
 ```
 
-## DC.LabelPrimitive
+## DT.LabelPrimitive
 
-> 标签图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 标签图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let Label = new DC.LabelPrimitive(position, 'test')
+let position = new DT.Position(120, 20)
+let Label = new DT.LabelPrimitive(position, 'test')
 ```
 
 ### creation
@@ -219,10 +219,10 @@ let Label = new DC.LabelPrimitive(position, 'test')
   "pixelOffset": { "x": 0, "y": 0 }, //偏移像素
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
   "showBackground": false, //是否显示背景
-  "backgroundColor": DC.Color.BLACK, //背景颜色
+  "backgroundColor": DT.Color.BLACK, //背景颜色
   "backgroundPadding": { "x": 0, "y": 0 }, //背景间隙
-  "fillColor": DC.Color.BLACK, //文字颜色
-  "outlineColor": DC.Color.WHITE, //边框颜色
+  "fillColor": DT.Color.BLACK, //文字颜色
+  "outlineColor": DT.Color.WHITE, //边框颜色
   "outlineWidth": 0, //边框大小，
   "scaleByDistance": {
     "near": 0, //最近距离
@@ -244,15 +244,15 @@ let Label = new DC.LabelPrimitive(position, 'test')
 }
 ```
 
-## DC.BounceLabelPrimitive
+## DT.BounceLabelPrimitive
 
-> 跳动文本图元，继承于[LabelPrimitive](#dc-labelprimitive)
+> 跳动文本图元，继承于[LabelPrimitive](#dt-labelprimitive)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let label = new DC.BounceLabelPrimitive(position, 'test')
+let position = new DT.Position(120, 20)
+let label = new DT.BounceLabelPrimitive(position, 'test')
 ```
 
 ### creation
@@ -285,14 +285,14 @@ let label = new DC.BounceLabelPrimitive(position, 'test')
 }
 ```
 
-## DC.PolylinePrimitive
+## DT.PolylinePrimitive
 
-> 线图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 线图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let polyline = new DC.PolylinePrimitive('120,20;120,30')
+let polyline = new DT.PolylinePrimitive('120,20;120,30')
 polyline.setStyle({
   width: 10,
 })
@@ -328,7 +328,7 @@ polyline.setStyle({
 // 样式参数(可选)
 {
   "width": 1, //线宽
-  "material": DC.Color.WHITE, //材质
+  "material": DT.Color.WHITE, //材质
   "clampToGround": false, //是否贴地
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
   "distanceDisplayCondition": {
@@ -340,14 +340,14 @@ polyline.setStyle({
 }
 ```
 
-## DC.TrailLinePrimitive
+## DT.TrailLinePrimitive
 
-> 轨迹线图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 轨迹线图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let trailLinePrimitive = new DC.TrailLinePrimitive('120,20;120,30;122,30')
+let trailLinePrimitive = new DT.TrailLinePrimitive('120,20;120,30;122,30')
 ```
 
 ### creation
@@ -378,18 +378,18 @@ let trailLinePrimitive = new DC.TrailLinePrimitive('120,20;120,30;122,30')
 // 样式参数(可选)
 {
   "speed": 5, //速度
-  "color": DC.Color.WHITE //颜色
+  "color": DT.Color.WHITE //颜色
 }
 ```
 
-## DC.FlowLinePrimitive
+## DT.FlowLinePrimitive
 
-> 流动线图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 流动线图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let flowLinePrimitive = new DC.FlowLinePrimitive('120,20;120,30;122,30')
+let flowLinePrimitive = new DT.FlowLinePrimitive('120,20;120,30;122,30')
 ```
 
 ### creation
@@ -420,21 +420,21 @@ let flowLinePrimitive = new DC.FlowLinePrimitive('120,20;120,30;122,30')
 // 样式参数(可选)
 {
   "speed": 5, //速度
-  "color": DC.Color.WHITE, //颜色
+  "color": DT.Color.WHITE, //颜色
   "percent": 0.3, // 比例
   "gradient": 0.1 // 透明程度
 }
 ```
 
-## DC.ModelPrimitive
+## DT.ModelPrimitive
 
-> 模型图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 模型图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let model = new DC.ModelPrimitive(position, '**/**.glb')
+let position = new DT.Position(120, 20)
+let model = new DT.ModelPrimitive(position, '**/**.glb')
 ```
 
 ### creation
@@ -502,9 +502,9 @@ let model = new DC.ModelPrimitive(position, '**/**.glb')
   "maximumScale": 0, //指定模型的最大比例
   "heightReference": 0, //高度参照，0：位置无参照，位置是绝对的，1：位置固定在地形上 2：位置高度是指地形上方的高度。
   "shadows": 0, //阴影类型，0：禁用、1：启用 、2：投射、3：接受
-  "silhouetteColor": DC.Color.RED, //轮廓颜色
+  "silhouetteColor": DT.Color.RED, //轮廓颜色
   "silhouetteSize": 0, //轮廓宽度
-  "lightColor": DC.Color.RED, //模型着色时指定灯光颜色
+  "lightColor": DT.Color.RED, //模型着色时指定灯光颜色
   "distanceDisplayCondition": {
     "near": 0, //最近距离
     "far": Number.MAX_VALUE //最远距离
@@ -512,15 +512,15 @@ let model = new DC.ModelPrimitive(position, '**/**.glb')
 }
 ```
 
-## DC.DiffuseWallPrimitive
+## DT.DiffuseWallPrimitive
 
-> 扩散墙图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 扩散墙图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let wall = new DC.DiffuseWallPrimitive(position, 2000, 1000)
+let position = new DT.Position(120, 20)
+let wall = new DT.DiffuseWallPrimitive(position, 2000, 1000)
 ```
 
 ### creation
@@ -556,20 +556,20 @@ let wall = new DC.DiffuseWallPrimitive(position, 2000, 1000)
 {
   "minRadius": 10, // 动画最小半径
   "minHeight": 30, // 动画最小高度
-  "color": DC.Color.RED, // 墙体颜色
+  "color": DT.Color.RED, // 墙体颜色
   "slices": 128, //边数
   "speed": 10 //速度
 }
 ```
 
-## DC.ElecEllipsoidPrimitive
+## DT.ElecEllipsoidPrimitive
 
-> 电弧球图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 电弧球图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let elecEllipsoid = new DC.ElecEllipsoidPrimitive('120,20',{x:2000,y:2000:z:2000})
+let elecEllipsoid = new DT.ElecEllipsoidPrimitive('120,20',{x:2000,y:2000:z:2000})
 ```
 
 ### creation
@@ -602,19 +602,19 @@ let elecEllipsoid = new DC.ElecEllipsoidPrimitive('120,20',{x:2000,y:2000:z:2000
 // 样式参数(可选)
 {
   "speed": 5, //速度
-  "color": DC.Color.WHITE //颜色
+  "color": DT.Color.WHITE //颜色
 }
 ```
 
-## DC.LightCylinderPrimitive
+## DT.LightCylinderPrimitive
 
-> 光柱要素，继承于[Overlay](./overlay-vector#dc-overlay)
+> 光柱要素，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let position = new DC.Position(120, 20)
-let cylinder = new DC.LightCylinderPrimitive(position, 1000, 1, 100)
+let position = new DT.Position(120, 20)
+let cylinder = new DT.LightCylinderPrimitive(position, 1000, 1, 100)
 ```
 
 ### creation
@@ -650,18 +650,18 @@ let cylinder = new DC.LightCylinderPrimitive(position, 1000, 1, 100)
 ```json
 // 样式参数(可选)
 {
-  "color": DC.Color.BLACK //颜色
+  "color": DT.Color.BLACK //颜色
 }
 ```
 
-## DC.ScanCirclePrimitive
+## DT.ScanCirclePrimitive
 
-> 扫描圆图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 扫描圆图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let scanCirclePrimitive = new DC.ScanCirclePrimitive('120,20', 1000)
+let scanCirclePrimitive = new DT.ScanCirclePrimitive('120,20', 1000)
 ```
 
 ### creation
@@ -694,20 +694,20 @@ let scanCirclePrimitive = new DC.ScanCirclePrimitive('120,20', 1000)
 // 样式参数(可选)
 {
   "speed": 5, //速度
-  "color": DC.Color.WHITE //颜色
+  "color": DT.Color.WHITE //颜色
 }
 ```
 
-## DC.WaterPrimitive
+## DT.WaterPrimitive
 
-> 水面图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 水面图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
-let water = new DC.WaterPrimitive('120,20;120,30;122,30')
+let water = new DT.WaterPrimitive('120,20;120,30;122,30')
 water.setStyle({
-  baseWaterColor: DC.Color.AQUA.withAlpha(0.3),
+  baseWaterColor: DT.Color.AQUA.withAlpha(0.3),
   normalMap: 'examples/images/icon/waterNormalsSmall.jpg',
   frequency: 1000.0,
   animationSpeed: 0.01,
@@ -751,8 +751,8 @@ water.setStyle({
   "closeTop": true, //顶面是否闭合
   "closeBottom": true, //底面是否闭合
   "classificationType": 2, //分类 是否影响地形，3D切片或同时影响这两者。0:地形、1:3D切片、2：两者
-  "baseWaterColor": DC.Color.WHITE, // 水体颜色
-  "blendColor": DC.Color.WHITE, // 混合颜色
+  "baseWaterColor": DT.Color.WHITE, // 水体颜色
+  "blendColor": DT.Color.WHITE, // 混合颜色
   "specularMap": "", // 镜面图
   "normalMap": "", // 法线图
   "frequency": 1000, //波纹数量
@@ -762,15 +762,15 @@ water.setStyle({
 }
 ```
 
-## DC.VideoPrimitive
+## DT.VideoPrimitive
 
-> 视频图元，继承于[Overlay](./overlay-vector#dc-overlay)
+> 视频图元，继承于[Overlay](./overlay-vector#dt-overlay)
 
 ### example
 
 ```js
 let videoEl = new document.getElementById('video')
-let videoPrimitive = new DC.VideoPrimitive('120,20;120,30;122,30', videoEl)
+let videoPrimitive = new DT.VideoPrimitive('120,20;120,30;122,30', videoEl)
 ```
 
 ### creation

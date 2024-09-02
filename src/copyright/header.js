@@ -1,6 +1,6 @@
 /**
  * @license
- * @name dc-sdk
+ * @name dt-sdk
  * @github {{__REPOSITORY__}}
  * @author {{__AUTHOR__}}
  * @organization dvgis
@@ -21,5 +21,5 @@
  * limitations under the License.
  *
  * Portions licensed separately.
- * See https://github.com/dvgis/dc-sdk/blob/master/LICENSE.MD for full licensing details.
+ * See https://github.com/dvgis/dt-sdk/blob/master/LICENSE.MD for full licensing details.
  */

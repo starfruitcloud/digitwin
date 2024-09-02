@@ -2,7 +2,7 @@
 
 将具有相同业务逻辑或属性的覆盖元素进行分类，以便于同一管理
 
-## DC.Layer
+## DT.Layer
 
 > 图层的基类，其子类是实例化后需添加到三维场景中方可展示各类三维数据
 
@@ -157,16 +157,16 @@
 
   - 返回值 `string`
 
-## DC.LayerGroup
+## DT.LayerGroup
 
 > 图层组，将图层按一定的逻辑分组，方便统一管理
 
 ### example
 
 ```js
-let layerGroup = new DC.LayerGroup('id')
+let layerGroup = new DT.LayerGroup('id')
 viewer.addLayerGroup(layerGroup)
-let layer = new DC.VectorLayer('layer')
+let layer = new DT.VectorLayer('layer')
 layerGroup.addLayer(layer)
 ```
 
@@ -232,14 +232,14 @@ layerGroup.addLayer(layer)
     - `{Viewer|World} viewer`：场景
   - 返回值 `this`
 
-## DC.VectorLayer
+## DT.VectorLayer
 
-> 矢量图层，用于添加各类矢量数据（点、线、面等），将矢量数据按一定的逻辑分组，方便统一管理，继承于[Layer](#dc-layer)
+> 矢量图层，用于添加各类矢量数据（点、线、面等），将矢量数据按一定的逻辑分组，方便统一管理，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.VectorLayer('id')
+let layer = new DT.VectorLayer('id')
 viewer.addLayer(layer)
 ```
 
@@ -253,14 +253,14 @@ viewer.addLayer(layer)
     - `{String} id`：图层唯一标识
   - 返回值 `vectorLayer`
 
-## DC.DynamicLayer
+## DT.DynamicLayer
 
-> 动态图层，用于添加各类动态矢量数据（图标、模型等），将矢量数据按一定的逻辑分组，方便统一管理，继承于[Layer](#dc-layer)
+> 动态图层，用于添加各类动态矢量数据（图标、模型等），将矢量数据按一定的逻辑分组，方便统一管理，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.DynamicLayer('id')
+let layer = new DT.DynamicLayer('id')
 viewer.addLayer(layer)
 ```
 
@@ -274,14 +274,14 @@ viewer.addLayer(layer)
     - `{String} id`：图层唯一标识
   - 返回值 `dynamicLayer`
 
-## DC.PrimitiveLayer
+## DT.PrimitiveLayer
 
-> 图元图层，用于添加各类图元数据，将图元数据按一定的逻辑分组，方便统一管理，继承于[Layer](#dc-layer)
+> 图元图层，用于添加各类图元数据，将图元数据按一定的逻辑分组，方便统一管理，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.PrimitiveLayer('id')
+let layer = new DT.PrimitiveLayer('id')
 viewer.addLayer(layer)
 ```
 
@@ -295,14 +295,14 @@ viewer.addLayer(layer)
     - `{String} id`：图层唯一标识
   - 返回值 `primitiveLayer`
 
-## DC.GroundPrimitiveLayer
+## DT.GroundPrimitiveLayer
 
-> 贴地图元图层，用于添加各类贴地图元数据，将贴地图元数据按一定的逻辑分组，方便统一管理，继承于[Layer](#dc-layer)
+> 贴地图元图层，用于添加各类贴地图元数据，将贴地图元数据按一定的逻辑分组，方便统一管理，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.GroundPrimitiveLayer('id')
+let layer = new DT.GroundPrimitiveLayer('id')
 viewer.addLayer(layer)
 ```
 
@@ -316,14 +316,14 @@ viewer.addLayer(layer)
     - `{String} id`：图层唯一标识
   - 返回值 `groundPrimitiveLayer`
 
-## DC.TilesetLayer
+## DT.TilesetLayer
 
-> 3dTiles 图层，用于添加 3dTiles 模型数据， 继承于[Layer](#dc-layer)
+> 3dTiles 图层，用于添加 3dTiles 模型数据， 继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.TilesetLayer('id')
+let layer = new DT.TilesetLayer('id')
 viewer.addLayer(layer)
 ```
 
@@ -337,29 +337,29 @@ viewer.addLayer(layer)
     - `{String} id`：图层唯一标识
   - 返回值 `tilesetLayer`
 
-## DC.GeoJsonLayer
+## DT.GeoJsonLayer
 
-> GeoJson 图层，用于加载 GeoJson 格式数据，继承于[Layer](#dc-layer)，
+> GeoJson 图层，用于加载 GeoJson 格式数据，继承于[Layer](#dt-layer)，
 
 ### example
 
 ```js
-let layer = new DC.GeoJsonLayer('id', '**/**.geojson')
+let layer = new DT.GeoJsonLayer('id', '**/**.geojson')
 layer.eachOverlay((item) => {
   // item 为一个entity,
   if (item.polyline) {
     //todo
-    let polyline = DC.Polyline.fromEntity(item)
+    let polyline = DT.Polyline.fromEntity(item)
   }
   if (item.polygon) {
     //todo
-    let polygon = DC.Polygon.fromEntity(item)
+    let polygon = DT.Polygon.fromEntity(item)
   }
   if (item.billboard) {
     //todo
-    let point = DC.Point.fromEntity(item)
-    let divIcon = DC.DivIcon.fromEntity(item)
-    let billboard = DC.Billboard.fromEntity(item)
+    let point = DT.Point.fromEntity(item)
+    let divIcon = DT.DivIcon.fromEntity(item)
+    let billboard = DT.Billboard.fromEntity(item)
   }
 })
 ```
@@ -392,29 +392,29 @@ layer.eachOverlay((item) => {
     - `{String} modelUrl`：模型地址
   - 返回值 `vectorLayer`
 
-## DC.TopoJsonLayer
+## DT.TopoJsonLayer
 
-> TopoJson 图层，用于加载 TopoJson 格式数据，继承于[Layer](#dc-layer)，
+> TopoJson 图层，用于加载 TopoJson 格式数据，继承于[Layer](#dt-layer)，
 
 ### example
 
 ```js
-let layer = new DC.GeoJsonLayer('id', '**/**.geojson')
+let layer = new DT.GeoJsonLayer('id', '**/**.geojson')
 layer.eachOverlay((item) => {
   // item 为一个entity,
   if (item.polyline) {
     //todo
-    let polyline = DC.Polyline.fromEntity(item)
+    let polyline = DT.Polyline.fromEntity(item)
   }
   if (item.polygon) {
     //todo
-    let polygon = DC.Polygon.fromEntity(item)
+    let polygon = DT.Polygon.fromEntity(item)
   }
   if (item.billboard) {
     //todo
-    let point = DC.Point.fromEntity(item)
-    let divIcon = DC.DivIcon.fromEntity(item)
-    let billboard = DC.Billboard.fromEntity(item)
+    let point = DT.Point.fromEntity(item)
+    let divIcon = DT.DivIcon.fromEntity(item)
+    let billboard = DT.Billboard.fromEntity(item)
   }
 })
 ```
@@ -447,14 +447,14 @@ layer.eachOverlay((item) => {
     - `{String} modelUrl`：模型地址
   - 返回值 `vectorLayer`
 
-## DC.HtmlLayer
+## DT.HtmlLayer
 
-> Html 图层，用于加载 DivIcon 节点，继承于[Layer](#dc-layer)，
+> Html 图层，用于加载 DivIcon 节点，继承于[Layer](#dt-layer)，
 
 ### example
 
 ```js
-let layer = new DC.HtmlLayer('dom')
+let layer = new DT.HtmlLayer('dom')
 viewer.addLayer(layer)
 ```
 
@@ -468,14 +468,14 @@ viewer.addLayer(layer)
     - `{String} id`：图层唯一标识
   - 返回值 `htmlLayer`
 
-## DC.CzmlLayer
+## DT.CzmlLayer
 
-> Czml 图层，用于加载 Czml 数据，继承于[Layer](#dc-layer)
+> Czml 图层，用于加载 Czml 数据，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.CzmlLayer('id', '**/**.czml')
+let layer = new DT.CzmlLayer('id', '**/**.czml')
 layer.eachOverlay((item) => {
   if (item.polyline) {
     //todo
@@ -501,14 +501,14 @@ layer.eachOverlay((item) => {
     - `{Object} options`：属性配置，详情参考：[CzmlDataSource](http://resource.dvgis.cn/cesium-docs/CzmlDataSource.html)
   - 返回值 `czmlLayer`
 
-## DC.KmlLayer
+## DT.KmlLayer
 
-> Kml 图层，用于加载 Kml 数据，继承于[Layer](#dc-layer)
+> Kml 图层，用于加载 Kml 数据，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.KmlLayer('id', '**/**.kml')
+let layer = new DT.KmlLayer('id', '**/**.kml')
 layer.eachOverlay((item) => {
   if (item.polyline) {
     //todo
@@ -534,14 +534,14 @@ layer.eachOverlay((item) => {
     - `{Object} options`：属性配置，详情参考：[KmlDataSource](http://resource.dvgis.cn/cesium-docs/KmlDataSource.html)
   - 返回值 `kmlLayer`
 
-## DC.GpxLayer
+## DT.GpxLayer
 
-> GPX 图层，用于加载 gpx 数据，继承于[Layer](#dc-layer)
+> GPX 图层，用于加载 gpx 数据，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.GpxLayer('id', '**/**.gpx')
+let layer = new DT.GpxLayer('id', '**/**.gpx')
 ```
 
 ### creation
@@ -556,14 +556,14 @@ let layer = new DC.GpxLayer('id', '**/**.gpx')
     - `{Object} options`：属性配置，详情参考：[GpxDataSource](http://resource.dvgis.cn/cesium-docs/GpxDataSource.html)
   - 返回值 `gpxLayer`
 
-## DC.ClusterLayer
+## DT.ClusterLayer
 
-> 聚合图层，继承于[Layer](#dc-layer)
+> 聚合图层，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.ClusterLayer('id', { image: '' })
+let layer = new DT.ClusterLayer('id', { image: '' })
 viewer.addLayer(layer)
 ```
 
@@ -586,16 +586,16 @@ viewer.addLayer(layer)
   "image": "<单个点图片地址>",
   "style": "circle", // circle 、 clustering 、custom
   "gradientColors": {
-    "0.0001": DC.Color.DEEPSKYBLUE,
-    "0.001": DC.Color.GREEN,
-    "0.01": DC.Color.ORANGE,
-    "0.1": DC.Color.RED
+    "0.0001": DT.Color.DEEPSKYBLUE,
+    "0.001": DT.Color.GREEN,
+    "0.01": DT.Color.ORANGE,
+    "0.1": DT.Color.RED
   },//幅度颜色设置
   "gradientImages": {},//幅度图片设置，仅当style为custom有效
   "clusterSize":16//集合图标尺寸
   "fontSize": 12,
   // 字体大小
-  "fontColor": DC.Color.BLACK //字体颜色
+  "fontColor": DT.Color.BLACK //字体颜色
   "getCountOffset": (count)=>{return {x:0,y:0}} //字体偏移函数
 }
 ```
@@ -610,14 +610,14 @@ viewer.addLayer(layer)
     - `{Array<Object>} points`：点位信息
   - 返回值 `clusterLayer`
 
-## DC.HeatMapLayer
+## DT.HeatMapLayer
 
-> 热区图层，继承于[Layer](#dc-layer)
+> 热区图层，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.HeatMapLayer('layer')
+let layer = new DT.HeatMapLayer('layer')
 viewer.addLayer(layer)
 ```
 
@@ -666,14 +666,14 @@ viewer.addLayer(layer)
 }
 ```
 
-## DC.WindLayer
+## DT.WindLayer
 
-> 风向图层，继承于[Layer](#dc-layer)
+> 风向图层，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let layer = new DC.WindLayer('id')
+let layer = new DT.WindLayer('id')
 viewer.addLayer(layer)
 ```
 
@@ -722,14 +722,14 @@ viewer.addLayer(layer)
     - `{Object} options`：配置信息，参考构造函数的配置信息
   - 返回值 `windLayer`
 
-## DC.ChartLayer
+## DT.ChartLayer
 
-> 图表图层，继承于[Layer](#dc-layer)
+> 图表图层，继承于[Layer](#dt-layer)
 
 ### example
 
 ```js
-let chartLayer = new DC.ChartLayer('layer')
+let chartLayer = new DT.ChartLayer('layer')
 viewer.addLayer(chartLayer)
 ```
 

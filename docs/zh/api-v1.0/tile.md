@@ -3,7 +3,7 @@
 构建地球表面的地形和图片，展现地球表面的真实状态
 
 
-## DC.CustomGeographicTilingScheme
+## DT.CustomGeographicTilingScheme
 
 > 自定义地理平铺方案
 
@@ -12,8 +12,8 @@
 ### example
 
 ```js
- viewer.addBaseLayer(DC.ImageryLayerFactory.createCoordImageryLayer({
-  tilingScheme: new DC.CustomGeographicTilingScheme(
+ viewer.addBaseLayer(DT.ImageryLayerFactory.createCoordImageryLayer({
+  tilingScheme: new DT.CustomGeographicTilingScheme(
     {
       origin: [-180,90],
       resolutions: [
@@ -46,8 +46,8 @@
   "zoomOffset": 0, //瓦片的0级对应Cesium的瓦片层级，值为： 0 - Cesium层级，若瓦片的0级对应Cesium的10级，则值为 0 - 10 = -10，同时在瓦片请求时{z}的数值替换时也需加上这个层级偏移值
   "tileSize": 256, //瓦片的大小，默认为256，即一张瓦片的大小为 256 * 256
   "resolutions": [],//瓦片每一层级分辨率
-  "ellipsoid": DC.Ellipsoid.WGS84,// 平铺的椭球体,默认为 WGS84 椭球
-  "rectangle": DC.Rectangle.MAX_VALUE,//平铺方案覆盖的矩形（以弧度表示）
+  "ellipsoid": DT.Ellipsoid.WGS84,// 平铺的椭球体,默认为 WGS84 椭球
+  "rectangle": DT.Rectangle.MAX_VALUE,//平铺方案覆盖的矩形（以弧度表示）
 }
 ```
 
@@ -60,8 +60,8 @@
 ### example
 
 ```js
- viewer.addBaseLayer(DC.ImageryLayerFactory.createCoordImageryLayer({
-  tilingScheme: new DC.CustomGeographicTilingScheme(
+ viewer.addBaseLayer(DT.ImageryLayerFactory.createCoordImageryLayer({
+  tilingScheme: new DT.CustomGeographicTilingScheme(
     {
       origin: [-20037508.3427892, 20037508.3427892],
       resolutions: [
@@ -94,21 +94,21 @@
   "zoomOffset": 0, //瓦片的0级对应Cesium的瓦片层级，值为： 0 - Cesium层级，若瓦片的0级对应Cesium的10级，则值为 0 - 10 = -10，同时在瓦片请求时{z}的数值替换时也需加上这个层级偏移值
   "tileSize": 256, //瓦片的大小，默认为256，即一张瓦片的大小为 256 * 256
   "resolutions": [],//瓦片每一层级分辨率，必选
-  "ellipsoid": DC.Ellipsoid.WGS84,// 平铺的椭球体,默认为 WGS84 椭球
+  "ellipsoid": DT.Ellipsoid.WGS84,// 平铺的椭球体,默认为 WGS84 椭球
   "rectangleSouthwestInMeters": null,//切片方案覆盖的矩形的西南角，以米为单位。如果不指定该参数或矩形NortheastInMeters，则在经度方向上覆盖整个地球，在纬度方向上覆盖等距离，形成正方形投影
   "rectangleNortheastInMeters": null,//切片方案覆盖的矩形的东北角（以米为单位）。如果未指定此参数或矩形SouthwestInMeters，则在经度方向上覆盖整个地球，并在纬度方向上覆盖相等的距离，从而形成方形投影。
 }
 
 ```
 
-## DC.ImageryLayerFactory
+## DT.ImageryLayerFactory
 
 > 地图工厂, 用于创建各类地图瓦片
 
 ### example
 
 ```js
-let baseLayer = DC.ImageryLayerFactory.createAMapImageryLayer({
+let baseLayer = DT.ImageryLayerFactory.createAMapImageryLayer({
   style: 'img',
 })
 viewer.addBaseLayer(baseLayer, {
@@ -244,7 +244,7 @@ viewer.addBaseLayer(baseLayer, {
   根据类型创建地图
 
   - 参数
-    - `{String} type`：类型，参考：DC.ImageryType
+    - `{String} type`：类型，参考：DT.ImageryType
     - `{Object} options`：属性
   - 返回值 `Promise<baseLayer>`
 
@@ -267,14 +267,14 @@ viewer.addBaseLayer(baseLayer, {
 }
 ```
 
-## DC.TerrainFactory
+## DT.TerrainFactory
 
 > 地形工厂, 用于创建地形
 
 ### example
 
 ```js
-let terrain = DC.TerrainFactory.createUrlTerrain({
+let terrain = DT.TerrainFactory.createUrlTerrain({
   url: '****/***',
 })
 viewer.setTerrain(terrain)
@@ -325,7 +325,7 @@ viewer.setTerrain(terrain)
   根据类型创建地形
 
   - 参数
-    - `{String} type`：类型，参考：DC.TerrainType
+    - `{String} type`：类型，参考：DT.TerrainType
     - `{Object} options`：属性
   - 返回值 `Promise<terrain>`
 

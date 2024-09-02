@@ -56,9 +56,9 @@ class WindLayer extends Layer {
     let vComp
     data.forEach(function (record) {
       switch (
-        record.header.parameterCategory +
-        ',' +
-        record.header.parameterNumber
+      record.header.parameterCategory +
+      ',' +
+      record.header.parameterNumber
       ) {
         case '1,2':
         case '2,2':
@@ -98,7 +98,7 @@ class WindLayer extends Layer {
     }
     this._canvas.style.cssText =
       'position:absolute; left:0; top:0;user-select:none;pointer-events: none;'
-    this._canvas.className = 'dc-wind-layer'
+    this._canvas.className = 'dt-wind-layer'
     const { width, height } = this._viewer.canvas
     this._canvas.width = width
     this._canvas.height = height

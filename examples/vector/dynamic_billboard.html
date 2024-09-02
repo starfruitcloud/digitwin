@@ -4,56 +4,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>dc-example</title>
-  <script src='/libs/dc-sdk/dc.min.js'></script>
-  <link href='/libs/dc-sdk/dc.min.css' type='text/css' rel='stylesheet'>
+  <title>dt-example</title>
+  <script src='/libs/dt-sdk/dt.min.js'></script>
+  <link href='/libs/dt-sdk/dt.min.css' type='text/css' rel='stylesheet'>
   <link href='../index.css' type='text/css' rel='stylesheet'>
 </head>
 
 <body>
 
-<div id="viewer-container" class="viewer-container"></div>
-<script>
-  let viewer = undefined
+  <div id="viewer-container" class="viewer-container"></div>
+  <script>
+    let viewer = undefined
 
-  function generatePosition(num) {
-    let list = []
-    for (let i = 0; i < num; i++) {
-      let lng = 120.65276089+ Math.random() * 0.5
-      let lat = 31.310530293 + Math.random() * 0.5
-      list.push({lng,lat})
+    function generatePosition(num) {
+      let list = []
+      for (let i = 0; i < num; i++) {
+        let lng = 120.65276089 + Math.random() * 0.5
+        let lat = 31.310530293 + Math.random() * 0.5
+        list.push({ lng, lat })
+      }
+      return list
     }
-    return list
-  }
 
-  function initViewer() {
-    viewer = new DC.Viewer('viewer-container')
-    let  baseLayer = DC.ImageryLayerFactory.createAMapImageryLayer({
-      crs:"WGS84"
-    })
-    viewer.addBaseLayer( baseLayer,{
-      brightness:0.1
-    })
-    let layer = new DC.DynamicLayer('layer').addTo(viewer)
-    for(let i = 0; i<50; i++){
-      let billboard = new DC.DynamicBillboard(generatePosition(1)[0],'../assets/icon/poi.png')
-      billboard.size=[79,263]
-      billboard.setStyle({
-        scale:0.5,
+    function initViewer() {
+      viewer = new DT.Viewer('viewer-container')
+      let baseLayer = DT.ImageryLayerFactory.createAMapImageryLayer({
+        crs: "WGS84"
       })
-      layer.addOverlay(billboard)
+      viewer.addBaseLayer(baseLayer, {
+        brightness: 0.1
+      })
+      let layer = new DT.DynamicLayer('layer').addTo(viewer)
+      for (let i = 0; i < 50; i++) {
+        let billboard = new DT.DynamicBillboard(generatePosition(1)[0], '../assets/icon/poi.png')
+        billboard.size = [79, 263]
+        billboard.setStyle({
+          scale: 0.5,
+        })
+        layer.addOverlay(billboard)
+      }
+      setInterval(() => {
+        layer.getOverlays().forEach(item => {
+          item.addPosition(generatePosition(1)[0], 10)
+        })
+      }, 10000)
+
+      viewer.flyTo(layer)
     }
-    setInterval(()=>{
-      layer.getOverlays().forEach(item=>{
-        item.addPosition(generatePosition(1)[0],10)
-      })
-    },10000)
-
-    viewer.flyTo(layer)
-  }
-  DC.ready({
-    baseUrl:'../libs/dc-sdk/resources/'
-  }).then(initViewer)
-</script>
+    DT.ready({
+      baseUrl: '../libs/dt-sdk/resources/'
+    }).then(initViewer)
+  </script>
 </body>
+
 </html>

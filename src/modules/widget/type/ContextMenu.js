@@ -257,7 +257,7 @@ class ContextMenu extends Widget {
   _setCustomClass() {
     DomUtil.setClass(
       this._wrapper,
-      `dc-context-menu ${this._config.customClass}`
+      `dt-context-menu ${this._config.customClass}`
     )
   }
 

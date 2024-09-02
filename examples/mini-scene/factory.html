@@ -3,14 +3,14 @@
   let viewer = undefined
 
   function initViewer() {
-    viewer = new DC.Viewer('viewer-container')
+    viewer = new DT.Viewer('viewer-container')
     viewer.setOptions({
-      shadows:true,
-      globe:{
-        baseColor:DC.Color.BLACK
+      shadows: true,
+      globe: {
+        baseColor: DT.Color.BLACK
       }
     })
-    let layer = new DC.TilesetLayer('layer').addTo(viewer)
+    let layer = new DT.TilesetLayer('layer').addTo(viewer)
     let fs = `
        varying vec3 v_positionEC;
        void main(void){
@@ -25,18 +25,18 @@
            gl_FragColor.rgb += gl_FragColor.rgb * (1.0 - diff);
        }
       `
-    let tileset1 = new DC.Tileset(
+    let tileset1 = new DT.Tileset(
       '//lab.earthsdk.com/model/27af3f70003311eaae02359b3e5d0653/tileset.json'
     )
 
     tileset1.setCustomShader(fs)
 
-    let tileset2 = new DC.Tileset(
+    let tileset2 = new DT.Tileset(
       '//lab.earthsdk.com/model/212bc470003311eaae02359b3e5d0653/tileset.json'
     )
     tileset2.setCustomShader(fs)
 
-    let tileset3 = new DC.Tileset(
+    let tileset3 = new DT.Tileset(
       '//lab.earthsdk.com/model/1b91bf10003311eaae02359b3e5d0653/tileset.json'
     )
     tileset3.setCustomShader(fs)
@@ -44,30 +44,30 @@
       .addOverlay(tileset1)
       .addOverlay(tileset2)
       .addOverlay(tileset3)
-    let layer1 = new DC.VectorLayer('layer1')
+    let layer1 = new DT.VectorLayer('layer1')
     viewer.addLayer(layer1)
-    let circle = new DC.Circle('116.38789554,39.89911368',500)
+    let circle = new DT.Circle('116.38789554,39.89911368', 500)
     circle.setStyle({
-      material: new DC.ImageMaterialProperty({
+      material: new DT.ImageMaterialProperty({
         image: '../assets/icon/circleScan.png',
-        color: new DC.Color(0, 1.0, 1.0,0.8),
+        color: new DT.Color(0, 1.0, 1.0, 0.8),
         transparent: true,
       }),
       perPositionHeight: true,
       outline: true,
-      outlineColor: new DC.Color(0, 1.0, 1.0,0.8)
+      outlineColor: new DT.Color(0, 1.0, 1.0, 0.8)
     })
     circle.rotateAmount = 3
     layer1.addOverlay(circle)
-    let layer2 = new DC.PrimitiveLayer('layer').addTo(viewer)
-    let scanCircle= new DC.ScanCirclePrimitive('116.3994748,39.90784756',800)
+    let layer2 = new DT.PrimitiveLayer('layer').addTo(viewer)
+    let scanCircle = new DT.ScanCirclePrimitive('116.3994748,39.90784756', 800)
     scanCircle.setStyle({
-      color:new DC.Color(0, 1.0, 1.0,0.5)
+      color: new DT.Color(0, 1.0, 1.0, 0.5)
     })
     layer2.addOverlay(scanCircle)
     viewer.flyToPosition('116.3904847,39.8773787,2807.38,0,-48.89')
   }
-    DC.ready({
-    baseUrl:'../libs/dc-sdk/resources/'
+  DT.ready({
+    baseUrl: '../libs/dt-sdk/resources/'
   }).then(initViewer)
 </script>

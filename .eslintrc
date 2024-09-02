@@ -9,14 +9,19 @@
     "node": true,
     "browser": true
   },
-  "plugins": ["prettier"],
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
   "globals": {
     "__namespace": false,
-    "__cmdOut":false,
+    "__cmdOut": false,
     "echarts": false,
     "mapv": false,
-    "DC": false,
+    "DT": false,
     "Cesium": false
   },
   "rules": {
@@ -28,9 +33,12 @@
     "no-unused-vars": 0,
     "no-trailing-spaces": 0,
     "no-mixed-spaces-and-tabs": 0,
-    "space-before-function-paren": [0, "always"],
+    "space-before-function-paren": [
+      0,
+      "always"
+    ],
     "no-multiple-empty-lines": 0,
     "no-prototype-builtins": 0,
-    "no-loss-of-precision":0
+    "no-loss-of-precision": 0
   }
 }

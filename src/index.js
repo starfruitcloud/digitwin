@@ -5,7 +5,7 @@ import { getLib, registerLib } from './global-api/lib-utils.js'
 
 export { registerLib, getLib } from './global-api/lib-utils.js'
 
-const DEF_BASE_URL = './libs/dc-sdk/resources/'
+const DEF_BASE_URL = './libs/dt-sdk/resources/'
 
 let _baseUrl = DEF_BASE_URL
 

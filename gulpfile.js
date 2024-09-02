@@ -18,12 +18,12 @@ import { glsl } from 'esbuild-plugin-glsl'
 import shell from 'shelljs'
 import chalk from 'chalk'
 
-const dc_common_path = './node_modules/@dvgis/dc-common'
+const dt_common_path = './node_modules/@dvgis/dc-common'
 
 const packageJson = fse.readJsonSync('./package.json')
 
 const c_packageJson = fse.readJsonSync(
-  path.join(dc_common_path, 'package.json')
+  path.join(dt_common_path, 'package.json')
 )
 
 const obfuscatorConfig = {
@@ -40,7 +40,7 @@ const obfuscatorConfig = {
 }
 
 const buildConfig = {
-  entryPoints: ['src/DC.js'],
+  entryPoints: ['src/DT.js'],
   bundle: true,
   color: true,
   legalComments: `inline`,
@@ -73,16 +73,16 @@ async function buildCSS(options) {
     ...buildConfig,
     minify: options.minify,
     entryPoints: ['src/themes/index.scss'],
-    outfile: path.join('dist', 'dc.min.css'),
+    outfile: path.join('dist', 'dt.min.css'),
   })
 }
 
 async function buildModules(options) {
-  const dcPath = path.join('src', 'DC.js')
+  const dtPath = path.join('src', 'DT.js')
 
   const content = await fse.readFile(path.join('src', 'index.js'), 'utf8')
 
-  await fse.ensureFile(dcPath)
+  await fse.ensureFile(dtPath)
 
   const exportVersion = `export const VERSION = '${packageJson.version}'`
 
@@ -94,15 +94,15 @@ async function buildModules(options) {
   const cmdOutFunction = `
         function __cmdOut() {
           ${cmdOut_content
-            .replace('{{__VERSION__}}', packageJson.version)
-            .replace('{{__TIME__}}', getTime())
-            .replace(
-              '{{__ENGINE_VERSION__}}',
-              c_packageJson.devDependencies['@cesium/engine'].replace('^', '')
-            )
-            .replace('{{__AUTHOR__}}', packageJson.author)
-            .replace('{{__HOME_PAGE__}}', packageJson.homepage)
-            .replace('{{__REPOSITORY__}}', packageJson.repository)}
+      .replace('{{__VERSION__}}', packageJson.version)
+      .replace('{{__TIME__}}', getTime())
+      .replace(
+        '{{__ENGINE_VERSION__}}',
+        c_packageJson.devDependencies['@cesium/engine'].replace('^', '')
+      )
+      .replace('{{__AUTHOR__}}', packageJson.author)
+      .replace('{{__HOME_PAGE__}}', packageJson.homepage)
+      .replace('{{__REPOSITORY__}}', packageJson.repository)}
     }`
 
   const importNamespace = `
@@ -118,7 +118,7 @@ async function buildModules(options) {
   // Build IIFE
   if (options.iife) {
     await fse.outputFile(
-      dcPath,
+      dtPath,
       `
               ${content}
               ${cmdOutFunction}
@@ -131,7 +131,7 @@ async function buildModules(options) {
     await esbuild.build({
       ...buildConfig,
       format: 'iife',
-      globalName: 'DC',
+      globalName: 'DT',
       outfile: path.join('dist', 'modules-iife.js'),
     })
   }
@@ -139,7 +139,7 @@ async function buildModules(options) {
   // Build Node、
   if (options.node) {
     await fse.outputFile(
-      dcPath,
+      dtPath,
       `
             ${importNamespace}
             ${content}
@@ -163,8 +163,8 @@ async function buildModules(options) {
     })
   }
 
-  // remove DC.js
-  await fse.remove(dcPath)
+  // remove DT.js
+  await fse.remove(dtPath)
 }
 
 async function combineJs(options) {
@@ -174,8 +174,8 @@ async function combineJs(options) {
       await gulp
         .src('dist/modules-iife.js')
         .pipe(javascriptObfuscator(obfuscatorConfig))
-        .pipe(gulp.src(path.join(dc_common_path, 'dist', '__namespace.js')))
-        .pipe(concat('dc.min.js'))
+        .pipe(gulp.src(path.join(dt_common_path, 'dist', '__namespace.js')))
+        .pipe(concat('dt.min.js'))
         .pipe(gulp.dest('dist'))
         .on('end', () => {
           addCopyright(options)
@@ -185,9 +185,9 @@ async function combineJs(options) {
       await gulp
         .src([
           'dist/modules-iife.js',
-          path.join(dc_common_path, 'dist', '__namespace.js'),
+          path.join(dt_common_path, 'dist', '__namespace.js'),
         ])
-        .pipe(concat('dc.min.js'))
+        .pipe(concat('dt.min.js'))
         .pipe(gulp.dest('dist'))
         .on('end', () => {
           addCopyright(options)
@@ -216,7 +216,7 @@ async function combineJs(options) {
 async function copyAssets() {
   await fse.emptyDir('dist/resources')
   await gulp
-    .src(dc_common_path + '/dist/resources/**', { nodir: true })
+    .src(dt_common_path + '/dist/resources/**', { nodir: true })
     .pipe(gulp.dest('dist/resources'))
 }
 
@@ -231,7 +231,7 @@ async function addCopyright(options) {
     .replace('{{__REPOSITORY__}}', packageJson.repository)
 
   if (options.iife) {
-    let filePath = path.join('dist', 'dc.min.js')
+    let filePath = path.join('dist', 'dt.min.js')
     const content = await fse.readFile(filePath, 'utf8')
     await fse.outputFile(filePath, `${header}${content}`, { encoding: 'utf8' })
   }
@@ -248,8 +248,8 @@ async function deleteTempFile() {
 }
 
 async function regenerate(option, content) {
-  await fse.remove('dist/dc.min.js')
-  await fse.remove('dist/dc.min.css')
+  await fse.remove('dist/dt.min.js')
+  await fse.remove('dist/dt.min.css')
   await buildModules(option)
   await combineJs(option)
   await buildCSS(option)

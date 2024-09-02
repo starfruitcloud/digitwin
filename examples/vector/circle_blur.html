@@ -4,32 +4,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>dc-example</title>
-  <script src='/libs/dc-sdk/dc.min.js'></script>
-  <link href='/libs/dc-sdk/dc.min.css' type='text/css' rel='stylesheet'>
+  <title>dt-example</title>
+  <script src='/libs/dt-sdk/dt.min.js'></script>
+  <link href='/libs/dt-sdk/dt.min.css' type='text/css' rel='stylesheet'>
   <link href='../index.css' type='text/css' rel='stylesheet'>
 </head>
 
 <body>
 
-<div id="viewer-container" class="viewer-container"></div>
-<script>
-  let viewer = undefined
+  <div id="viewer-container" class="viewer-container"></div>
+  <script>
+    let viewer = undefined
 
-  function initViewer() {
-    viewer = new DC.Viewer('viewer-container')
-    viewer.setOptions({
-      globe:{
-        baseColor:DC.Color.BLACK
-      }
-    })
-    let layer_build = new DC.TilesetLayer('layer_build').addTo(viewer)
-    let build = new DC.Tileset(
-      'http://resource.dvgis.cn/data/3dtiles/ljz/tileset.json',
-      {skipLevels:true}
-    )
-    let customShader =  new DC.CustomShader({
-      fragmentShaderText:`
+    function initViewer() {
+      viewer = new DT.Viewer('viewer-container')
+      viewer.setOptions({
+        globe: {
+          baseColor: DT.Color.BLACK
+        }
+      })
+      let layer_build = new DT.TilesetLayer('layer_build').addTo(viewer)
+      let build = new DT.Tileset(
+        'http://resource.dvgis.cn/data/3dtiles/ljz/tileset.json',
+        { skipLevels: true }
+      )
+      let customShader = new DT.CustomShader({
+        fragmentShaderText: `
       void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
          vec4 position = czm_inverseModelView * vec4(fsInput.attributes.positionEC,1); // 位置
          float glowRange = 100.0; // 光环的移动范围(高度)
@@ -42,25 +42,26 @@
          material.diffuse = vec3(temp.rgb + temp.rgb * (1.0 - diff)) ;
        }
       `
-    })
-    build.setCustomShader(customShader)
-    layer_build.addOverlay(build)
-    let layer = new DC.VectorLayer('layer').addTo(viewer)
-    let center = DC.Position.fromObject({lng: 121.49536592256028, lat: 31.241616722278213})
-    let circle = new DC.Circle(center,3000)
-    circle.setStyle({
-       classificationType:0,
-       material: new DC.CircleBlurMaterialProperty({
-         color:DC.Color.YELLOW.withAlpha(0.2),
-         speed: 5.0
-       })
-    })
-    layer.addOverlay(circle)
-    viewer.flyToPosition("121.4941629,31.2091462,1859.56,0,-28.71")
-  }
-  DC.ready({
-    baseUrl:'../libs/dc-sdk/resources/'
-  }).then(initViewer)
-</script>
+      })
+      build.setCustomShader(customShader)
+      layer_build.addOverlay(build)
+      let layer = new DT.VectorLayer('layer').addTo(viewer)
+      let center = DT.Position.fromObject({ lng: 121.49536592256028, lat: 31.241616722278213 })
+      let circle = new DT.Circle(center, 3000)
+      circle.setStyle({
+        classificationType: 0,
+        material: new DT.CircleBlurMaterialProperty({
+          color: DT.Color.YELLOW.withAlpha(0.2),
+          speed: 5.0
+        })
+      })
+      layer.addOverlay(circle)
+      viewer.flyToPosition("121.4941629,31.2091462,1859.56,0,-28.71")
+    }
+    DT.ready({
+      baseUrl: '../libs/dt-sdk/resources/'
+    }).then(initViewer)
+  </script>
 </body>
+
 </html>

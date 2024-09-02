@@ -22,14 +22,14 @@
 
   - 返回值 `this`
 
-## DC.AroundPoint
+## DT.AroundPoint
 
 > 点位环绕,继承于[Animation](#animation)
 
 ### example
 
 ```js
-let aroundPoint = new DC.AroundPoint(viewer, '120.121, 31.12')
+let aroundPoint = new DT.AroundPoint(viewer, '120.121, 31.12')
 aroundPoint.start()
 ```
 
@@ -57,14 +57,14 @@ aroundPoint.start()
 }
 ```
 
-## DC.AroundView
+## DT.AroundView
 
 > 相机环绕，继承于[Animation](#animation)
 
 ### example
 
 ```js
-let aroundView = new DC.AroundView(viewer)
+let aroundView = new DT.AroundView(viewer)
 aroundView.start()
 ```
 
@@ -91,14 +91,14 @@ aroundView.start()
 }
 ```
 
-## DC.Flying
+## DT.Flying
 
 > 定点巡航，继承于[Animation](#animation)
 
 ### example
 
 ```js
-let flying = new DC.Flying(viewer)
+let flying = new DT.Flying(viewer)
 flying.positions = ['121.234,21.212,0,-29', '121.435,21.212,0,-29']
 flying.start()
 ```
@@ -148,14 +148,14 @@ flying.start()
 
   - 返回值 `this`
 
-## DC.GlobeRotate
+## DT.GlobeRotate
 
 > 地球自转，继承于[Animation](#animation)
 
 ### example
 
 ```js
-let globeRotate = new DC.GlobeRotate(viewer, {
+let globeRotate = new DT.GlobeRotate(viewer, {
   duration: 5,
   speed: 1000,
   callback: () => {},
@@ -170,7 +170,7 @@ globeRotate.start()
   构造函数
 
   - 参数
-    - `{DC.Viewer} viewer`：3D 场景
+    - `{DT.Viewer} viewer`：3D 场景
     - `{Object} options`：options
   - 返回值 `globeRotate`
 
@@ -184,14 +184,14 @@ globeRotate.start()
 }
 ```
 
-## DC.RoamingController
+## DT.RoamingController
 
 > 漫游控制
 
 ### example
 
 ```js
-let rc = new DC.RoamingController(viewer)
+let rc = new DT.RoamingController(viewer)
 ```
 
 ### creation
@@ -273,14 +273,14 @@ let rc = new DC.RoamingController(viewer)
 
   - 返回值 `this`
 
-## DC.RoamingPath
+## DT.RoamingPath
 
 > 漫游路径
 
 ### example
 
 ```js
-let path = new DC.RoamingPath('120.121,32.1213;121.132,32.1213', 20)
+let path = new DT.RoamingPath('120.121,32.1213;121.132,32.1213', 20)
 rc.addPath(path)
 ```
 
@@ -305,14 +305,14 @@ rc.addPath(path)
 - `{String} pathMode`：路径模式：speed(匀速) / time(等时)
 - `{String} state`：状态 **_`readonly`_**
 
-## DC.KeyboardRoaming
+## DT.KeyboardRoaming
 
 > 键盘漫游
 
 ### example
 
 ```js
-let kr = new DC.KeyboardRoaming(viewer)
+let kr = new DT.KeyboardRoaming(viewer)
 kr.enable = true
 ```
 
@@ -332,14 +332,14 @@ kr.enable = true
 - `{Number} moveRate`：移动变化率：100
 - `{Number} rotateRate`：旋转变化率：0.01
 
-## DC.TrackController
+## DT.TrackController
 
 > 历史轨迹控制
 
 ### example
 
 ```js
-let tc = new DC.TrackController(viewer)
+let tc = new DT.TrackController(viewer)
 ```
 
 ### creation
@@ -422,7 +422,7 @@ let tc = new DC.TrackController(viewer)
 ```json
 // 属性参数（可选）
 {
-  "mode": null, // 视角模式：DC.TrackViewMode
+  "mode": null, // 视角模式：DT.TrackViewMode
   "pitch": 0, // 俯仰角，第一视角有效
   "range": 1000 // 距离
 }
@@ -442,15 +442,15 @@ let tc = new DC.TrackController(viewer)
 
   - 返回值 `this`
 
-## DC.Track
+## DT.Track
 
 > 轨迹
 
 ### example
 
 ```js
-let tc = new DC.TrackController(viewer)
-let track = new DC.Track('120.121,32.1213;121.132,32.1213', 20)
+let tc = new DT.TrackController(viewer)
+let track = new DT.Track('120.121,32.1213;121.132,32.1213', 20)
 tc.addTrack(track)
 ```
 
@@ -505,7 +505,7 @@ tc.addTrack(track)
 
   - 参数
     - `{String} modelPath`：模型路径
-    - `{Object} style`：样式，详情参考：[DC.Model](./overlay-vector#dc-model)
+    - `{Object} style`：样式，详情参考：[DT.Model](./overlay-vector#dt-model)
   - 返回值 `this`
 
 - **_setBillboard(icon,style)_**
@@ -514,7 +514,7 @@ tc.addTrack(track)
 
   - 参数
     - `{String} icon`：图标路径
-    - `{Object} style`：样式，参考：[DC.Billboard](./overlay-vector#dc-billboard)
+    - `{Object} style`：样式，参考：[DT.Billboard](./overlay-vector#dt-billboard)
   - 返回值 `this`
 
 - **_setLabel(text,style)_**
@@ -523,7 +523,7 @@ tc.addTrack(track)
 
   - 参数
     - `{String} text`：文本
-    - `{Object} style`：样式，参考：[DC.Label](./overlay-vector#dc-label)
+    - `{Object} style`：样式，参考：[DT.Label](./overlay-vector#dt-label)
   - 返回值 `this`
 
 - **_setPath(visible,style)_**
@@ -532,5 +532,5 @@ tc.addTrack(track)
 
   - 参数
     - `{Boolean}} visible`：是否可见
-    - `{Object} style`：样式，参考：[DC.Polyline](./overlay-vector#dc-polyline)
+    - `{Object} style`：样式，参考：[DT.Polyline](./overlay-vector#dt-polyline)
   - 返回值 `this`

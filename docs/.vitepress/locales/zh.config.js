@@ -2,7 +2,7 @@ export default {
   label: '中文',
   lang: 'zh',
   link: '/zh/api-v1.0/global',
-  title: 'API文档',
+  title: '文档',
 
   themeConfig: {
     appearance: false,
