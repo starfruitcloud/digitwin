@@ -18,7 +18,7 @@ import { glsl } from 'esbuild-plugin-glsl'
 import shell from 'shelljs'
 import chalk from 'chalk'
 
-const dt_common_path = './node_modules/@dvgis/dc-common'
+const dt_common_path = './node_modules/@starfruitcloud/digitwin-common'
 
 const packageJson = fse.readJsonSync('./package.json')
 
@@ -106,7 +106,7 @@ async function buildModules(options) {
     }`
 
   const importNamespace = `
-       import {Cesium , Supercluster } from '@dvgis/dc-common'
+       import {Cesium , Supercluster } from '@starfruitcloud/digitwin-common'
      `
   const exportNamespace = `
         export const __namespace = {
@@ -158,7 +158,7 @@ async function buildModules(options) {
       define: {
         TransformStream: 'null',
       },
-      external: ['@dvgis/dc-common'],
+      external: ['@starfruitcloud/digitwin-common'],
       outfile: path.join('dist', 'index.js'),
     })
   }

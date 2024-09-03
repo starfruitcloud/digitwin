@@ -1,5 +1,5 @@
 {
-  "name": "@firethorn/dt-sdk",
+  "name": "@starfruitcloud/digitwin",
   "version": "0.0.1",
   "license": "MIT",
   "description": "The SDK is based on Cesium for secondary development of 2, 3D all-in-one WebGis application framework, the framework optimizes the use of Cesium and add some additional features, designed for developers to quickly build WebGis applications.",
@@ -9,6 +9,7 @@
     "url": "git+https://github.com/starfruitcloud/firethorn.git"
   },
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
@@ -75,6 +76,6 @@
     "dist"
   ],
   "dependencies": {
-    "@dvgis/dc-common": "^3.0.0"
+    "@starfruitcloud/digitwin-common": "^1.0.0"
   }
 }
