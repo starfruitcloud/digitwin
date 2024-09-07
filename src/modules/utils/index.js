@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 export { default as Util } from './Util'
 export { default as DomUtil } from './DomUtil'

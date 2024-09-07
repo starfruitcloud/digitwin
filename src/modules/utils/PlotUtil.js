@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 
 const TWO_PI = Math.PI * 2

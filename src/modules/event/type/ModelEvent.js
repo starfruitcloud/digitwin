@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 import { ModelEventType } from '../EventType'
 import Event from '../Event'

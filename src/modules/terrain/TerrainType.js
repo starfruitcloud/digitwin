@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 
 let TerrainType = {

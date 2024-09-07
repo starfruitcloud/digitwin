@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 
 export default function bounds(positions = [], expand = 0) {

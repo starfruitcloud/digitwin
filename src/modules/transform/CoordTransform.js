@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 
 const BD_FACTOR = (3.14159265358979324 * 3000.0) / 180.0

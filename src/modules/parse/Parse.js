@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 import Position from '../position/Position'
 import { Cesium } from '../../namespace'

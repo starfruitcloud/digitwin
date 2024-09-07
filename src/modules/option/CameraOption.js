@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 import { Cesium } from '../../namespace'
 import MouseMode from './MouseMode'

@@ -6,7 +6,7 @@
  * @organization dvgis
  * @version {{__VERSION__}}
  *
- * Copyright (c) 2019-present Caven Chen
+ * Copyright (c) 2019-present ershing
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

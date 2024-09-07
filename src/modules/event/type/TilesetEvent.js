@@ -1,5 +1,5 @@
 /**
- * @Author : Caven Chen
+ * @Author : ershing
  */
 import { TileSetEventType } from '../EventType'
 import Event from '../Event'
