@@ -8,7 +8,7 @@ import fse from 'fs-extra'
 import shell from 'shelljs'
 import chalk from 'chalk'
 
-export default function start() {
+export default function start(dir) {
   let dist = 'dist'
   const server = express()
   portfinder.setBasePort(8081)
@@ -20,7 +20,7 @@ export default function start() {
         shell.echo('- Local:  ' + chalk.yellow(`http://localhost:${port}`))
         shell.echo('\n')
         server.use('/libs/dt-sdk/', express.static(dist))
-        server.use(express.static('examples'))
+        server.use(express.static(dir))
       })
     } else {
       shell.echo(chalk.red(`please run build first`))

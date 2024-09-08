@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>dt-example</title>
+  <script src='/libs/dt-sdk/dt.min.js'></script>
+  <link href='/libs/dt-sdk/dt.min.css' type='text/css' rel='stylesheet'>
+  <link href='../index.css' type='text/css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <div id="viewer-container" class="viewer-container"></div>
+  <script>
+    let viewer = undefined
+    function initViewer() {
+      viewer = new DT.Viewer('viewer-container')
+      let baseLayer = DT.ImageryLayerFactory.createImageryLayer(DT.ImageryType.AMAP, { style: 'img' })
+      viewer.addBaseLayer(baseLayer)
+      viewer.on(DT.SceneEventType.CAMERA_MOVE_END, e => {
+        console.log(e)
+      })
+    }
+    DT.ready({
+      baseUrl: '../libs/dt-sdk/resources/'
+    }).then(initViewer)
+  </script>
+</body>
+
+</html>

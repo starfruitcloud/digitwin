@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>dt-example</title>
+  <script src='/libs/dt-sdk/dt.min.js'></script>
+  <script src="../dat.gui.min.js"></script>
+  <link href='/libs/dt-sdk/dt.min.css' type='text/css' rel='stylesheet'>
+  <link href='../index.css' type='text/css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <div id="viewer-container" class="viewer-container"></div>
+  <script>
+    let viewer = undefined
+
+    function initViewer() {
+      viewer = new DT.Viewer('viewer-container')
+      let baseLayer = DT.ImageryLayerFactory.createAMapImageryLayer({
+        style: 'img',
+        crs: 'WGS84'
+      })
+      viewer.addBaseLayer(baseLayer)
+
+      let layer = new DT.VectorLayer('layer')
+      viewer.addLayer(layer)
+
+      let wall = new DT.Wall(
+        '-107.0,43.0,100000.0;-97.0,43.0,100000.0;-97.0,40.0,100000.0;-107.0,40.0,100000.0;-107.0,43.0,100000.0'
+      )
+      wall.setStyle({
+        material: new DT.WallLineTrailMaterialProperty({
+          color: DT.Color.GREEN,
+          speed: 4,
+          repeat: {
+            x: 2,
+            y: 1.5,
+          }
+        })
+      })
+      layer.addOverlay(wall)
+      viewer.flyTo(layer)
+    }
+    DT.ready({
+      baseUrl: '../libs/dt-sdk/resources/'
+    }).then(initViewer)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "@starfruitcloud/digitwin": ["src/DT.js"]
+      },
+      "typeRoots": ["global.d.ts"], 
+    },
+    "include": [
+      "src/**/*",
+      "global.d.ts"
+    ]
+  }
+  

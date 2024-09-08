@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>dt-example</title>
+  <script src='/libs/dt-sdk/dt.min.js'></script>
+  <script src="../dat.gui.min.js"></script>
+  <link href='/libs/dt-sdk/dt.min.css' type='text/css' rel='stylesheet'>
+  <link href='../index.css' type='text/css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <div id="viewer-container" class="viewer-container"></div>
+  <script>
+    let viewer = undefined
+    let effect = undefined
+    function initViewer() {
+      viewer = new DT.Viewer('viewer-container')
+      let baselayer_midnight = DT.ImageryLayerFactory.createAMapImageryLayer({ style: 'img' })
+      viewer.addBaseLayer(baselayer_midnight)
+      effect = new DT.Effect(viewer)
+      effect.silhouette.enable = true
+      addGuiController() // add controller
+    }
+
+    function addGuiController() {
+      let controls = {
+        enable: true,
+      }
+      let gui = new dat.GUI()
+      gui.add(controls, 'enable').onChange(value => {
+        effect.silhouette.enable = value
+      })
+    }
+
+    DT.ready({
+      baseUrl: '../libs/dt-sdk/resources/'
+    }).then(initViewer)
+  </script>
+</body>
+
+</html>

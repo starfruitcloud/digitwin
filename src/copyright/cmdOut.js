@@ -3,7 +3,7 @@
  */
 
 // eslint-disable-next-line no-console
-console.clear()
+// console.clear()
 
 // eslint-disable-next-line no-console
 console.log(

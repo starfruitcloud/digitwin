@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>dt-example</title>
+  <script src='/libs/dt-sdk/dt.min.js'></script>
+  <script src="../dat.gui.min.js"></script>
+  <link href='/libs/dt-sdk/dt.min.css' type='text/css' rel='stylesheet'>
+  <link href='../index.css' type='text/css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <div id="viewer-container" class="viewer-container"></div>
+  <div class="btn-box">
+    <ul>
+      <li><button onclick="exportScene()">导出场景</button></li>
+    </ul>
+  </div>
+
+  <script>
+    let viewer = undefined
+
+    function initViewer() {
+      viewer = new DT.Viewer('viewer-container')
+      let baseLayer = DT.ImageryLayerFactory.createAMapImageryLayer({
+        style: 'img',
+        crs: "WGS84"
+      })
+      viewer.addBaseLayer(baseLayer)
+      let layer = new DT.TilesetLayer('layer')
+      viewer.addLayer(layer)
+      let tileset = new DT.Tileset(
+        '//resource.dvgis.cn/data/3dtiles/dayanta/tileset.json'
+      )
+      tileset.setHeight(-420)
+      layer.addOverlay(tileset)
+      viewer.flyTo(tileset)
+    }
+
+    function exportScene() {
+      viewer.exportScene()
+    }
+    DT.ready({
+      baseUrl: '../libs/dt-sdk/resources/'
+    }).then(initViewer)
+  </script>
+</body>
+
+</html>
