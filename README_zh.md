@@ -3,16 +3,16 @@
 <p>
 <img src="https://img.shields.io/github/actions/workflow/status/dvgis/dt-sdk/build.yml"/>
 <img src="https://img.shields.io/badge/license-Apache%202-blue"/>
-<a href="https://www.npmjs.com/package/@dvgis/dt-sdk" target="_blank">
- <img src="https://img.shields.io/npm/v/@dvgis/dt-sdk?color=orange&logo=npm" />
+<a href="https://www.npmjs.com/package/@starfruitcloud/digitwin" target="_blank">
+ <img src="https://img.shields.io/npm/v/@starfruitcloud/digitwin?color=orange&logo=npm" />
 </a>
-<a href="https://www.npmjs.com/package/@dvgis/dt-sdk" target="_blank">
- <img src="https://img.shields.io/npm/dt/@dvgis/dt-sdk?logo=npm"/>
+<a href="https://www.npmjs.com/package/@starfruitcloud/digitwin" target="_blank">
+ <img src="https://img.shields.io/npm/dt/@starfruitcloud/digitwin?logo=npm"/>
 </a>
 <a href="https://resource.dvgis.cn/dt-docs/zh/" target="_blank">
  <img src="https://img.shields.io/badge/docs-online-yellow.svg"/>
 </a>
-<a href="http://dt.dvgis.cn" target="_blank">
+<a href="http://www.shuqin.cc" target="_blank">
  <img src="https://img.shields.io/badge/demo-online-red.svg"/>
 </a>
 </p>
@@ -39,24 +39,24 @@ Tips：本框架是 JS+GIS 的框架包。开发者需要有一定的前端技�
 NPM / YARN 的方式安装，它能更好地和 `webpack` 打包工具配合使用。
 
 ```shell
-yarn add @dvgis/dt-sdk
+yarn add @starfruitcloud/digitwin
 -------------------------
-npm install @dvgis/dt-sdk
+npm install @starfruitcloud/digitwin
 ```
 
 ```js
-import * as DT from '@dvgis/dt-sdk/' 
-import '@dvgis/dt-sdk/dist/dt.min.css' 
+import * as DT from '@starfruitcloud/digitwin/' 
+import '@starfruitcloud/digitwin/dist/dt.min.css' 
 ```
 
 `CDN`
 
-[Resources 下载链接](https://github.com/dvgis/dt-sdk/releases)
+[Resources 下载链接](https://github.com/starfruitcloud/digitwin/releases)
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@dvgis/dt-sdk/dist/dt.base.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@starfruitcloud/digitwin/dist/dt.base.js"></script>
 <link
-  href="https://cdn.jsdelivr.net/npm/@dvgis/dt-sdk/dist/dt.min.css"
+  href="https://cdn.jsdelivr.net/npm/@starfruitcloud/digitwin/dist/dt.min.css"
   rel="stylesheet"
   type="text/css"
 />
@@ -81,7 +81,7 @@ import '@dvgis/dt-sdk/dist/dt.min.css'
 
 const path = require('path')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@dvgis'
+const dvgisDist = './node_modules/@starfruitcloud'
 
 module.exports = {
   plugins: [
@@ -104,7 +104,7 @@ module.exports = {
 
 const path = require('path')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@dvgis'
+const dvgisDist = './node_modules/@starfruitcloud'
 
 module.exports = {
   // 其他配置
@@ -130,7 +130,7 @@ module.exports = {
 
 const path = require('path')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@dvgis'
+const dvgisDist = './node_modules/@starfruitcloud'
 
 module.exports = {
   // 其他配置
@@ -173,34 +173,14 @@ DT.ready().then(() => {
 
 ## 示例
 
-|           ![picture](https://dt.dvgis.cn/examples/previews/baselayer/online/baidu.png)           |     ![picture](http://dt.dvgis.cn/examples/previews/baselayer/online/tdt.png)      |     ![picture](http://dt.dvgis.cn/examples/previews/baselayer/online/arcgis.png?v=3)     |        ![picture](http://dt.dvgis.cn/examples/previews/mini-scene/china.gif)         |
+|           ![picture](https://www.shuqin.cc/examples/previews/baselayer/online/baidu.png)           |     ![picture](http://www.shuqin.cc/examples/previews/baselayer/online/tdt.png)      |     ![picture](http://www.shuqin.cc/examples/previews/baselayer/online/arcgis.png?v=3)     |        ![picture](http://www.shuqin.cc/examples/previews/mini-scene/china.gif)         |
 |:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
-|               ![picture](http://dt.dvgis.cn/examples/previews/mini-scene/dfmz.gif)               |    ![picture](http://dt.dvgis.cn/examples/previews/mini-scene/factory.gif)     |        ![picture](http://dt.dvgis.cn/examples/previews/layer/cluster_circle.gif)         | ![picture](http://dt.dvgis.cn/examples/previews/model/3dtiles/shp_custom_shader.gif) |
-|        ![picture](http://dt.dvgis.cn/examples/previews/overlay/polyline/image_trail.gif)         | ![picture](http://dt.dvgis.cn/examples/previews/overlay/others/wall_trail.gif) |       ![picture](http://dt.dvgis.cn/examples/previews/overlay/primitive/water.gif)       |      ![picture](http://dt.dvgis.cn/examples/previews/scene-ext/tools/plot.png)       |
+|               ![picture](http://www.shuqin.cc/examples/previews/mini-scene/dfmz.gif)               |    ![picture](http://www.shuqin.cc/examples/previews/mini-scene/factory.gif)     |        ![picture](http://www.shuqin.cc/examples/previews/layer/cluster_circle.gif)         | ![picture](http://www.shuqin.cc/examples/previews/model/3dtiles/shp_custom_shader.gif) |
+|        ![picture](http://www.shuqin.cc/examples/previews/overlay/polyline/image_trail.gif)         | ![picture](http://www.shuqin.cc/examples/previews/overlay/others/wall_trail.gif) |       ![picture](http://www.shuqin.cc/examples/previews/overlay/primitive/water.gif)       |      ![picture](http://www.shuqin.cc/examples/previews/scene-ext/tools/plot.png)       |
 
 
-[更多>>](http://dt.dvgis.cn/#/examples)
+[更多>>](http://www.shuqin.cc/#/examples)
 
-
-## 支持
-
-> 如果dt-sdk能够给您带来效益，请支持一下呗~
-
-<p style='display: flex;justify-content:space-around'>
-<img src="https://resource.dvgis.cn/assets/images/zfb.png" title="支付宝" width="240px" height="240px" />
-<img src="https://resource.dvgis.cn/assets/images/wx.png" title="微信"  width="240px" height="240px" />
-</p>
-
-
-
-
-## QQ 群
-
-<p style='display: flex;justify-content:space-between'>
-<img src="https://resource.dvgis.cn/assets/images/q3.png" title="数字视觉(二群)" width="240px" height="240px" style='margin-right: 15px'/>
-<img src="https://resource.dvgis.cn/assets/images/q1.png" title="数字视觉(已满)"  width="240px" height="240px" style='margin-right: 15px'/>
-<img src="https://resource.dvgis.cn/assets/images/q2.png" title="Cesium开心农场"  width="240px" height="240px"/>
-</p>
 
 ## 版权声明
 

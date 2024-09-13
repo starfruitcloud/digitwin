@@ -3,16 +3,16 @@
 <p>
 <img src="https://img.shields.io/github/actions/workflow/status/dvgis/dt-sdk/build.yml"/>
 <img src="https://img.shields.io/badge/license-Apache%202-blue"/>
-<a href="https://www.npmjs.com/package/@dvgis/dt-sdk" target="_blank">
- <img src="https://img.shields.io/npm/v/@dvgis/dt-sdk?color=orange&logo=npm" />
+<a href="https://www.npmjs.com/package/@starfruitcloud/digitwin" target="_blank">
+ <img src="https://img.shields.io/npm/v/@starfruitcloud/digitwin?color=orange&logo=npm" />
 </a>
-<a href="https://www.npmjs.com/package/@dvgis/dt-sdk" target="_blank">
- <img src="https://img.shields.io/npm/dt/@dvgis/dt-sdk?logo=npm"/>
+<a href="https://www.npmjs.com/package/@starfruitcloud/digitwin" target="_blank">
+ <img src="https://img.shields.io/npm/dt/@starfruitcloud/digitwin?logo=npm"/>
 </a>
 <a href="https://resource.dvgis.cn/dt-docs/zh/" target="_blank">
  <img src="https://img.shields.io/badge/docs-online-yellow.svg"/>
 </a>
-<a href="http://dt.dvgis.cn" target="_blank">
+<a href="http://www.shuqin.cc" target="_blank">
  <img src="https://img.shields.io/badge/demo-online-red.svg"/>
 </a>
 </p>
@@ -41,24 +41,24 @@ Tips：This SDK is JS+GIS framework package. Developers need to have some front-
 Installing with NPM or YARN is recommended and it works seamlessly with webpack.
 
 ```shell
-yarn add @dvgis/dt-sdk
+yarn add @starfruitcloud/digitwin
 -------------------------
-npm install @dvgis/dt-sdk
+npm install @starfruitcloud/digitwin
 ```
 
 ```js
-import * as DT from '@dvgis/dt-sdk'
-import '@dvgis/dt-sdk/dist/dt.min.css'
+import * as DT from '@starfruitcloud/digitwin'
+import '@starfruitcloud/digitwin/dist/dt.min.css'
 ```
 
 `CDN`
 
-[Resources](https://github.com/dvgis/dt-sdk/releases)
+[Resources](https://github.com/starfruitcloud/digitwin/releases)
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@dvgis/dt-sdk/dist/dt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@starfruitcloud/digitwin/dist/dt.min.js"></script>
 <link
-  href="https://cdn.jsdelivr.net/npm/@dvgis/dt-sdk/dist/dt.min.css"
+  href="https://cdn.jsdelivr.net/npm/@starfruitcloud/digitwin/dist/dt.min.css"
   rel="stylesheet"
   type="text/css"
 />
@@ -82,7 +82,7 @@ Since the `DT` framework sets `CESIUM_BASE_URL` to `./libs/dt-sdk/resources/` , 
 // webpack.config.js
 const path = require('path')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@dvgis'
+const dvgisDist = './node_modules/@starfruitcloud'
 
 module.exports = {
   plugins: [
@@ -104,7 +104,7 @@ module.exports = {
 // vue.config.js
 const path = require('path')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@dvgis'
+const dvgisDist = './node_modules/@starfruitcloud'
 module.exports = {
   chainWebpack: (config) => {
     config.plugin('copy').use(CopywebpackPlugin, [
@@ -127,7 +127,7 @@ module.exports = {
 // vue.config.js
 const path = require('path')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@dvgis'
+const dvgisDist = './node_modules/@starfruitcloud'
 module.exports = {
   chainWebpack: (config) => {
     config.plugin('copy').use(CopywebpackPlugin, [
@@ -170,12 +170,12 @@ DT.ready({}).then(()=>{
 
 ## Demo
 
-|           ![picture](https://dt.dvgis.cn/examples/previews/baselayer/online/baidu.png)           |     ![picture](http://dt.dvgis.cn/examples/previews/baselayer/online/tdt.png)      |     ![picture](http://dt.dvgis.cn/examples/previews/baselayer/online/arcgis.png?v=3)     |        ![picture](http://dt.dvgis.cn/examples/previews/mini-scene/china.gif)         |
+|           ![picture](https://www.shuqin.cc/examples/previews/baselayer/online/baidu.png)           |     ![picture](http://www.shuqin.cc/examples/previews/baselayer/online/tdt.png)      |     ![picture](http://www.shuqin.cc/examples/previews/baselayer/online/arcgis.png?v=3)     |        ![picture](http://www.shuqin.cc/examples/previews/mini-scene/china.gif)         |
 |:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
-|               ![picture](http://dt.dvgis.cn/examples/previews/mini-scene/dfmz.gif)               |    ![picture](http://dt.dvgis.cn/examples/previews/mini-scene/factory.gif)     |        ![picture](http://dt.dvgis.cn/examples/previews/layer/cluster_circle.gif)         | ![picture](http://dt.dvgis.cn/examples/previews/model/3dtiles/shp_custom_shader.gif) |
-|        ![picture](http://dt.dvgis.cn/examples/previews/overlay/polyline/image_trail.gif)         | ![picture](http://dt.dvgis.cn/examples/previews/overlay/others/wall_trail.gif) |       ![picture](http://dt.dvgis.cn/examples/previews/overlay/primitive/water.gif)       |      ![picture](http://dt.dvgis.cn/examples/previews/scene-ext/tools/plot.png)       |
+|               ![picture](http://www.shuqin.cc/examples/previews/mini-scene/dfmz.gif)               |    ![picture](http://www.shuqin.cc/examples/previews/mini-scene/factory.gif)     |        ![picture](http://www.shuqin.cc/examples/previews/layer/cluster_circle.gif)         | ![picture](http://www.shuqin.cc/examples/previews/model/3dtiles/shp_custom_shader.gif) |
+|        ![picture](http://www.shuqin.cc/examples/previews/overlay/polyline/image_trail.gif)         | ![picture](http://www.shuqin.cc/examples/previews/overlay/others/wall_trail.gif) |       ![picture](http://www.shuqin.cc/examples/previews/overlay/primitive/water.gif)       |      ![picture](http://www.shuqin.cc/examples/previews/scene-ext/tools/plot.png)       |
 
-[More>>](http://dt.dvgis.cn/#/examples)
+[More>>](http://www.shuqin.cc/#/examples)
 
 ## Copyright
 
@@ -188,15 +188,5 @@ DT.ready({}).then(()=>{
   2) reserve this copyright information in the console output
 We reserve the right of final interpretation of this copyright information.
 ```
-
-## Support
-
-> if dt-sdk can bring benefits to you, please support it ~
-
-<p>
-<a href="https://www.paypal.com/paypalme/cavencj" target="_blank">
-<img src="https://www.paypalobjects.com/images/shared/paypal-logo-129x32.svg" style="margin-top:10px" />
-</a>
-</p>
 
 ## Thanks

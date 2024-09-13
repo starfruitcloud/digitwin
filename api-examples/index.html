@@ -150,7 +150,6 @@
     #code-link img {
       width: 30px;
     }
-
   </style>
 </head>
 
@@ -180,7 +179,7 @@
           if (hrefArr[1]) {
             href = hrefArr[1].replace('_', '/')
           }
-          $('#code-link').attr('href', 'https://github.com/dvgis/dt-sdk/blob/master/examples/' + href)
+          $('#code-link').attr('href', 'https://github.com/starfruitcloud/digitwin/blob/master/examples/' + href)
         }
         const activeOne = href || 'info/start.html'
         $('#inner-page').attr('src', activeOne)
@@ -196,7 +195,7 @@
           if (item.children) {
             item.children.forEach(child => {
               let $page = $('<li></li>')
-              $page.attr('id', `${child.page.replace('.html','')}`)
+              $page.attr('id', `${child.page.replace('.html', '')}`)
               let $link = $('<a></a>').text(child.name)
               $link.attr('href', item.folder + '/' + child.page).attr('target', 'inner-page')
               $link.bind('click', e => {
@@ -206,7 +205,7 @@
                 window.location.href = window.location.href.replace(/#\w*\.?\w*/g, '') + '#' + item
                   .folder + '_' + child.page
                 $page.addClass('active')
-                $('#code-link').attr('href', 'https://github.com/dvgis/dt-sdk/blob/master/examples/' +
+                $('#code-link').attr('href', 'https://github.com/starfruitcloud/digitwin/blob/master/examples/' +
                   item.folder + '/' + child.page)
                 $currentPage = $page
               })

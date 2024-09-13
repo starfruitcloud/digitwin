@@ -172,7 +172,7 @@ function getAddonsEntry(tree) {
     } else if (info.examples) {
       addonPath.push(...getAddonsEntry(info.examples))
     } else if (info.isLeaf) {
-      const filePath = info.files?. ['index.ts'];
+      const filePath = info.files?.['index.ts'];
       if (filePath) {
         addonPath.push({
           name: info.name,
@@ -187,7 +187,7 @@ function getAddonsEntry(tree) {
 function getAddonEntryFile(addons) {
   let content = '';
   addons.forEach(info => {
-    content += `\n// @ts-ignore\nexport { default as ${info.name} } from "${info.path.replace(/\\/g, '/').replace('src/addons','.')}"\n`
+    content += `\n// @ts-ignore\nexport { default as ${info.name} } from "${info.path.replace(/\\/g, '/').replace('src/addons', '.')}"\n`
   })
   return content;
 }
@@ -204,7 +204,7 @@ function getAddonExamples(tree) {
         config.push(...getAddonExamples(info.demo.children))
       }
     } else if (info.type === 'demo') {
-      const demoPath = info.files?. ['index.ts']
+      const demoPath = info.files?.['index.ts']
       if (demoPath) {
         config.push(demoPath)
       }
@@ -218,7 +218,7 @@ async function buildModules(options) {
   const content = await fse.readFile(path.join('src', 'index.js'), 'utf8')
   const addonDirPath = path.join('src', 'addons')
   const addonEntryPath = path.join(addonDirPath, 'index.ts')
-  const addonConfigPath = path.join('dist', 'index.json')
+  const addonConfigPath = path.join('addon-examples', 'index.json')
   const tree = readDirectory(addonDirPath)
   const addonTree = createAddonExampleTree(tree.children)
 
@@ -264,17 +264,16 @@ async function buildModules(options) {
   await fse.outputFile(
     addonConfigPath,
     JSON.stringify(addonTree, null, 2), {
-      encoding: 'utf8',
-    }
-  )
+    encoding: 'utf8',
+  })
   const addonsEntry = getAddonsEntry(tree.children);
   const entryFileContent = getAddonEntryFile(addonsEntry)
   const exampleTree = getAddonExamples(tree.children);
   await fse.outputFile(
     addonEntryPath,
     entryFileContent, {
-      encoding: 'utf8',
-    }
+    encoding: 'utf8',
+  }
   )
   await regenerateAddonExample(exampleTree);
 
@@ -287,8 +286,8 @@ async function buildModules(options) {
         ${cmdOutFunction}
         ${exportVersion}
       `, {
-        encoding: 'utf8',
-      }
+      encoding: 'utf8',
+    }
     )
     await esbuild.build({
       ...buildConfig,
@@ -297,12 +296,12 @@ async function buildModules(options) {
       entryPoints: ['src/DT.js'],
       outfile: path.join('dist', 'modules-iife.js'),
     })
-    await esbuild.build({
-      ...buildConfig,
-      format: 'iife',
-      entryPoints: ['src/addons/index.ts'],
-      outfile: path.join('dist', 'addons.js'),
-    })
+    // await esbuild.build({
+    //   ...buildConfig,
+    //   format: 'iife',
+    //   entryPoints: ['src/addons/index.ts'],
+    //   outfile: path.join('dist', 'addons.js'),
+    // })
   }
 
   // Build Node、
@@ -317,8 +316,8 @@ async function buildModules(options) {
         ${cmdOutFunction}
         ${exportDefault}
       `, {
-        encoding: 'utf8',
-      }
+      encoding: 'utf8',
+    }
     )
     // build
     await esbuild.build({
@@ -490,8 +489,8 @@ async function regenerateAddonExample(filePaths) {
     await fse.outputFile(
       path.join(demoDistDir, demoFileName),
       demoContent, {
-        encoding: 'utf8',
-      }
+      encoding: 'utf8',
+    }
     )
   }))
 

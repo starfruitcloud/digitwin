@@ -21,5 +21,5 @@
  * limitations under the License.
  *
  * Portions licensed separately.
- * See https://github.com/dvgis/dt-sdk/blob/master/LICENSE.MD for full licensing details.
+ * See https://github.com/starfruitcloud/digitwin/blob/master/LICENSE.MD for full licensing details.
  */
