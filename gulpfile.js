@@ -107,18 +107,6 @@ function readDirectory(dirPath) {
     const stat = fse.statSync(fullPath);
 
     if (stat.isDirectory()) {
-      if (path.basename(fullPath) === 'demo') {
-        const demo = readDirectory(fullPath);
-        if (demo.examples) {
-          demo.children = demo.examples.map(obj => ({
-            ...obj,
-            type: 'demo'
-          }))
-          delete demo.examples;
-        }
-        result.demo = demo;
-        return;
-      }
       const res = readDirectory(fullPath)
       if (res.isLeaf) {
         if (!result.examples) {
@@ -170,8 +158,6 @@ function getAddonsEntry(tree) {
     if (info.children) {
       addonPath.push(...getAddonsEntry(info.children))
     } else if (info.examples) {
-      addonPath.push(...getAddonsEntry(info.examples))
-    } else if (info.isLeaf) {
       const filePath = info.files?.['index.ts'];
       if (filePath) {
         addonPath.push({
@@ -199,11 +185,7 @@ function getAddonExamples(tree) {
       config.push(...getAddonExamples(info.children))
     } else if (info.examples) {
       config.push(...getAddonExamples(info.examples))
-    } else if (info.demo) {
-      if (info.demo.children) {
-        config.push(...getAddonExamples(info.demo.children))
-      }
-    } else if (info.type === 'demo') {
+    } else {
       const demoPath = info.files?.['index.ts']
       if (demoPath) {
         config.push(demoPath)
@@ -216,13 +198,15 @@ function getAddonExamples(tree) {
 async function buildModules(options) {
   const dtPath = path.join('src', 'DT.js')
   const content = await fse.readFile(path.join('src', 'index.js'), 'utf8')
+
   const addonDirPath = path.join('src', 'addons')
   const addonEntryPath = path.join(addonDirPath, 'index.ts')
-  const addonConfigPath = path.join('addon-examples', 'index.json')
+  const addonConfigPath = path.join('dist', 'addons.json')
   const tree = readDirectory(addonDirPath)
   const addonTree = createAddonExampleTree(tree.children)
 
   await fse.ensureFile(dtPath)
+  await fse.ensureFile(addonEntryPath)
 
   const exportVersion = `export const VERSION = '${packageJson.version}'`
 
@@ -273,8 +257,7 @@ async function buildModules(options) {
     addonEntryPath,
     entryFileContent, {
     encoding: 'utf8',
-  }
-  )
+  })
   await regenerateAddonExample(exampleTree);
 
   // Build IIFE
@@ -296,12 +279,13 @@ async function buildModules(options) {
       entryPoints: ['src/DT.js'],
       outfile: path.join('dist', 'modules-iife.js'),
     })
-    // await esbuild.build({
-    //   ...buildConfig,
-    //   format: 'iife',
-    //   entryPoints: ['src/addons/index.ts'],
-    //   outfile: path.join('dist', 'addons.js'),
-    // })
+    await esbuild.build({
+      ...buildConfig,
+      format: 'iife',
+      logLevel: 'error',
+      entryPoints: ['src/addons/index.ts'],
+      outfile: path.join('dist', 'addons-iife.js'),
+    })
   }
 
   // Build Node、
@@ -327,6 +311,7 @@ async function buildModules(options) {
       define: {
         TransformStream: 'null',
       },
+      logLevel: 'error',
       outdir: 'dist',
       entryPoints: {
         'index': 'src/DT.js',
@@ -351,9 +336,18 @@ async function combineJs(options) {
         .pipe(gulp.src(path.join(dt_common_path, 'dist', '__namespace.js')))
         .pipe(concat('dt.min.js'))
         .pipe(gulp.dest('dist'))
-        .on('end', () => {
-          addCopyright(options)
-          deleteTempFile()
+        .on('end', async () => {
+          await addCopyright(options)
+          await deleteModuleTempFile()
+        })
+      await gulp
+        .src('dist/addons-iife.js')
+        .pipe(javascriptObfuscator(obfuscatorConfig))
+        .pipe(concat('addons.min.js'))
+        .pipe(gulp.dest('dist'))
+        .on('end', async () => {
+          await addCopyright(options, true)
+          await deleteAddonTempFile()
         })
     } else {
       await gulp
@@ -363,9 +357,17 @@ async function combineJs(options) {
         ])
         .pipe(concat('dt.min.js'))
         .pipe(gulp.dest('dist'))
-        .on('end', () => {
-          addCopyright(options)
-          deleteTempFile()
+        .on('end', async () => {
+          await addCopyright(options)
+          await deleteModuleTempFile()
+        })
+      await gulp
+        .src('dist/addons-iife.js')
+        .pipe(concat('addons.min.js'))
+        .pipe(gulp.dest('dist'))
+        .on('end', async () => {
+          await addCopyright(options, true)
+          await deleteAddonTempFile()
         })
     }
   }
@@ -374,6 +376,18 @@ async function combineJs(options) {
   if (options.node && options.obfuscate) {
     await gulp
       .src('dist/index.js')
+      .pipe(
+        javascriptObfuscator({
+          ...obfuscatorConfig,
+          target: 'browser-no-eval',
+        })
+      )
+      .pipe(gulp.dest('dist'))
+      .on('end', () => {
+        addCopyright(options)
+      })
+    await gulp
+      .src('dist/addons.js')
       .pipe(
         javascriptObfuscator({
           ...obfuscatorConfig,
@@ -396,7 +410,7 @@ async function copyAssets() {
     .pipe(gulp.dest('dist/resources'))
 }
 
-async function addCopyright(options) {
+async function addCopyright(options, isAddon) {
   let header = await fse.readFile(
     path.join('src', 'copyright', 'header.js'),
     'utf8'
@@ -407,36 +421,65 @@ async function addCopyright(options) {
     .replace('{{__REPOSITORY__}}', packageJson.repository)
 
   if (options.iife) {
-    let filePath = path.join('dist', 'dt.min.js')
-    const content = await fse.readFile(filePath, 'utf8')
-    await fse.outputFile(filePath, `${header}${content}`, {
-      encoding: 'utf8'
-    })
+    if (isAddon) {
+      let filePath = path.join('dist', 'addons.min.js')
+      const content = await fse.readFile(filePath, 'utf8')
+      await fse.outputFile(filePath, `${header}${content}`, {
+        encoding: 'utf8'
+      })
+    } else {
+      let filePath = path.join('dist', 'dt.min.js')
+      const content = await fse.readFile(filePath, 'utf8')
+      await fse.outputFile(filePath, `${header}${content}`, {
+        encoding: 'utf8'
+      })
+    }
   }
 
   if (options.node) {
-    let filePath = path.join('dist', 'index.js')
-    const content = await fse.readFile(filePath, 'utf8')
-    await fse.outputFile(filePath, `${header}${content}`, {
-      encoding: 'utf8'
-    })
+    if (isAddon) {
+      let filePath = path.join('dist', 'addons.js')
+      const content = await fse.readFile(filePath, 'utf8')
+      await fse.outputFile(filePath, `${header}${content}`, {
+        encoding: 'utf8'
+      })
+    } else {
+      let filePath = path.join('dist', 'index.js')
+      const content = await fse.readFile(filePath, 'utf8')
+      await fse.outputFile(filePath, `${header}${content}`, {
+        encoding: 'utf8'
+      })
+    }
   }
 }
 
-async function deleteTempFile() {
+async function deleteModuleTempFile() {
   await gulp.src(['dist/modules-iife.js'], {
     read: false
   }).pipe(clean())
 }
 
+async function deleteAddonTempFile() {
+  await gulp.src(['dist/addons-iife.js'], {
+    read: false
+  }).pipe(clean())
+}
+
+
 async function regenerate(option, content) {
   await fse.remove('dist/index.js')
-  await fse.remove('dist/index.json')
+  await fse.remove('dist/addons.json')
   await fse.remove('dist/dt.min.js')
   await fse.remove('dist/dt.min.css')
   await buildModules(option)
   await combineJs(option)
   await buildCSS(option)
+}
+
+async function getFilePathConfig(filePath) {
+  const jsonFilePath = path.join(path.dirname(filePath), 'index.json')
+  await fse.ensureFile(jsonFilePath)
+  return fse.readJSONSync(jsonFilePath);
 }
 
 function getNamePath(pathStrArr) {
@@ -451,6 +494,25 @@ function getNamePath(pathStrArr) {
     names: []
   })
   return info.names;
+}
+
+async function regenerateAddon(filePath) {
+  const jsonConfig = await getFilePathConfig(filePath);
+  const dirType = jsonConfig.type
+
+  if (dirType === 'addon') {
+    const tree = readDirectory(filePath);
+    const exampleFilePaths = [];
+    tree.children?.forEach(child => {
+      const filePath = child.files?.['index.ts']
+      if (filePath) {
+        exampleFilePaths.push(filePath)
+      }
+    })
+    await regenerateAddonExample(exampleFilePaths)
+  } else if (dirType === 'example') {
+    await regenerateAddonExample([filePath])
+  }
 }
 
 async function regenerateAddonExample(filePaths) {
@@ -468,30 +530,30 @@ async function regenerateAddonExample(filePaths) {
     <body>
       <div id="viewer-container" class="viewer-container"></div>
       <script type="module">
-        DEMO
+        EXAMPLE
       </script>
     </body>
 
     </html>`
 
   await Promise.all(filePaths.map(async str => {
-    const pts = str.replace('src\\addons\\', '').split('\\')
-    const demoIndex = pts.indexOf('demo');
-    const dirs = pts.slice(0, demoIndex);
-    const nameDirs = getNamePath(dirs);
-    const demoFileName = nameDirs.pop() + '.html';
-    const demoDistDir = path.join('addon-examples', ...nameDirs)
+    const pts = path.relative(path.join('src', 'addons'), str).split(path.sep)
 
-    await fse.ensureDir(demoDistDir);
-    const demoFile = (await fse.readFile(str, 'utf8')).replace('@starfruitcloud/digitwin/addons', '/libs/dt-sdk/addons.js')
-    const demoContent = template.replace('DEMO', demoFile);
-    await fse.remove(demoDistDir)
+    const dirs = pts.slice(0, pts.length - 1);
+    const nameDirs = getNamePath(dirs);
+
+    const exampleFileName = nameDirs.pop() + '.html';
+    const exampleDistDir = path.join('addon-examples', ...nameDirs)
+
+    await fse.ensureDir(exampleDistDir);
+    const exampleFile = (await fse.readFile(str, 'utf8')).replace('@starfruitcloud/digitwin/addons', '/libs/dt-sdk/addons.js')
+    const exampleContent = template.replace('EXAMPLE', exampleFile);
+    await fse.remove(exampleDistDir)
     await fse.outputFile(
-      path.join(demoDistDir, demoFileName),
-      demoContent, {
+      path.join(exampleDistDir, exampleFileName),
+      exampleContent, {
       encoding: 'utf8',
-    }
-    )
+    })
   }))
 
 }
@@ -517,12 +579,11 @@ export const dev = (options) => gulp.series(
       .on('change', async (changeFilePath) => {
         let now = new Date().getTime()
         try {
-          if (changeFilePath.includes('demo')) {
-            await regenerateAddonExample([changeFilePath])
+          if (changeFilePath.includes('addons')) {
+            await regenerateAddon(changeFilePath)
           } else {
             await regenerate(options)
           }
-
           shell.echo(
             chalk.green(`regenerate lib takes ${new Date().getTime() - now} ms`)
           )

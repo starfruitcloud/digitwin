@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <title>dt-example</title>
+      <link href='/index.css' type='text/css' rel='stylesheet'>
+      <link href='/libs/dt-sdk/dt.min.css' type='text/css' rel='stylesheet'>
+    </head>
+    <body>
+      <div id="viewer-container" class="viewer-container"></div>
+      <script type="module">
+        import { Earth } from "/libs/dt-sdk/addons.js"
+
+const earth = new Earth({
+    id: "viewer-container",
+});
+      </script>
+    </body>
+
+    </html>

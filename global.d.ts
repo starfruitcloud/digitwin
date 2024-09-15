@@ -1,10 +1,9 @@
 declare module '@starfruitcloud/digitwin' {
-    const value: any;
-    export default value;
+    const DT: any;
+    export = DT;
 }
 
 declare module '@starfruitcloud/digitwin/addons' {
-    const value: any;
-    export default value;
+    const addons: any;
+    export default addons;
 }
-  
