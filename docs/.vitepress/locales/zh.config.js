@@ -1,7 +1,7 @@
 export default {
   label: '中文',
   lang: 'zh',
-  link: '/zh/api-v1.0/global',
+  link: '/zh/api-v1.0/start',
   title: '文档',
 
   themeConfig: {
@@ -10,7 +10,7 @@ export default {
       {
         text: 'v1.0',
         items: [
-          { text: 'v1.0', link: '/zh/api-v1.0/global' },
+          { text: 'v1.0', link: '/zh/api-v1.0/start' },
         ]
       }
     ],
@@ -18,6 +18,7 @@ export default {
       '/zh/api-v1.0/': [
         {
           items: [
+            { text: '快速上手', link: '/zh/api-v1.0/start' },
             { text: '全局 API', link: '/zh/api-v1.0/global' },
             { text: '基础 API', link: '/zh/api-v1.0/base' },
             { text: '地图 API', link: '/zh/api-v1.0/tile' },
