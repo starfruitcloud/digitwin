@@ -1,4 +1,4 @@
-import DT from '@starfruitcloud/digitwin';
+import * as DT from '@starfruitcloud/digitwin';
 
 export interface Options {
     id: string;

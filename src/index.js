@@ -22,6 +22,9 @@ export const config = {
 
 export function ready(options = {}) {
   if (__isInitialized) {
+    if (typeof options === 'function') {
+      options();
+    }
     return Promise.resolve()
   }
   __cmdOut && __cmdOut()
@@ -80,7 +83,7 @@ export function ready(options = {}) {
       })
     }
     __isInitialized = true
-    if(typeof options === 'function'){
+    if (typeof options === 'function') {
       options();
     }
     resolve()

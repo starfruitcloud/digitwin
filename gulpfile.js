@@ -579,7 +579,7 @@ export const dev = (options) => gulp.series(
       .on('change', async (changeFilePath) => {
         let now = new Date().getTime()
         try {
-          if (changeFilePath.includes('addons')) {
+          if (options.node && changeFilePath.includes('addons')) {
             await regenerateAddon(changeFilePath)
           } else {
             await regenerate(options)
