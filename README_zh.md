@@ -95,91 +95,15 @@ module.exports = {
 }
 ```
 
-`Vue2.x`
-
-[工程模板](https://github.com/dvgis/dt-vue)
-
-```js
-// vue.config.js
-
-const path = require('path')
-const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@starfruitcloud'
-
-module.exports = {
-  // 其他配置
-  chainWebpack: (config) => {
-    config.plugin('copy').use(CopywebpackPlugin, [
-      [
-        {
-          from: path.join(dvgisDist, 'dt-sdk/dist/resources'),
-          to: 'libs/dt-sdk/resources',
-        },
-      ],
-    ])
-  },
-}
-```
-
-`Vue3.x`
-
-[工程模板](https://github.com/dvgis/dt-vue-next)
-
-```js
-// vue.config.js
-
-const path = require('path')
-const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@starfruitcloud'
-
-module.exports = {
-  // 其他配置
-  chainWebpack: (config) => {
-    config.plugin('copy').use(CopywebpackPlugin, [
-      {
-        patterns: [
-          {
-            from: path.join(dvgisDist, 'dt-sdk/dist/resources'),
-            to: path.join(__dirname, 'dist', 'libs/dt-sdk/resources'),
-          },
-        ],
-      },
-    ])
-  },
-}
-```
-
-`vite`
-
-[Project Template](https://github.com/dvgis/dt-vite)
-
-```js
-// vite.config.js
-import { defineConfig } from 'vite'
-import DT from '@dvgis/vite-plugin-dt'
-
-export default defineConfig({
-  plugins: [DT()],
-})
-```
-
 ## 开始
 
 ```js
-DT.ready().then(() => {
+DT.ready(() => {
   let viewer = new DT.Viewer(divId)
 })
 ```
 
 ## 示例
-
-|           ![picture](https://www.shuqin.cc/examples/previews/baselayer/online/baidu.png)           |     ![picture](http://www.shuqin.cc/examples/previews/baselayer/online/tdt.png)      |     ![picture](http://www.shuqin.cc/examples/previews/baselayer/online/arcgis.png?v=3)     |        ![picture](http://www.shuqin.cc/examples/previews/mini-scene/china.gif)         |
-|:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
-|               ![picture](http://www.shuqin.cc/examples/previews/mini-scene/dfmz.gif)               |    ![picture](http://www.shuqin.cc/examples/previews/mini-scene/factory.gif)     |        ![picture](http://www.shuqin.cc/examples/previews/layer/cluster_circle.gif)         | ![picture](http://www.shuqin.cc/examples/previews/model/3dtiles/shp_custom_shader.gif) |
-|        ![picture](http://www.shuqin.cc/examples/previews/overlay/polyline/image_trail.gif)         | ![picture](http://www.shuqin.cc/examples/previews/overlay/others/wall_trail.gif) |       ![picture](http://www.shuqin.cc/examples/previews/overlay/primitive/water.gif)       |      ![picture](http://www.shuqin.cc/examples/previews/scene-ext/tools/plot.png)       |
-
-
-[更多>>](http://www.shuqin.cc/#/examples)
 
 
 ## 版权声明
