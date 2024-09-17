@@ -3,7 +3,7 @@
 ## 一、通过 SDK 方式引入
 
 ### 1. 下载资源包，解压放到部署的服务器静态目录下
-> 默认路径: /libs/dt-sdk
+> [dt-sdk.zip](/dt-sdk.zip), 默认路径: /libs/dt-sdk
 
 ### 2. 在html文件头部引入
 ```html
@@ -18,11 +18,10 @@
 
 ### 4. 编写代码
 ```js
+  DT.baseUrl = '/public/sdks/dt-sdk' // 可自定义的文件夹路径
   let viewer = undefined
   function initViewer() {
       viewer = new DT.Viewer('viewer-container')
   }
   DT.ready(initViewer)
 ```
-
-## 二、通过 NPM 方式引入
