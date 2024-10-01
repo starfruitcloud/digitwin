@@ -280,9 +280,12 @@ async function buildModules(options, ignoreAddonExample = false) {
     await fse.outputFile(
       dtPath,
       `
+        ${importNamespace}
+        ${exportNamespace}
         ${content}
-        ${cmdOutFunction}
         ${exportVersion}
+        ${cmdOutFunction}
+        ${exportDefault}
       `, {
       encoding: 'utf8',
     })
@@ -641,10 +644,12 @@ export const devADDON = dev({
 
 export const buildSDK = gulp.series(
   () => buildModules({
-    iife: true
+    iife: true,
+    addon: true
   }),
   () => combineJs({
-    iife: true
+    iife: true,
+    addon: true
   }),
   () => buildCSS({
     minify: true
@@ -654,10 +659,12 @@ export const buildSDK = gulp.series(
 
 export const buildNPM = gulp.series(
   () => buildModules({
-    node: true
+    node: true,
+    addon: true
   }),
   () => combineJs({
-    node: true
+    node: true,
+    addon: true
   }),
   () => buildCSS({
     minify: true
@@ -667,16 +674,20 @@ export const buildNPM = gulp.series(
 
 export const buildAll = gulp.series(
   () => buildModules({
-    iife: true
+    iife: true,
+    addon: true
   }),
   () => combineJs({
-    iife: true
+    iife: true,
+    addon: true
   }),
   () => buildModules({
-    node: true
+    node: true,
+    addon: true
   }),
   () => combineJs({
-    node: true
+    node: true,
+    addon: true
   }),
   () => buildCSS({
     minify: true
@@ -686,17 +697,21 @@ export const buildAll = gulp.series(
 
 export const buildRelease = gulp.series(
   () => buildModules({
-    iife: true
+    iife: true,
+    addon: true
   }),
   () => combineJs({
     iife: true,
-    obfuscate: true
+    addon: true,
+    obfuscate: true,
   }),
   () => buildModules({
-    node: true
+    node: true,
+    addon: true
   }),
   () => combineJs({
     node: true,
+    addon: true,
     obfuscate: true
   }),
   () => buildCSS({

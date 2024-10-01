@@ -5,5 +5,5 @@ const earth = new Earth({
 });
 
 earth.onReady(() => {
-    earth.test()
+    console.log('ready')
 })
