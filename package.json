@@ -1,6 +1,6 @@
 {
   "name": "@starfruitcloud/digitwin",
-  "version": "0.3.9",
+  "version": "0.5.1",
   "license": "MIT",
   "description": "The SDK is based on Cesium for secondary development of 2, 3D all-in-one WebGis application framework, the framework optimizes the use of Cesium and add some additional features, designed for developers to quickly build WebGis applications.",
   "homepage": "https://www.shuqin.cc",
@@ -77,6 +77,8 @@
     "dist"
   ],
   "dependencies": {
-    "@starfruitcloud/digitwin-common": "^1.0.0"
+    "@starfruitcloud/digitwin-common": "^1.0.0",
+    "chokidar": "^4.0.1",
+    "ws": "^8.18.0"
   }
 }

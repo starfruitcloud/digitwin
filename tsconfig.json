@@ -1,20 +1,23 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "types",
+    "outDir": "dist",
     "paths": {
+      "@starfruitcloud/digitwin/addons": [
+        "src/addons/index.ts"
+      ],
       "@starfruitcloud/digitwin": [
         "src/DT.js"
       ],
-      "@starfruitcloud/digitwin/addons": [
-        "src/addons/index.ts"
-      ]
     },
     "typeRoots": [
       "global.d.ts"
     ],
   },
   "include": [
-    "src/**/*",
+    "src/**/*.ts",
     "global.d.ts"
   ]
 }

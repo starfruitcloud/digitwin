@@ -17,9 +17,10 @@ const earth = new Earth({
     id: "viewer-container",
 });
 
-console.log({ earth })
+earth.onReady(() => {
+    earth.test()
+})
 
-console.log(11123)
       </script>
     </body>
 

@@ -227,6 +227,27 @@
       });
 
     </script>
+
+    <script>
+      // 连接到 WebSocket 服务器
+      const socket = new WebSocket(`ws://localhost:8081`);
+
+      // 监听来自服务器的消息
+      socket.onmessage = (event) => {
+        if (event.data === 'reload') {
+          console.log('Changes detected, reloading page...');
+          window.location.reload(); // 刷新页面
+        }
+      };
+
+      socket.onopen = () => {
+        console.log('WebSocket connection established');
+      };
+
+      socket.onerror = (error) => {
+        console.error('WebSocket error:', error);
+      };
+    </script>
   </div>
 </body>
 
