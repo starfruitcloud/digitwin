@@ -28,31 +28,54 @@
 
 ## 二、通过 NPM 方式引入
 
-### 1. 安装 npm 包
+### 1. 安装 npm 包 (以 npm 安装为例)
 ```shell
-yarn add @starfruitcloud/digitwin
--------------------------
-npm install @starfruitcloud/digitwin
+npm install @starfruitcloud/digitwin -S
 ```
 
-### 2. 配置工程，复制资源到构建产物中
-> 以 webpack 为例
+### 2. 配置工程，复制资源 resources 到构建产物中，以 默认路径 libs/dt-sdk 为例
+> webpack 例子
 ```js
 // webpack.config.js
 const path = require('path')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const dist = './node_modules/@starfruitcloud'
+const dist = './node_modules/@starfruitcloud/digitwin';
+const copySrcPath = path.join(dist, 'dist/resources');
 
 module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: path.join(dist, 'dt-sdk/dist/resources'),
-        to: 'libs/dt-sdk/resources',
+        from: copySrcPath,
+        to: 'libs/dt-sdk',
       },
     ]),
   ],
 }
+```
+
+> vite 例子
+```js
+// vite.config.js
+import { defineConfig } from 'vite'
+import path from 'path';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+const dist = './node_modules/@starfruitcloud/digitwin';
+const copySrcPath = path.join(dist, 'dist/resources');
+
+export default defineConfig({
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: copySrcPath,
+          dest: 'libs/dt-sdk',
+        },
+      ],
+    })
+  ],
+})
 ```
 
 ### 3. 设置容器
@@ -62,10 +85,10 @@ module.exports = {
 
 ### 4. 编写代码
 ```js
-  import * as DT from '@starfruitcloud/digitwin'
+  import DT from '@starfruitcloud/digitwin'
   import '@starfruitcloud/digitwin/dist/dt.min.css'
 
-  DT.baseUrl = '/public/sdks/dt-sdk' // 可自定义的文件夹路径
+  DT.baseUrl = '/sdks/dt-sdk' // 可自定义的文件夹路径
   let viewer = undefined
   function initViewer() {
       viewer = new DT.Viewer('viewer-container')

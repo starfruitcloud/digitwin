@@ -12,6 +12,7 @@ export default class Earth {
     protected options: Options
     protected isOnReady: boolean = false;
     protected onReadyFns: (() => any)[] = [];
+    viewer: any = null;
 
     constructor(options) {
         this.options = options
@@ -20,7 +21,7 @@ export default class Earth {
 
     protected init({ id, baseUrl }) {
         function initViewer() {
-            new DT.Viewer(id)
+            this.viewer = new DT.Viewer(id)
             this.isOnReady = true;
             this.runOnReadyFn();
         }

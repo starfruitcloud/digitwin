@@ -5,5 +5,10 @@ const earth = new Earth({
 });
 
 earth.onReady(() => {
+
     console.log('ready')
+
+    // setTimeout(() => {
+    //     earth.viewer.destroy()
+    // }, 3000)
 })

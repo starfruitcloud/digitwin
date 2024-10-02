@@ -8,9 +8,9 @@ export default {
     appearance: false,
     nav: [
       {
-        text: 'v1.0',
+        text: 'v1.x.x',
         items: [
-          { text: 'v1.0', link: '/zh/api-v1.0/start' },
+          { text: 'v1.x.x', link: '/zh/api-v1.0/start' },
         ]
       }
     ],
