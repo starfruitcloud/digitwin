@@ -76,24 +76,47 @@ Since the `DT` framework sets `CESIUM_BASE_URL` to `./libs/dt-sdk/resources/` , 
 
 `Webpack`
 
-[Project Template](https://github.com/cavencj/dt-vue-app)
-
 ```js
 // webpack.config.js
 const path = require('path')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const dvgisDist = './node_modules/@starfruitcloud'
+const dist = './node_modules/@starfruitcloud'
 
 module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: path.join(dvgisDist, 'dt-sdk/dist/resources'),
+        from: path.join(dist, 'dt-sdk/dist/resources'),
         to: 'libs/dt-sdk/resources',
       },
     ]),
   ],
 }
+```
+
+`Vite`
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite'
+import path from 'path';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+const dist = './node_modules/@starfruitcloud/digitwin';
+const copySrcPath = path.join(dist, 'dist/resources');
+
+export default defineConfig({
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: copySrcPath,
+          dest: 'libs/dt-sdk',
+        },
+      ],
+    })
+  ],
+})
 ```
 
 ## Start
